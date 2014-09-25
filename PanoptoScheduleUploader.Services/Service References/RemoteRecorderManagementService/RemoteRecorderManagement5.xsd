@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://wharton.hosted.panopto.com/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="AuthenticationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthenticationInfo" nillable="true" type="tns:AuthenticationInfo" />
+  <xs:complexType name="ArrayOfRemoteRecorderDevice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RemoteRecorderDevice" nillable="true" type="tns:RemoteRecorderDevice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemoteRecorderDevice" nillable="true" type="tns:ArrayOfRemoteRecorderDevice" />
+  <xs:complexType name="RemoteRecorderDevice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeviceType" type="tns:RemoteRecorderDeviceType" />
+      <xs:element minOccurs="0" name="IsCapturing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemoteRecorderDevice" nillable="true" type="tns:RemoteRecorderDevice" />
+  <xs:simpleType name="RemoteRecorderDeviceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="DV" />
+      <xs:enumeration value="HDV" />
+      <xs:enumeration value="Video" />
+      <xs:enumeration value="Audio" />
+      <xs:enumeration value="Screen" />
+      <xs:enumeration value="Slide" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RemoteRecorderDeviceType" nillable="true" type="tns:RemoteRecorderDeviceType" />
+  <xs:simpleType name="RemoteRecorderState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Stopped" />
+      <xs:enumeration value="Previewing" />
+      <xs:enumeration value="Recording" />
+      <xs:enumeration value="Paused" />
+      <xs:enumeration value="Faulted" />
+      <xs:enumeration value="Disconnected" />
+      <xs:enumeration value="Blocked" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RemoteRecorderState" nillable="true" type="tns:RemoteRecorderState" />
+  <xs:complexType name="Pagination">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxNumberResults" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pagination" nillable="true" type="tns:Pagination" />
+  <xs:simpleType name="RecorderSortField">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Name" />
+      <xs:enumeration value="State" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RecorderSortField" nillable="true" type="tns:RecorderSortField" />
+  <xs:complexType name="ArrayOfRecorderSettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RecorderSettings" nillable="true" type="tns:RecorderSettings" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRecorderSettings" nillable="true" type="tns:ArrayOfRecorderSettings" />
+  <xs:complexType name="RecorderSettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RecorderId" type="ser:guid" />
+      <xs:element minOccurs="0" name="SuppressPrimary" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuppressSecondary" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecorderSettings" nillable="true" type="tns:RecorderSettings" />
+</xs:schema>

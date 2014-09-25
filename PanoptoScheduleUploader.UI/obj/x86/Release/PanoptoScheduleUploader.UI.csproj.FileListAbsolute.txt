@@ -1,0 +1,81 @@
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.exe.config
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.exe.manifest
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.application
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.exe
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.pdb
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\log4net.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Core.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Services.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.DataGrid.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.Toolkit.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Core.pdb
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Services.pdb
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\log4net.xml
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\PanoptoScheduleUploader.UI.csprojResolveAssemblyReference.cache
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\MainWindow.baml
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\MainWindow.g.cs
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\App.g.cs
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader_MarkupCompile.cache
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.g.resources
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\PanoptoScheduleUploader.UI.Properties.Resources.resources
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\PanoptoScheduleUploader.UI.csproj.GenerateResource.Cache
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.exe.manifest
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.application
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.exe
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.pdb
+C:\Users\jlin\Downloads\PanoptoScheduleUploader\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.exe.config
+C:\Users\jlin\Downloads\PanoptoScheduleUploader\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.exe
+C:\Users\jlin\Downloads\PanoptoScheduleUploader\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.pdb
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.exe.config
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.exe
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.pdb
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.exe.manifest
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.application
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.exe
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Panopto Schedule Uploader.pdb
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\log4net.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Core.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Services.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.DataGrid.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\Xceed.Wpf.Toolkit.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Core.pdb
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\PanoptoScheduleUploader.Services.pdb
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\log4net.xml
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\bin\Release\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\PanoptoScheduleUploader.UI.csprojResolveAssemblyReference.cache
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\MainWindow.baml
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\MainWindow.g.cs
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\App.g.cs
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader_MarkupCompile.cache
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.g.resources
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\PanoptoScheduleUploader.UI.Properties.Resources.resources
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\PanoptoScheduleUploader.UI.csproj.GenerateResource.Cache
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.exe.manifest
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.UI\obj\x86\Release\Panopto Schedule Uploader.application

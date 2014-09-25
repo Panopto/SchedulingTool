@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="65da50d2-6c76-4904-b24f-43db8ed10628" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://192.168.200.124/Panopto/PublicAPI/4.2/UserManagement.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserManagement.xsd" MetadataType="Schema" ID="9c950996-6bf0-4813-92d0-083abf0d521e" SourceId="1" SourceUrl="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserManagement.wsdl" MetadataType="Wsdl" ID="3e36d7ff-b82f-4d9f-9eee-9f9ffe7405c8" SourceId="1" SourceUrl="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?wsdl" />
+    <MetadataFile FileName="UserManagement1.xsd" MetadataType="Schema" ID="29e273ee-cc24-41b5-b076-480d15a47131" SourceId="1" SourceUrl="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserManagement.disco" MetadataType="Disco" ID="d447adaf-49fe-4616-bf77-33d165b63509" SourceId="1" SourceUrl="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?disco" />
+    <MetadataFile FileName="UserManagement2.xsd" MetadataType="Schema" ID="d3c1188e-2db7-49c9-8498-33e7bf190729" SourceId="1" SourceUrl="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserManagement3.xsd" MetadataType="Schema" ID="981fec6b-428f-4bd2-9a06-fe093e04d967" SourceId="1" SourceUrl="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

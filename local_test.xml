@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecorderScheduleImport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<RecorderSchedules>
+<RecorderSchedule>
+	<Class>EDKNIGHT-PC-Class</Class>
+	<Classroom>EDKNIGHT-PC</Classroom>
+	<RecordingDate>30-Oct-2013</RecordingDate>
+	<RecordingStartTime>11:59 AM</RecordingStartTime>
+	<RecordingEndTime>12:01 PM</RecordingEndTime>
+</RecorderSchedule>
+</RecorderSchedules>
+</RecorderScheduleImport>

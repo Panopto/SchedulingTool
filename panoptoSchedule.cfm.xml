@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecorderScheduleImport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<RecorderSchedules>
+<RecorderSchedule>
+	<Class>FNCE894402_FNCE394402_RICHARD_S</Class>
+	<Classroom>JMHH 360</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>10:30 AM</RecordingStartTime>
+	<RecordingEndTime>12:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>BEPP_Recruiting</Class>
+	<Classroom>JMHH 360</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>12:00 PM</RecordingStartTime>
+	<RecordingEndTime>1:20 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>MKTG277001_WERTENBROCH_K</Class>
+	<Classroom>JMHH 360</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>1:30 PM</RecordingStartTime>
+	<RecordingEndTime>3:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>STAT711401_STAT435401_SHAMAN_P</Class>
+	<Classroom>JMHH 360</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>3:00 PM</RecordingStartTime>
+	<RecordingEndTime>4:30 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>LGST210007_DONALDSON_T</Class>
+	<Classroom>JMHH 360</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>4:30 PM</RecordingStartTime>
+	<RecordingEndTime>6:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>FNCE894401_FNCE394401_RICHARD_S</Class>
+	<Classroom>JMHH 360</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>9:00 AM</RecordingStartTime>
+	<RecordingEndTime>10:30 AM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>UGRAD_Info_Session</Class>
+	<Classroom>JMHH G50</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>3:30 PM</RecordingStartTime>
+	<RecordingEndTime>4:30 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>WH_Risk_Mgmt_Center_Risk_Regulation_Series</Class>
+	<Classroom>JMHH G50</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>4:30 PM</RecordingStartTime>
+	<RecordingEndTime>6:30 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>WH_CAB_Communications_Event</Class>
+	<Classroom>JMHH G50</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>6:30 PM</RecordingStartTime>
+	<RecordingEndTime>8:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>Facilities_HVAC_Repairs</Class>
+	<Classroom>JMHH G50</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>8:00 AM</RecordingStartTime>
+	<RecordingEndTime>3:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>FCAIA_Meeting</Class>
+	<Classroom>JMHH G50</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>8:00 PM</RecordingStartTime>
+	<RecordingEndTime>11:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>BEPP250010_BEPP950010_MARION_J</Class>
+	<Classroom>SHDH 215</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>10:30 AM</RecordingStartTime>
+	<RecordingEndTime>12:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>MBAPO_Make_up_Exam</Class>
+	<Classroom>SHDH 215</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>2:00 PM</RecordingStartTime>
+	<RecordingEndTime>4:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>LDI_CPHI_Weight_of_the_Nation_event</Class>
+	<Classroom>SHDH 215</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>4:30 PM</RecordingStartTime>
+	<RecordingEndTime>7:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>Penn_Investment_Alliance_Mtg</Class>
+	<Classroom>SHDH 215</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>7:00 PM</RecordingStartTime>
+	<RecordingEndTime>8:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>MGMT611005_VINOKUROVA_BIDWELL_CHOUDHURY</Class>
+	<Classroom>VANC B10</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>10:30 AM</RecordingStartTime>
+	<RecordingEndTime>12:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>MBA_Admissions_Info_Session</Class>
+	<Classroom>VANC B10</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>3:00 PM</RecordingStartTime>
+	<RecordingEndTime>4:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>MGMT611004_VINOKUROVA_BIDWELL_CHOUDHURY</Class>
+	<Classroom>VANC B10</Classroom>
+	<RecordingDate>26-feb-2013</RecordingDate>
+	<RecordingStartTime>9:00 AM</RecordingStartTime>
+	<RecordingEndTime>10:30 AM</RecordingEndTime>
+</RecorderSchedule>
+</RecorderSchedules>
+</RecorderScheduleImport>

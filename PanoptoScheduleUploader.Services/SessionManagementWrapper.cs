@@ -1,0 +1,122 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using PanoptoScheduleUploader.Services.SessionManagement;
+using System.ServiceModel;
+
+namespace PanoptoScheduleUploader.Services
+{
+    public class SessionManagementWrapper : IDisposable
+    {
+        public SessionManagementClient sessionManager;
+        AuthenticationInfo authentication;
+
+        public SessionManagementWrapper(string username, string password)
+        {
+            this.sessionManager = new SessionManagementClient();
+
+            // Ensure server certificate is validated
+            CertificateValidation.EnsureCertificateValidation();
+
+            this.authentication = new AuthenticationInfo()
+            {
+                UserKey = username,
+                Password = password
+            };
+        }
+
+        public Folder GetFolderByName(string folderName)
+        {
+            var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
+            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, null);
+            return response.Results.FirstOrDefault(a => a.Name == folderName);
+
+        }
+
+        public Session[] GetSessionsInDateRange(DateTime start, DateTime end)
+        {
+            var response = sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest() {  StartDate = start, EndDate = end }, null);
+            
+            if (response == null)
+            {
+                throw new Exception(string.Format("Unable to fetch sessions between dates {0} and {1}", start.ToString(), end.ToString()));
+            }
+
+            return response.Results;
+        }
+
+        public Session[] GetSessionById(Guid id)
+        {
+            List<Guid> ids = new List<Guid>();
+            ids.Add(id);
+            return this.sessionManager.GetSessionsById(this.authentication, ids.ToArray());
+        }
+
+        public bool TryGetSessionId(string sessionName, out Guid sessionId)
+        {
+            sessionId = Guid.NewGuid();
+            var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
+            var sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest {  Pagination = pagination }, null);
+
+            var session = sessions.Results.SingleOrDefault(s => s.Name == sessionName);
+
+            if (session != null)
+            {
+                sessionId = session.Id;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void UpdateSessionDescription(Guid id, string description)
+        {
+            List<Guid> ids = new List<Guid>();
+            ids.Add(id);
+            this.sessionManager.UpdateSessionDescription(this.authentication, ids[0], description);
+        }
+
+        public void RemoveConflictingSessions(Guid[] sessions, DateTime startTime, DateTime endTime)
+        {
+            List<Guid> sessionsToDelete = new List<Guid>();
+            foreach (var session in sessionManager.GetSessionsById(this.authentication, sessions))
+            {
+                if (IsOverlap(session.StartTime.Value, session.StartTime.Value.AddSeconds((Double)session.Duration), startTime, endTime))
+                {
+                    sessionsToDelete.Add(session.Id);
+                }
+            }
+
+            if (sessionsToDelete.Count > 0)
+            {
+                sessionManager.DeleteSessions(this.authentication, sessionsToDelete.ToArray());
+            }
+        }
+
+        public void DeleteSessions(Guid[] sessionIds)
+        {
+            sessionManager.DeleteSessions(this.authentication, sessionIds);
+        }
+
+        public bool IsOverlap(DateTime start1, DateTime end1, DateTime start2, DateTime end2)
+        {
+            if (start1 >= end2) return false;
+            if (end1 <= start2) return false;
+            return true;
+        }
+
+        public void Dispose()
+        {
+            if (this.sessionManager.State == CommunicationState.Faulted)
+            {
+                this.sessionManager.Abort();
+            }
+
+            if (this.sessionManager.State != CommunicationState.Closed)
+            {
+                this.sessionManager.Close();
+            }
+        }
+    }
+}

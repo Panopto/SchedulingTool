@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://wharton.hosted.panopto.com/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
+  <xs:import schemaLocation="http://wharton.hosted.panopto.com/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://wharton.hosted.panopto.com/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfRemoteRecorder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RemoteRecorder" nillable="true" type="tns:RemoteRecorder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemoteRecorder" nillable="true" type="tns:ArrayOfRemoteRecorder" />
+  <xs:complexType name="RemoteRecorder">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="Devices" nillable="true" type="q1:ArrayOfRemoteRecorderDevice" />
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="MachineIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreviewUrl" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ScheduledRecordings" nillable="true" type="q2:ArrayOfguid" />
+      <xs:element minOccurs="0" name="SettingsUrl" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="State" type="q3:RemoteRecorderState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemoteRecorder" nillable="true" type="tns:RemoteRecorder" />
+  <xs:complexType name="ListRecordersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PagedResults" nillable="true" type="tns:ArrayOfRemoteRecorder" />
+      <xs:element minOccurs="0" name="TotalResultCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListRecordersResponse" nillable="true" type="tns:ListRecordersResponse" />
+  <xs:complexType name="ScheduledRecordingResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConflictingSessions" nillable="true" type="tns:ArrayOfScheduledRecordingInfo" />
+      <xs:element minOccurs="0" name="ConflictsExist" type="xs:boolean" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SessionIDs" nillable="true" type="q4:ArrayOfguid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduledRecordingResult" nillable="true" type="tns:ScheduledRecordingResult" />
+  <xs:complexType name="ArrayOfScheduledRecordingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScheduledRecordingInfo" nillable="true" type="tns:ScheduledRecordingInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheduledRecordingInfo" nillable="true" type="tns:ArrayOfScheduledRecordingInfo" />
+  <xs:complexType name="ScheduledRecordingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SessionID" type="ser:guid" />
+      <xs:element minOccurs="0" name="SessionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduledRecordingInfo" nillable="true" type="tns:ScheduledRecordingInfo" />
+</xs:schema>

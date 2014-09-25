@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://192.168.200.184/Panopto/PublicAPISSL/4.2/UsageReporting.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="AuthenticationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthenticationInfo" nillable="true" type="tns:AuthenticationInfo" />
+  <xs:simpleType name="UsageGranularity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Hourly" />
+      <xs:enumeration value="Daily" />
+      <xs:enumeration value="Weekly" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UsageGranularity" nillable="true" type="tns:UsageGranularity" />
+  <xs:complexType name="ArrayOfSummaryUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SummaryUsageResponseItem" nillable="true" type="tns:SummaryUsageResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSummaryUsageResponseItem" nillable="true" type="tns:ArrayOfSummaryUsageResponseItem" />
+  <xs:complexType name="SummaryUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MinutesViewed" type="xs:double" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UniqueUsers" type="xs:int" />
+      <xs:element minOccurs="0" name="Views" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SummaryUsageResponseItem" nillable="true" type="tns:SummaryUsageResponseItem" />
+  <xs:complexType name="Pagination">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxNumberResults" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pagination" nillable="true" type="tns:Pagination" />
+  <xs:complexType name="DetailedUsageResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PagedResponses" nillable="true" type="tns:ArrayOfDetailedUsageResponseItem" />
+      <xs:element minOccurs="0" name="TotalNumberResponses" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetailedUsageResponse" nillable="true" type="tns:DetailedUsageResponse" />
+  <xs:complexType name="ArrayOfDetailedUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetailedUsageResponseItem" nillable="true" type="tns:DetailedUsageResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetailedUsageResponseItem" nillable="true" type="tns:ArrayOfDetailedUsageResponseItem" />
+  <xs:complexType name="DetailedUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecondsViewed" type="xs:double" />
+      <xs:element minOccurs="0" name="SessionId" type="ser:guid" />
+      <xs:element minOccurs="0" name="StartPosition" type="xs:double" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetailedUsageResponseItem" nillable="true" type="tns:DetailedUsageResponseItem" />
+</xs:schema>

@@ -1,0 +1,12 @@
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.dll.config
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.pdb
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.pdb
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.csprojResolveAssemblyReference.cache
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.dll.config
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.pdb
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.csprojResolveAssemblyReference.cache
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.dll
+C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.pdb

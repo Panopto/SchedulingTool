@@ -1,0 +1,6 @@
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.dll.config
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.dll
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csprojResolveAssemblyReference.cache
