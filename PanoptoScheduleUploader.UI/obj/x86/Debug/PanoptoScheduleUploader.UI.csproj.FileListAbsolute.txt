@@ -37,3 +37,42 @@ C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Debug
 C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.application
 C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.exe
 C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.exe.config
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.exe
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.exe.manifest
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.application
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.exe
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\log4net.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\PanoptoScheduleUploader.Core.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\PanoptoScheduleUploader.Services.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\PanoptoScheduleUploader.Core.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\log4net.xml
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\PanoptoScheduleUploader.UI.csprojResolveAssemblyReference.cache
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\MainWindow.baml
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\MainWindow.g.cs
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\App.g.cs
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader_MarkupCompile.cache
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.g.resources
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\PanoptoScheduleUploader.UI.Properties.Resources.resources
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\PanoptoScheduleUploader.UI.csproj.GenerateResource.Cache
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.exe.manifest
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.application

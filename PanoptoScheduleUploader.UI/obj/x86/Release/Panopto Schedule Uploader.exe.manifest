@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>lzZEBLJwxMl8wmEW6xn6ixcpMOE=</dsig:DigestValue>
+        <dsig:DigestValue>ZJrc/MGBHvvtjR23Ql4XWckAhGM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -291,13 +291,13 @@
       <dsig:DigestValue>uo/JZYju+k/QoV78odOvDTkjxCs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Panopto Schedule Uploader.exe.config" size="7745">
+  <file name="Panopto Schedule Uploader.exe.config" size="8802">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>O9y+hkGAu28l3nE8ib2ThxhhMCA=</dsig:DigestValue>
+      <dsig:DigestValue>9NSOvWVWeW0jNwvV+4PjeeVC9O4=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

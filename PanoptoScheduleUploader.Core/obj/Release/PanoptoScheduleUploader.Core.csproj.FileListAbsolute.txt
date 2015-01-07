@@ -16,3 +16,12 @@ C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Core\bin\Release\log4net.xml
 C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.csprojResolveAssemblyReference.cache
 C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.dll
 C:\GitHub\SchedulingTool\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Release\PanoptoScheduleUploader.Core.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Release\PanoptoScheduleUploader.Core.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Release\log4net.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Release\PanoptoScheduleUploader.Services.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Release\PanoptoScheduleUploader.Services.pdb
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Release\log4net.xml
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.csprojResolveAssemblyReference.cache
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.dll
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.pdb

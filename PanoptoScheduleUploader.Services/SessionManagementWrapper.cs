@@ -28,22 +28,85 @@ namespace PanoptoScheduleUploader.Services
 
         public Folder GetFolderByName(string folderName)
         {
-            var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
+            int resultPerPage = 10;
+            bool folderFound = false;
+            Folder result = null;
+            var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = 0 };
             var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, null);
-            return response.Results.FirstOrDefault(a => a.Name == folderName);
+
+            foreach (Folder folder in response.Results)
+            {
+                if (folder.Name == folderName)
+                {
+                    folderFound = true;
+                    result = folder;
+                    break;
+                }
+            }
+
+            // Get more data while there are more to get
+            int totalResults = response.TotalNumberResults;
+            int currentResults = 10;
+
+            while (currentResults < totalResults && !folderFound)
+            {
+                pagination.PageNumber += 1;
+                response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, null);
+                foreach (Folder folder in response.Results)
+                {
+                    if (folder.Name == folderName)
+                    {
+                        folderFound = true;
+                        result = folder;
+                        break;
+                    }
+                }
+                currentResults += 10;
+            }
+
+            return result;
 
         }
 
         public Session[] GetSessionsInDateRange(DateTime start, DateTime end)
         {
-            var response = sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest() {  StartDate = start, EndDate = end }, null);
-            
-            if (response == null)
-            {
-                throw new Exception(string.Format("Unable to fetch sessions between dates {0} and {1}", start.ToString(), end.ToString()));
-            }
+            Session[] result = null;
 
-            return response.Results;
+            int itemPerPage = 10;
+            int pageNum = 0;
+            int totalItem = 0;
+            int itemRead = 0;
+            bool firstRun = true;
+            int resultIndex = 0;
+
+            do
+            {
+                Pagination pagination = new Pagination() { MaxNumberResults = itemPerPage, PageNumber = pageNum };
+                var response = sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest() { Pagination = pagination, StartDate = start, EndDate = end }, null);
+                if (response == null)
+                {
+                    throw new Exception(string.Format("Unable to fetch sessions between dates {0} and {1}", start.ToString(), end.ToString()));
+                }
+
+                totalItem = response.TotalNumberResults;
+                itemRead += itemPerPage;
+                pageNum++;
+
+                if (firstRun)
+                {
+                    firstRun = false;
+                    result = new Session[totalItem];
+                }
+
+                foreach (Session session in response.Results)
+                {
+                    result[resultIndex] = session;
+                    resultIndex++;
+                }
+
+            } while (itemRead < totalItem);
+
+            return result;
         }
 
         public Session[] GetSessionById(Guid id)
@@ -82,7 +145,8 @@ namespace PanoptoScheduleUploader.Services
             List<Guid> sessionsToDelete = new List<Guid>();
             foreach (var session in sessionManager.GetSessionsById(this.authentication, sessions))
             {
-                if (IsOverlap(session.StartTime.Value, session.StartTime.Value.AddSeconds((Double)session.Duration), startTime, endTime))
+                DateTime localTime = session.StartTime.Value.ToLocalTime();
+                if (IsOverlap(localTime, localTime.AddSeconds((Double)session.Duration), startTime, endTime))
                 {
                     sessionsToDelete.Add(session.Id);
                 }
