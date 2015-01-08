@@ -13,6 +13,6 @@ C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.C
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Services.dll
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Services.pdb
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\bin\Debug\log4net.xml
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csprojResolveAssemblyReference.cache
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.dll
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.pdb
-C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csprojResolveAssemblyReference.cache

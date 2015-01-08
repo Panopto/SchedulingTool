@@ -2,29 +2,13 @@
 <RecorderScheduleImport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<RecorderSchedules>
 		<RecorderSchedule>
-			<Class>RR Test</Class>
-			<Classroom>Derek Test</Classroom>
-			<RecordingDate>01/07/2015</RecordingDate>
-			<RecordingStartTime>05:20 PM</RecordingStartTime>
-			<RecordingEndTime>08:55 PM</RecordingEndTime>
-			<CourseTitle>RR tests</CourseTitle>
-		</RecorderSchedule>
-		<!-- <RecorderSchedule>
-			<Class>RR Test</Class>
-			<Classroom>Derek Test</Classroom>
-			<RecordingDate>01/06/2015</RecordingDate>
-			<RecordingStartTime>07:44 PM</RecordingStartTime>
-			<RecordingEndTime>07:55 PM</RecordingEndTime>
-			<CourseTitle>RR tests</CourseTitle>
-		</RecorderSchedule> -->
-<!-- 		<RecorderSchedule>
 			<Class>MGEC611002_STAFF</Class>
 			<Classroom>JMHH240</Classroom>
 			<RecordingDate>10/04/2012</RecordingDate>
 			<RecordingStartTime>10:30 AM</RecordingStartTime>
 			<RecordingEndTime>12:00 PM</RecordingEndTime>
-		</RecorderSchedule> -->
-<!-- 		<RecorderSchedule>
+		</RecorderSchedule>
+		<RecorderSchedule>
 			<Class>STAT500401_BSTA550401_PSYC611401_ROSENBAUM_P</Class>
 			<Classroom>JMHH240</Classroom>
 			<RecordingDate>10/04/2012</RecordingDate>
@@ -44,6 +28,6 @@
 			<RecordingDate>10/04/2012</RecordingDate>
 			<RecordingStartTime>3:00 PM</RecordingStartTime>
 			<RecordingEndTime>4:00 PM</RecordingEndTime>
-		</RecorderSchedule> -->
+		</RecorderSchedule>
 	</RecorderSchedules>
 </RecorderScheduleImport>

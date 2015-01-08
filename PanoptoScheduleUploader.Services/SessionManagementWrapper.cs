@@ -46,7 +46,7 @@ namespace PanoptoScheduleUploader.Services
 
             // Get more data while there are more to get
             int totalResults = response.TotalNumberResults;
-            int currentResults = 10;
+            int currentResults = resultPerPage;
 
             while (currentResults < totalResults && !folderFound)
             {
@@ -61,7 +61,7 @@ namespace PanoptoScheduleUploader.Services
                         break;
                     }
                 }
-                currentResults += 10;
+                currentResults += resultPerPage;
             }
 
             return result;

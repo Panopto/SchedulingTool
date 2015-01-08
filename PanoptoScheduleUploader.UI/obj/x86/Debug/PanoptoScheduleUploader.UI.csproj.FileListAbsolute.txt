@@ -38,8 +38,6 @@ C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Debug
 C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.exe
 C:\Code\Panopto\PanoptoScheduleUploader\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.pdb
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.exe.config
-C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.exe
-C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.pdb
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.exe.manifest
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.application
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\bin\Debug\Panopto Schedule Uploader.exe
@@ -76,3 +74,5 @@ C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.U
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\PanoptoScheduleUploader.UI.csproj.GenerateResource.Cache
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.exe.manifest
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.application
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.exe
+C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.UI\obj\x86\Debug\Panopto Schedule Uploader.pdb
