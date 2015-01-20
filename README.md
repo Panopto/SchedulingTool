@@ -5,7 +5,11 @@ Scheduling Tool
 
 This program provides a GUI for users to schedule multiple remote recordings using a XML file containing recording information. User can also use this program to Bulk Delete multiple recordings at once by selecting and deleting recordings from search results obtained by searching after filling in provided fields with appropriate information.
 
-The server this program is directed towards can be changed in the app.config file.
+Example of usage of available tags are located in sample.xml.
+
+The server this program is directed towards can be changed in the app.config file. Change the app.config files located in PanoptoScheduleUploader.Services and PanoptoScheduleUploader.UI folder. Change the server location in the address attribute inside endpoint tag under client tag.
+
+To change the server the executable is directed towards, change the client tag's endpoint tag's address attribute to desired server in Panopto Schedule Uploader.exe.config file located at PanoptoScheduleUploader.UI\bin\Debug.
 
 	User Name: user name to log into server with
 	Password: password for provided user name
