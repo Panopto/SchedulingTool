@@ -36,7 +36,7 @@
                             <Grid Margin="0,20,0,0">
                                 <DataGrid x:Name="previewGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="330" Width="800" ItemsSource="{Binding}" ColumnWidth="Auto" >
                                 </DataGrid>
-                                <ScrollViewer Height="330" HorizontalAlignment="Left" VerticalAlignment="Top" Width="830">
+                                <ScrollViewer Height="330" HorizontalAlignment="Left" VerticalAlignment="Top" Width="830" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <TextBlock Name="resultsTextBlock" Text="" TextWrapping="Wrap" Width="800" />
                                 </ScrollViewer>
                             </Grid>

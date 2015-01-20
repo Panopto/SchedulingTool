@@ -7,16 +7,25 @@ using System.Text;
 
 namespace PanoptoScheduleUploader.Core
 {
-    public static class SetRecordingSchedulesFromXml
+    public static class SetRecordingSchedules
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static IEnumerable<SchedulingResult> Execute(string username, string password, string xmlFile, string folderName, bool overwrite)
+        public static IEnumerable<SchedulingResult> Execute(string username, string password, string fileName, string folderName, bool overwrite)
         {
             var results = new List<SchedulingResult>();
 
-            var parser = new RecorderScheduleXmlParser(xmlFile);
-            var recordings = parser.ExtractRecordings();
+            IEnumerable<Recording> recordings = null;
+            if (System.IO.Path.GetExtension(fileName) == ".xml")
+            {
+                var parser = new RecorderScheduleXmlParser(fileName);
+                recordings = parser.ExtractRecordings();
+            }
+            else if (System.IO.Path.GetExtension(fileName) == ".csv")
+            {
+                var parser = new RecorderScheduleCSVParser(fileName);
+                recordings = parser.ExtractRecordings();
+            }
 
             using (var sessionManager = new SessionManagementWrapper(username, password))
             {

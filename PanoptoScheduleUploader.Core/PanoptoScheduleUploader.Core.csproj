@@ -46,11 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BulkDeleteRecordingSchedules.cs" />
+    <Compile Include="RecorderScheduleCSVParser.cs" />
     <Compile Include="RecorderScheduleXmlElement.cs" />
     <Compile Include="Recording.cs" />
     <Compile Include="RecorderScheduleXmlParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetRecordingSchedulesFromXml.cs" />
+    <Compile Include="SetRecordingSchedules.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PanoptoScheduleUploader.Services\PanoptoScheduleUploader.Services.csproj">

@@ -43,7 +43,7 @@ namespace PanoptoScheduleUploader.UI
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.FileName = ""; // Default file name
             dlg.DefaultExt = ".xml"; // Default file extension
-            dlg.Filter = "XML documents (.xml)|*.xml"; // Filter files by extension 
+            dlg.Filter = "XML or CSV documents (.xml, .csv)|*.xml;*.csv"; // Filter files by extension 
 
             // Show open file dialog box
             Nullable<bool> result = dlg.ShowDialog();
@@ -86,8 +86,17 @@ namespace PanoptoScheduleUploader.UI
                 table.Columns.Add("Presenter");
                 table.Columns.Add("Course Title");
 
-                var parser = new RecorderScheduleXmlParser(fileName);
-                var recordings = parser.ExtractRecordings();
+                IEnumerable<Recording> recordings = null;
+                if (System.IO.Path.GetExtension(fileName) == ".xml")
+                {
+                    var parser = new RecorderScheduleXmlParser(fileName);
+                    recordings = parser.ExtractRecordings();
+                }
+                else if (System.IO.Path.GetExtension(fileName) == ".csv")
+                {
+                    var parser = new RecorderScheduleCSVParser(fileName);
+                    recordings = parser.ExtractRecordings();
+                }
                 lineNumber++;
 
                 int rowCount = 0;
@@ -116,6 +125,7 @@ namespace PanoptoScheduleUploader.UI
         {
             previewGrid.Visibility = System.Windows.Visibility.Hidden;
             resultsTextBlock.Text = "";
+            submitButton.IsEnabled = false;
 
             var username = usernameInput.Text;
             var password = passwordInput.Password;
@@ -142,7 +152,7 @@ namespace PanoptoScheduleUploader.UI
 
                     try
                     {
-                        results = SetRecordingSchedulesFromXml.Execute(username, password, filePath, string.Empty, overwrite);
+                        results = SetRecordingSchedules.Execute(username, password, filePath, string.Empty, overwrite);
                     }
                     catch (Exception ex)
                     {
@@ -168,9 +178,11 @@ namespace PanoptoScheduleUploader.UI
                         }
                         else
                         {
-                            log.Warn("Unable to process XML file");
-                            MessageBox.Show("Unable to process XML file");
+                            log.Warn("Unable to process file");
+                            MessageBox.Show("Unable to process file");
                         }
+
+                        submitButton.IsEnabled = true;
                     });   
                 };
 
@@ -180,6 +192,7 @@ namespace PanoptoScheduleUploader.UI
             {
                 log.Warn(ex);
                 MessageBox.Show(string.Format("An error has occurred. Details: {0}", ex.Message));
+                submitButton.IsEnabled = true;
             }
         }
 
