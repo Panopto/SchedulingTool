@@ -9,3 +9,9 @@ C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.S
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.pdb
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.dll
 C:\Users\dliu\Documents\Work\API\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.dll.config
+C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.dll
+C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csprojResolveAssemblyReference.cache
+C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.dll
+C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.pdb

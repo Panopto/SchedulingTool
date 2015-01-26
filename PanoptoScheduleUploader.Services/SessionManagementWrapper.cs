@@ -119,7 +119,7 @@ namespace PanoptoScheduleUploader.Services
         public bool TryGetSessionId(string sessionName, out Guid sessionId)
         {
             sessionId = Guid.NewGuid();
-            var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
+            var pagination = new Pagination { MaxNumberResults = 25, PageNumber = 0 };
             var sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest {  Pagination = pagination }, null);
 
             var session = sessions.Results.SingleOrDefault(s => s.Name == sessionName);
