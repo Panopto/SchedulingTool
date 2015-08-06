@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Configuration;
 using PanoptoScheduleUploader.Services.SessionManagement;
 using System.ServiceModel;
 
@@ -34,13 +35,17 @@ namespace PanoptoScheduleUploader.Services
             var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = 0 };
             var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, null);
 
+            string[] lineage = folderName.Split(new string[]{ConfigurationManager.AppSettings["folderPathDelimiter"]}, StringSplitOptions.None);
             foreach (Folder folder in response.Results)
             {
-                if (folder.Name == folderName)
+                if (folder.Name == lineage[lineage.Length - 1])
                 {
-                    folderFound = true;
-                    result = folder;
-                    break;
+                    if (FolderParentsMatchInput(folder,lineage))
+                    {
+                        folderFound = true;
+                        result = folder;
+                        break;
+                    }
                 }
             }
 
@@ -54,11 +59,14 @@ namespace PanoptoScheduleUploader.Services
                 response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, null);
                 foreach (Folder folder in response.Results)
                 {
-                    if (folder.Name == folderName)
+                    if (folder.Name == lineage[lineage.Length - 1])
                     {
-                        folderFound = true;
-                        result = folder;
-                        break;
+                        if (FolderParentsMatchInput(folder,lineage))
+                        {
+                            folderFound = true;
+                            result = folder;
+                            break;
+                        }
                     }
                 }
                 currentResults += resultPerPage;
@@ -66,6 +74,25 @@ namespace PanoptoScheduleUploader.Services
 
             return result;
 
+        }
+
+        private Boolean FolderParentsMatchInput(Folder checkFolder, string[] lineage)
+        {
+            Folder currentParent = checkFolder;
+            for (int i = lineage.Length - 2; i >= 0; --i)
+            {
+                if (currentParent.ParentFolder == null)
+                {
+                    return false;
+                }
+                Folder[] newParentAsArray = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { (System.Guid)currentParent.ParentFolder });
+                currentParent = newParentAsArray[0];
+                if (currentParent.Name != lineage[i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public Session[] GetSessionsInDateRange(DateTime start, DateTime end)
