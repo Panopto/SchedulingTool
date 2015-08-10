@@ -34,8 +34,10 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CertificateValidation.cs" />
+    <Compile Include="FolderChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderChooser.Designer.cs">
+      <DependentUpon>FolderChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="SchedulingResult.cs" />
     <Compile Include="Service References\UsageManagement\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -252,6 +260,11 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FolderChooser.resx">
+      <DependentUpon>FolderChooser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

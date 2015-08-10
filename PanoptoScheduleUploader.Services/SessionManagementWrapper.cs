@@ -5,6 +5,7 @@ using System.Text;
 using System.Configuration;
 using PanoptoScheduleUploader.Services.SessionManagement;
 using System.ServiceModel;
+using System.Collections;
 
 namespace PanoptoScheduleUploader.Services
 {
@@ -27,25 +28,35 @@ namespace PanoptoScheduleUploader.Services
             };
         }
 
+        public Folder TryGetFolderById(string id)
+        {
+            Guid guid;
+            if (Guid.TryParse(id, out guid))
+            {
+                Folder[] folders = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { guid });
+                return folders.Length == 0 ? null : folders[0];
+            }
+            return null;
+        }
+
         public Folder GetFolderByName(string folderName)
         {
             int resultPerPage = 10;
             bool folderFound = false;
             Folder result = null;
             var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = 0 };
-            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, null);
+            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, folderName);
 
-            string[] lineage = folderName.Split(new string[]{ConfigurationManager.AppSettings["folderPathDelimiter"]}, StringSplitOptions.None);
+            ArrayList matchingFolders = new ArrayList();
+
             foreach (Folder folder in response.Results)
             {
-                if (folder.Name == lineage[lineage.Length - 1])
+                if (folder.Name == folderName)
                 {
-                    if (FolderParentsMatchInput(folder,lineage))
-                    {
-                        folderFound = true;
-                        result = folder;
-                        break;
-                    }
+                    folderFound = true;
+                    matchingFolders.Add(folder);
+                    //result = folder;
+                    //break;
                 }
             }
 
@@ -53,46 +64,58 @@ namespace PanoptoScheduleUploader.Services
             int totalResults = response.TotalNumberResults;
             int currentResults = resultPerPage;
 
-            while (currentResults < totalResults && !folderFound)
+            while (currentResults < totalResults)
             {
                 pagination.PageNumber += 1;
-                response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, null);
+                response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, folderName);
                 foreach (Folder folder in response.Results)
                 {
-                    if (folder.Name == lineage[lineage.Length - 1])
+                    if (folder.Name == folderName)
                     {
-                        if (FolderParentsMatchInput(folder,lineage))
-                        {
-                            folderFound = true;
-                            result = folder;
-                            break;
-                        }
+                        matchingFolders.Add(folder);
+                        folderFound = true;
+                        //result = folder;
+                        //break;
                     }
                 }
                 currentResults += resultPerPage;
+            }
+
+            if (folderFound)
+            {
+                if (matchingFolders.Count == 1)
+                {
+                    result = (Folder)matchingFolders[0];
+                }
+                else
+                {
+                    StringBuilder folderHolder = new StringBuilder();
+                    FolderChooser chooser = new FolderChooser(GetFullFolderStrings(matchingFolders),folderHolder,folderName);
+                    chooser.ShowDialog();
+                    result = (Folder)matchingFolders[Int32.Parse(""+folderHolder[0])];
+                }
             }
 
             return result;
 
         }
 
-        private Boolean FolderParentsMatchInput(Folder checkFolder, string[] lineage)
+        private string[] GetFullFolderStrings(ArrayList matchingFolders)
         {
-            Folder currentParent = checkFolder;
-            for (int i = lineage.Length - 2; i >= 0; --i)
+            string[] folderStrings = new string[matchingFolders.Count];
+            for (int i = 0; i < matchingFolders.Count; ++i)
             {
-                if (currentParent.ParentFolder == null)
+                Folder currentParent = (Folder)matchingFolders[i];
+                string folderPath = currentParent.Name;
+                while (currentParent.ParentFolder != null)
                 {
-                    return false;
+                    Folder[] newParentAsArray = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { (System.Guid)currentParent.ParentFolder });
+                    currentParent = newParentAsArray[0];
+                    folderPath = currentParent.Name + "/" + folderPath;
                 }
-                Folder[] newParentAsArray = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { (System.Guid)currentParent.ParentFolder });
-                currentParent = newParentAsArray[0];
-                if (currentParent.Name != lineage[i])
-                {
-                    return false;
-                }
+                folderStrings[i] = folderPath;
             }
-            return true;
+            return folderStrings;
         }
 
         public Session[] GetSessionsInDateRange(DateTime start, DateTime end)
@@ -167,7 +190,7 @@ namespace PanoptoScheduleUploader.Services
             this.sessionManager.UpdateSessionDescription(this.authentication, ids[0], description);
         }
 
-        public void RemoveConflictingSessions(Guid[] sessions, DateTime startTime, DateTime endTime)
+        public bool RemoveConflictingSessions(Guid[] sessions, DateTime startTime, DateTime endTime)
         {
             List<Guid> sessionsToDelete = new List<Guid>();
             foreach (var session in sessionManager.GetSessionsById(this.authentication, sessions))
@@ -182,7 +205,9 @@ namespace PanoptoScheduleUploader.Services
             if (sessionsToDelete.Count > 0)
             {
                 sessionManager.DeleteSessions(this.authentication, sessionsToDelete.ToArray());
+                return true;
             }
+            return false;
         }
 
         public void DeleteSessions(Guid[] sessionIds)
