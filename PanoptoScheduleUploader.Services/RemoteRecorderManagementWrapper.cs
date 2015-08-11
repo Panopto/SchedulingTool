@@ -85,7 +85,7 @@ namespace PanoptoScheduleUploader.Services
         }
 
 
-        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings)
+        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings, bool overwritten)
         {
             if (!folderId.Equals(Guid.Empty))
             {
@@ -98,13 +98,13 @@ namespace PanoptoScheduleUploader.Services
                 }
                 else
                 {
-                    return new SchedulingResult(string.Format("Recording {0} was scheduled between {1} and {2}.",
-                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat)), result.SessionIDs[0]);
+                    return new SchedulingResult(string.Format("Recording {0} was scheduled between {1} and {2}{3}",
+                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat), overwritten?", overwriting a previously scheduled recording.":"."), result.SessionIDs[0]);
                 }
             }
             else
             {
-                return new SchedulingResult(false, "Folder not found!", Guid.Empty);
+                return new SchedulingResult(false, string.Format("Recording {0} failed; folder not found.",name), Guid.Empty);
             }
         }
 

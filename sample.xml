@@ -8,7 +8,7 @@
 			<RecordingStartTime>10:30 AM</RecordingStartTime>
 			<RecordingEndTime>12:00 PM</RecordingEndTime>
 			<Presenter>Presenter Description</Presenter>
-			<CourseTitle>Folder Name</CourseTitle>
+			<CourseTitle>Folder Id or Name</CourseTitle>
 		</RecorderSchedule>
 		<RecorderSchedule>
 			<Class>MGEC611002_STAFF</Class>

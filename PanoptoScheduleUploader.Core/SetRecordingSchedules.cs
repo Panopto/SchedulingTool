@@ -51,27 +51,26 @@ namespace PanoptoScheduleUploader.Core
                             }
                             else
                             {
-                                var defaultFolderId = Guid.Empty;
-                                var defaultFolderName = ConfigurationManager.AppSettings["defaultFolderName"];
-                                var folder = sessionManager.GetFolderByName(defaultFolderName);
-                                if (folder != null)
-                                {
-                                    defaultFolderId = folder.Id;
-                                }
-                                else
-                                {
-                                    throw new Exception(string.Format("The folder named '{0}' does not exist. This folder must exist as the default location for recordings.", defaultFolderName));
-                                }
-
+                                bool overwritten = false;
                                 if (overwrite)
                                 {
-                                    sessionManager.RemoveConflictingSessions(remoteRecorderService.GetSessionsByRecorderName(recording.RecorderName), recording.StartTime, recording.EndTime);
+                                    overwritten = sessionManager.RemoveConflictingSessions(remoteRecorderService.GetSessionsByRecorderName(recording.RecorderName), recording.StartTime, recording.EndTime);
                                 }
-
-                                var folderId = GetFolderId(recording.CourseTitle, sessionManager, defaultFolderId);
-                                //Unused at present
-                                //var user = userManager.GetUserByUserName(recording.Presenter);
-                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, false, recording.StartTime, recording.EndTime, new List<RecorderSettings> { settings });
+                                var folderId = GetFolderId(recording.CourseTitle, sessionManager, Guid.Empty);
+                                if (folderId == Guid.Empty)
+                                {
+                                    var defaultFolderName = ConfigurationManager.AppSettings["defaultFolderName"];
+                                    var folder = sessionManager.GetFolderByName(defaultFolderName);
+                                    if (folder != null)
+                                    {
+                                        folderId = folder.Id;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception(string.Format("The folder named '{0}' does not exist. This folder must exist as the default location for recordings.", defaultFolderName));
+                                    }
+                                }
+                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, false, recording.StartTime, recording.EndTime, new List<RecorderSettings> { settings }, overwritten);
                                 if (result.SessionId != Guid.Empty)
                                 {
                                     sessionManager.UpdateSessionDescription(result.SessionId, "Presented by " + recording.Presenter);
@@ -94,7 +93,12 @@ namespace PanoptoScheduleUploader.Core
 
             if (!string.IsNullOrEmpty(folderName))
             {
-                var folder = sessionManager.GetFolderByName(folderName);
+                var folder = sessionManager.TryGetFolderById(folderName);
+                
+                if (folder == null)
+                {
+                    folder = sessionManager.GetFolderByName(folderName);
+                }
 
                 if (folder != null)
                 {
