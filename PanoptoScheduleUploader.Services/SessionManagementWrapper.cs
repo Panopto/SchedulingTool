@@ -33,19 +33,59 @@ namespace PanoptoScheduleUploader.Services
             Guid guid;
             if (Guid.TryParse(id, out guid))
             {
-                Folder[] folders = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { guid });
-                return folders.Length == 0 ? null : folders[0];
+                Folder[] folders = null;
+                try
+                {
+                    folders = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { guid });
+                }
+                catch (FaultException)
+                {
+                    //no folder of the given guid exists; this is fine and we should move on
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+                return folders == null ? null : folders[0];
             }
             return null;
         }
 
         public Folder GetFolderByName(string folderName)
         {
-            int resultPerPage = 10;
-            bool folderFound = false;
             Folder result = null;
+
+            ArrayList matchingFolders = GetAllMatchingFolders(folderName, folderName);
+            //We couldn't find the folder - maybe it's using a stopword, so now we'll do a broader search
+            if (matchingFolders.Count == 0)
+            {
+                matchingFolders = GetAllMatchingFolders(folderName, null);
+            }
+
+            if (matchingFolders.Count > 0)
+            {
+                if (matchingFolders.Count == 1)
+                {
+                    result = (Folder)matchingFolders[0];
+                }
+                else
+                {
+                    StringBuilder folderHolder = new StringBuilder();
+                    FolderChooser chooser = new FolderChooser(GetFullFolderStrings(matchingFolders), folderHolder, folderName);
+                    chooser.ShowDialog();
+                    result = (Folder)matchingFolders[Int32.Parse("" + folderHolder[0])];
+                }
+            }
+
+            return result;
+
+        }
+
+        private ArrayList GetAllMatchingFolders(String folderName, String query)
+        {
+            int resultPerPage = 10;
             var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = 0 };
-            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, folderName);
+            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
 
             ArrayList matchingFolders = new ArrayList();
 
@@ -53,10 +93,7 @@ namespace PanoptoScheduleUploader.Services
             {
                 if (folder.Name == folderName)
                 {
-                    folderFound = true;
                     matchingFolders.Add(folder);
-                    //result = folder;
-                    //break;
                 }
             }
 
@@ -73,31 +110,12 @@ namespace PanoptoScheduleUploader.Services
                     if (folder.Name == folderName)
                     {
                         matchingFolders.Add(folder);
-                        folderFound = true;
-                        //result = folder;
-                        //break;
                     }
                 }
                 currentResults += resultPerPage;
             }
 
-            if (folderFound)
-            {
-                if (matchingFolders.Count == 1)
-                {
-                    result = (Folder)matchingFolders[0];
-                }
-                else
-                {
-                    StringBuilder folderHolder = new StringBuilder();
-                    FolderChooser chooser = new FolderChooser(GetFullFolderStrings(matchingFolders),folderHolder,folderName);
-                    chooser.ShowDialog();
-                    result = (Folder)matchingFolders[Int32.Parse(""+folderHolder[0])];
-                }
-            }
-
-            return result;
-
+            return matchingFolders;
         }
 
         private string[] GetFullFolderStrings(ArrayList matchingFolders)
