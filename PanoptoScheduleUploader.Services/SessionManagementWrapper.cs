@@ -42,11 +42,7 @@ namespace PanoptoScheduleUploader.Services
                 {
                     //no folder of the given guid exists; this is fine and we should move on
                 }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-                return folders == null ? null : folders[0];
+                return (folders == null || folders.Length == 0) ? null : folders[0];
             }
             return null;
         }
@@ -104,7 +100,7 @@ namespace PanoptoScheduleUploader.Services
             while (currentResults < totalResults)
             {
                 pagination.PageNumber += 1;
-                response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, folderName);
+                response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
                 foreach (Folder folder in response.Results)
                 {
                     if (folder.Name == folderName)
