@@ -11,6 +11,9 @@ namespace PanoptoScheduleUploader.Services
 {
     public class SessionManagementWrapper : IDisposable
     {
+        private static String[] STOP_WORDS = new String[] {"a","an","and","are","as","at","be","but","by","for","if","in","into","is","it","no","not","of","on","or","such",
+            "that","the","their","then","there","these","they","this","to","was","will","which"};
+
         public SessionManagementClient sessionManager;
         AuthenticationInfo authentication;
 
@@ -49,11 +52,13 @@ namespace PanoptoScheduleUploader.Services
 
         public Folder GetFolderByName(string folderName)
         {
+            folderName = folderName.ToLower();
+
             Folder result = null;
 
             ArrayList matchingFolders = GetAllMatchingFolders(folderName, folderName);
             //We couldn't find the folder - maybe it's using a stopword, so now we'll do a broader search
-            if (matchingFolders.Count == 0)
+            if (matchingFolders.Count == 0 && StringContainsStopWord(folderName))
             {
                 matchingFolders = GetAllMatchingFolders(folderName, null);
             }
@@ -79,7 +84,7 @@ namespace PanoptoScheduleUploader.Services
 
         private ArrayList GetAllMatchingFolders(String folderName, String query)
         {
-            int resultPerPage = 10;
+            int resultPerPage = 50;
             var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = 0 };
             var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
 
@@ -87,7 +92,7 @@ namespace PanoptoScheduleUploader.Services
 
             foreach (Folder folder in response.Results)
             {
-                if (folder.Name == folderName)
+                if (folder.Name.ToLower() == folderName)
                 {
                     matchingFolders.Add(folder);
                 }
@@ -103,7 +108,7 @@ namespace PanoptoScheduleUploader.Services
                 response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
                 foreach (Folder folder in response.Results)
                 {
-                    if (folder.Name == folderName)
+                    if (folder.Name.ToLower() == folderName)
                     {
                         matchingFolders.Add(folder);
                     }
@@ -130,6 +135,18 @@ namespace PanoptoScheduleUploader.Services
                 folderStrings[i] = folderPath;
             }
             return folderStrings;
+        }
+
+        private bool StringContainsStopWord(string str)
+        {
+            for (int i = 0; i < STOP_WORDS.Length; ++i)
+            {
+                if (str.Contains(STOP_WORDS[i] + " ") || str.Contains(" " + STOP_WORDS[i]) || str.Equals(STOP_WORDS[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public Session[] GetSessionsInDateRange(DateTime start, DateTime end)
