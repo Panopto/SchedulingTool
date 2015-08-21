@@ -141,7 +141,7 @@ namespace PanoptoScheduleUploader.Services
         {
             for (int i = 0; i < STOP_WORDS.Length; ++i)
             {
-                if (str.Contains(STOP_WORDS[i] + " ") || str.Contains(" " + STOP_WORDS[i]) || str.Equals(STOP_WORDS[i]))
+                if (str.Contains(" " + STOP_WORDS[i] + " ") || str.EndsWith(" "+STOP_WORDS[i]) || str.StartsWith(STOP_WORDS[i]+" ") || str == STOP_WORDS[i])
                 {
                     return true;
                 }
