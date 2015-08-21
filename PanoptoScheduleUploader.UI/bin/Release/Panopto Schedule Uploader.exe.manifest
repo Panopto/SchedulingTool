@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>I2LYop+qwEmSMLXWLq063IR8tXU=</dsig:DigestValue>
+        <dsig:DigestValue>4ZwrAfI8MCHc/5xnCvV1BDCnYbA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,19 +74,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>+2suQ34e3upHOasMCCsa/WrtVAM=</dsig:DigestValue>
+        <dsig:DigestValue>Q5BVRCLg2e/EI0DKHvddWnjabj4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PanoptoScheduleUploader.Services.dll" size="79872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PanoptoScheduleUploader.Services.dll" size="84480">
       <assemblyIdentity name="PanoptoScheduleUploader.Services" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/OpWyZSJRmkog3Q4JlZoa3OsHwI=</dsig:DigestValue>
+        <dsig:DigestValue>k/rsaBITl7aZEO4Ou+LE5s8NCeE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -291,13 +291,13 @@
       <dsig:DigestValue>uo/JZYju+k/QoV78odOvDTkjxCs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Panopto Schedule Uploader.exe.config" size="6516">
+  <file name="Panopto Schedule Uploader.exe.config" size="6599">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>WtxlNIkkDrlcLUtpeJVqUkyfjZ0=</dsig:DigestValue>
+      <dsig:DigestValue>gS0S81lK5W03/fk4xhPobEuXy6k=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
