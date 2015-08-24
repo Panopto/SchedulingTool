@@ -11,6 +11,9 @@ namespace PanoptoScheduleUploader.Services
 {
     public class SessionManagementWrapper : IDisposable
     {
+        private static String[] STOP_WORDS = new String[] {"a","an","and","are","as","at","be","but","by","for","if","in","into","is","it","no","not","of","on","or","such",
+            "that","the","their","then","there","these","they","this","to","was","will","which"};
+
         public SessionManagementClient sessionManager;
         AuthenticationInfo authentication;
 
@@ -33,30 +36,68 @@ namespace PanoptoScheduleUploader.Services
             Guid guid;
             if (Guid.TryParse(id, out guid))
             {
-                Folder[] folders = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { guid });
-                return folders.Length == 0 ? null : folders[0];
+                Folder[] folders = null;
+                try
+                {
+                    folders = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { guid });
+                }
+                catch (FaultException)
+                {
+                    //no folder of the given guid exists; this is fine and we should move on
+                }
+                return (folders == null || folders.Length == 0) ? null : folders[0];
             }
             return null;
         }
 
         public Folder GetFolderByName(string folderName)
         {
-            int resultPerPage = 10;
-            bool folderFound = false;
+            if (folderName != null)
+            {
+                folderName = folderName.ToLower();
+            }
+
             Folder result = null;
+
+            ArrayList matchingFolders = GetAllMatchingFolders(folderName, folderName);
+            //We couldn't find the folder - maybe it's using a stopword, so now we'll do a broader search
+            if (matchingFolders.Count == 0 && StringContainsStopWord(folderName))
+            {
+                matchingFolders = GetAllMatchingFolders(folderName, null);
+            }
+
+            if (matchingFolders.Count > 0)
+            {
+                if (matchingFolders.Count == 1)
+                {
+                    result = (Folder)matchingFolders[0];
+                }
+                else
+                {
+                    StringBuilder folderHolder = new StringBuilder();
+                    FolderChooser chooser = new FolderChooser(GetFullFolderStrings(matchingFolders), folderHolder, folderName);
+                    chooser.ShowDialog();
+                    result = (Folder)matchingFolders[Int32.Parse("" + folderHolder[0])];
+                }
+            }
+
+            return result;
+
+        }
+
+        private ArrayList GetAllMatchingFolders(String folderName, String query)
+        {
+            int resultPerPage = 50;
             var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = 0 };
-            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, folderName);
+            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
 
             ArrayList matchingFolders = new ArrayList();
 
             foreach (Folder folder in response.Results)
             {
-                if (folder.Name == folderName)
+                if (folder.Name.ToLower() == folderName)
                 {
-                    folderFound = true;
                     matchingFolders.Add(folder);
-                    //result = folder;
-                    //break;
                 }
             }
 
@@ -67,37 +108,18 @@ namespace PanoptoScheduleUploader.Services
             while (currentResults < totalResults)
             {
                 pagination.PageNumber += 1;
-                response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, folderName);
+                response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
                 foreach (Folder folder in response.Results)
                 {
-                    if (folder.Name == folderName)
+                    if (folder.Name.ToLower() == folderName)
                     {
                         matchingFolders.Add(folder);
-                        folderFound = true;
-                        //result = folder;
-                        //break;
                     }
                 }
                 currentResults += resultPerPage;
             }
 
-            if (folderFound)
-            {
-                if (matchingFolders.Count == 1)
-                {
-                    result = (Folder)matchingFolders[0];
-                }
-                else
-                {
-                    StringBuilder folderHolder = new StringBuilder();
-                    FolderChooser chooser = new FolderChooser(GetFullFolderStrings(matchingFolders),folderHolder,folderName);
-                    chooser.ShowDialog();
-                    result = (Folder)matchingFolders[Int32.Parse(""+folderHolder[0])];
-                }
-            }
-
-            return result;
-
+            return matchingFolders;
         }
 
         private string[] GetFullFolderStrings(ArrayList matchingFolders)
@@ -116,6 +138,18 @@ namespace PanoptoScheduleUploader.Services
                 folderStrings[i] = folderPath;
             }
             return folderStrings;
+        }
+
+        private bool StringContainsStopWord(string str)
+        {
+            for (int i = 0; i < STOP_WORDS.Length; ++i)
+            {
+                if (str.Contains(" " + STOP_WORDS[i] + " ") || str.EndsWith(" "+STOP_WORDS[i]) || str.StartsWith(STOP_WORDS[i]+" ") || str == STOP_WORDS[i])
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public Session[] GetSessionsInDateRange(DateTime start, DateTime end)
