@@ -52,7 +52,10 @@ namespace PanoptoScheduleUploader.Services
 
         public Folder GetFolderByName(string folderName)
         {
-            folderName = folderName.ToLower();
+            if (folderName != null)
+            {
+                folderName = folderName.ToLower();
+            }
 
             Folder result = null;
 
