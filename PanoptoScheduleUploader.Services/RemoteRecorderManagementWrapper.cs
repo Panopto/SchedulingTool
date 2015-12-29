@@ -120,5 +120,19 @@ namespace PanoptoScheduleUploader.Services
                 this.remoteRecorderManager.Close();
             }
         }
+
+        public bool getListRecordersForLoginVerification()
+        {
+            try
+            {
+                var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
+                var recorderListResponse = this.remoteRecorderManager.ListRecorders(this.authenticationInfo, pagination, RecorderSortField.Name);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

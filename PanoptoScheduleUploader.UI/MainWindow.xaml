@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:c="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="Upload Schedule" Height="641" Width="859" ResizeMode="NoResize" Icon="arrow_up.ico">
+        Title="Upload Schedule" Height="655" Width="1180" ResizeMode="NoResize" Icon="arrow_up.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="533*"/>
@@ -20,31 +20,33 @@
                 <Label Content="Password" Height="28" Width="100" HorizontalAlignment="Left" Name="label2" VerticalAlignment="Top" />
                 <PasswordBox Height="23" HorizontalAlignment="Left"  Name="passwordInput" VerticalAlignment="Top" Width="120" Password=""/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <Button Content="Veryify Login" Height="23" Name="VerifyLogin_Button" Margin="5,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="verifyLogin_Click"/>
+            </StackPanel>
             <StackPanel>
-                <TabControl>
-                    <TabItem Header="Scheduler">
+                <TabControl Margin="-5,0,4.6,0" Height="429">
+                    <TabItem Header="Batch Scheduler">
                         <StackPanel Orientation="Vertical" Height="450">
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                                <Label Content="File" Width="100" Height="28" HorizontalAlignment="Left" Name="label3" VerticalAlignment="Top" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Name="fileInput" VerticalAlignment="Top" Width="309" IsReadOnly="True"/>
-                                <Button Content="Open" Height="23" HorizontalAlignment="Right" Name="openButton" Margin="10,0,0,0" VerticalAlignment="Top" Width="75" Click="openButton_Click" />
+                                <Label Content="File" Width="100" Height="28" HorizontalAlignment="Left" x:Name="label3" VerticalAlignment="Top" />
+                                <TextBox Height="23" HorizontalAlignment="Left" x:Name="fileInput" VerticalAlignment="Top" Width="309" IsReadOnly="True"/>
+                                <Button Content="Browse" Height="23" HorizontalAlignment="Right" x:Name="openButton" Margin="10,0,0,0" VerticalAlignment="Top" Width="75" Click="openButton_Click" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <CheckBox x:Name="chkOverwrite" Content="Overwrite Existing Recordings" Margin="100,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="False" Width="309" Height="23"/>
                                 <Button Content="Submit" Height="23" Name="submitButton" Margin="10,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="submitButton_Click" />
                             </StackPanel>
                             <Grid Margin="0,20,0,0">
-                                <DataGrid x:Name="previewGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="330" Width="800" ItemsSource="{Binding}" ColumnWidth="Auto" >
-                                </DataGrid>
+                                <DataGrid x:Name="previewGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="330" Width="800" ItemsSource="{Binding}" ColumnWidth="Auto" />
                                 <ScrollViewer Height="330" HorizontalAlignment="Left" VerticalAlignment="Top" Width="830" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <TextBlock Name="resultsTextBlock" Text="" TextWrapping="Wrap" Width="800" />
                                 </ScrollViewer>
                             </Grid>
                         </StackPanel>
                     </TabItem>
-                    <TabItem Header="Bulk Delete" Height="20" VerticalAlignment="Bottom">
+                    <TabItem Header="Batch Delete" Height="20" VerticalAlignment="Bottom">
                         <StackPanel Orientation="Horizontal">
-                            <StackPanel Orientation="Vertical" Height="450">
+                            <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                     <Label Content="From:" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
                                     <DatePicker Name="FromDate" HorizontalAlignment="Left"/>
@@ -54,19 +56,19 @@
                                     <DatePicker Name="ToDate" HorizontalAlignment="Left"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="Number of Views:" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                                    <c:IntegerUpDown Text="0" Name="Views" Width="100"></c:IntegerUpDown>
+                                    <Label Content="Number of Views &gt;" ToolTip="Inclusive" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <c:IntegerUpDown Text="1" Name="Views" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="Minutes Viewed:" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                                    <c:IntegerUpDown Text="0" Name="MinsViewed" Width="100"></c:IntegerUpDown>
+                                    <Label Content="Minutes Viewed &gt;" ToolTip="Inclusive" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <c:IntegerUpDown Text="1" Name="MinsViewed" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="Unique Visitors:" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                                    <c:IntegerUpDown Text="0" Name="Visitors" Width="100"></c:IntegerUpDown>
+                                    <Label Content="Unique Visitors &gt;" ToolTip="Inclusive" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <c:IntegerUpDown Text="1" Name="Visitors" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Button Content="Search" Height="23" Name="searchButton" Margin="5,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="searchButton_Click"/>
+                                    <Button Content="Search" Height="23" x:Name="searchButton" Margin="5,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="searchButton_Click"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                     <Button Content="Delete Selected" Height="23" Name="deleteButton" Margin="5,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="deleteButton_Click" />
@@ -76,14 +78,24 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Margin="20,0,0,0" Height="420">
-                                <StackPanel Orientation="Horizontal">
-                                    <CheckBox Name="SelectAll" VerticalAlignment="Center" Margin="9,0,0,0" ToolTip="Select/Deselect all" Checked="SelectAll_Checked" Unchecked="SelectAll_Checked" ></CheckBox>
-                                    <Label Content="Name" Width="315" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                                    <Label Content="No of Views" Width="80" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                                    <Label Content="Mins Viewed" Width="80" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                                    <Label Content="Visitors" Width="50" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                                </StackPanel>
-                                <ListView x:Name="deleteView" HorizontalAlignment="Center" VerticalAlignment="Top" Height="380" Width="560" ItemsSource="{Binding}"></ListView>
+                                <Grid Height="28">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="290"/>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="94"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox x:Name="SelectAll" VerticalAlignment="Center" Margin="9,0,0,0" ToolTip="Select/Deselect all" Checked="SelectAll_Checked" Unchecked="SelectAll_Checked" />
+                                    <Label Content="Session Title" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                                    <Label Content="Folder"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <Label Content="Date" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                                    <Label Content="No of Views" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                                    <Label Content="Mins Viewed" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                                    <Label Content="Unique Visitors" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                                </Grid>
+                                <ListView x:Name="deleteView" HorizontalAlignment="Center" VerticalAlignment="Top" Height="355" Width="909" ItemsSource="{Binding}"/>
                             </StackPanel>
                         </StackPanel>
                     </TabItem>

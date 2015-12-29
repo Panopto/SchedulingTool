@@ -17,6 +17,7 @@ using System.Threading;
 using System.Data;
 using System.ComponentModel;
 using PanoptoScheduleUploader.Services;
+using System.Diagnostics;
 
 namespace PanoptoScheduleUploader.UI
 {
@@ -26,6 +27,7 @@ namespace PanoptoScheduleUploader.UI
     public partial class MainWindow : Window
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private string ScheduleListPath = @"Panopto/Pages/Sessions/List.aspx#status=%5B1%5D";
 
         private IEnumerable<Services.SchedulingResult> results = null;
         private Dictionary<Services.SessionManagement.Session, SessionUsage> sessions = null;
@@ -62,7 +64,9 @@ namespace PanoptoScheduleUploader.UI
                 {
                     log.Warn("An error occurred.", ex);
                     MessageBox.Show("An error occurred. Details: " + ex.Message);
+                    fileInput.Text = "";
                 }
+                
                 //Set the column widths to make it look prettier 
                 previewGrid.Columns[0].Width = 100;
                 previewGrid.Columns[1].Width = 200;
@@ -79,12 +83,13 @@ namespace PanoptoScheduleUploader.UI
             int lineNumber = 0;
             try
             {
-                table.Columns.Add("N");
+                table.Columns.Add("Number");
                 table.Columns.Add("Title");
+                table.Columns.Add("Recording Date");
                 table.Columns.Add("Start Time");
                 table.Columns.Add("End Time");
                 table.Columns.Add("Presenter");
-                table.Columns.Add("Course Title");
+                table.Columns.Add("Folder");
 
                 IEnumerable<Recording> recordings = null;
                 if (System.IO.Path.GetExtension(fileName) == ".xml")
@@ -103,12 +108,13 @@ namespace PanoptoScheduleUploader.UI
                 foreach (var recording in recordings)
                 {
                     var row = table.NewRow();
-                    rowCount++; row["N"] = rowCount;
+                    rowCount++; row["Number"] = rowCount;
                     row["Title"] = recording.Title;
                     row["Start Time"] = recording.StartTime.ToShortTimeString();
                     row["End Time"] = recording.EndTime.ToShortTimeString();
                     row["Presenter"] = recording.Presenter;
-                    row["Course Title"] = recording.CourseTitle;
+                    row["Folder"] = recording.CourseTitle;
+                    row["Recording Date"] = recording.RecordingDate;
                     table.Rows.Add(row);
                 }
             }
@@ -147,7 +153,7 @@ namespace PanoptoScheduleUploader.UI
                 {
                     App.Current.Dispatcher.Invoke((Action)delegate
                     {
-                        resultsTextBlock.Text = "Loading...";
+                        resultsTextBlock.Text = "Batch creating your sessions. This may take a few minutes, please be patient.";
                     });
 
                     try
@@ -175,6 +181,21 @@ namespace PanoptoScheduleUploader.UI
                                 resultsTextBlock.Text += "\r\n\r\n";
                             }
                             resultsTextBlock.Text += string.Format("{0} out of {1} recordings were scheduled.", results.Count(r => r.Success), results.Count());
+                            resultsTextBlock.Text += "\r\n\r\n";
+
+                            var targetServername = ConfigurationManager.AppSettings["TargetServerName"];
+                            if (targetServername != null)
+                            {
+                                string scheduleListUrlTest = string.Format("{0}/{1}", targetServername, ScheduleListPath);
+                                Run scheduleListUrl = new Run(scheduleListUrlTest);
+                                Hyperlink scheduleHyperlink = new Hyperlink(scheduleListUrl)
+                                {
+                                    NavigateUri = new Uri(scheduleListUrlTest)
+                                };
+                                scheduleHyperlink.RequestNavigate += new System.Windows.Navigation.RequestNavigateEventHandler(Hyperlink_RequestNavigate);
+                                resultsTextBlock.Inlines.Add(scheduleHyperlink);
+                            }
+
                         }
                         else
                         {
@@ -194,6 +215,12 @@ namespace PanoptoScheduleUploader.UI
                 MessageBox.Show(string.Format("An error has occurred. Details: {0}", ex.Message));
                 submitButton.IsEnabled = true;
             }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
@@ -281,7 +308,7 @@ namespace PanoptoScheduleUploader.UI
             }
 
             deleteView.Items.Clear();
-            deleteView.Items.Add(new ListBoxItem() { Content = new TextBlock() { Text = "Loading..." } });
+            deleteView.Items.Add(new ListBoxItem() { Content = new TextBlock() { Text = "Batch loading your sessions. This may take a few minutes, please be patient." } });
 
             try
             {
@@ -329,10 +356,22 @@ namespace PanoptoScheduleUploader.UI
                                 panel.Children.Add(check);
 
                                 TextBlock text = new TextBlock();
-                                text.Width = 300;
+                                text.Width = 290;
                                 text.TextWrapping = TextWrapping.NoWrap;
                                 text.Text = session.Key.Name;
                                 panel.Children.Add(text);
+
+                                TextBlock textFolder = new TextBlock();
+                                textFolder.Width = 200;
+                                textFolder.TextWrapping = TextWrapping.NoWrap;
+                                textFolder.Text = session.Key.FolderName;
+                                panel.Children.Add(textFolder);
+
+                                TextBlock textDate = new TextBlock();
+                                textDate.Width = 140;
+                                textDate.TextWrapping = TextWrapping.NoWrap;
+                                textDate.Text = session.Key.StartTime.ToString();
+                                panel.Children.Add(textDate);
 
                                 TextBlock noViewsText = new TextBlock();
                                 noViewsText.Margin = new Thickness(20, 0, 0, 0);
@@ -388,6 +427,20 @@ namespace PanoptoScheduleUploader.UI
                         CheckBox check = (CheckBox)sp.Children[0];
                         check.IsChecked = isChecked;
                     }
+                }
+            }
+        }
+
+        private void verifyLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var username = usernameInput.Text;
+            var password = passwordInput.Password;
+            using (var remoteRecorderService = new RemoteRecorderManagementWrapper(username, password))
+            {
+                if (remoteRecorderService.getListRecordersForLoginVerification())
+                    MessageBox.Show("Credentials are valid.");
+                else{
+                    MessageBox.Show("Credentials are invalid.");
                 }
             }
         }
