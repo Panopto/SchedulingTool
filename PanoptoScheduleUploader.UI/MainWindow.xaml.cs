@@ -27,7 +27,14 @@ namespace PanoptoScheduleUploader.UI
     public partial class MainWindow : Window
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private string ScheduleListPath = @"Panopto/Pages/Sessions/List.aspx#status=%5B1%5D";
+        private const string SCHEDULE_LIST_PATH = @"/Panopto/Pages/Sessions/List.aspx#status=%5B1%5D";
+        private const string NUMBER = "Number";
+        private const string TITLE = "Title";
+        private const string RECORDING_DATE = "Recording Date";
+        private const string START_TIME = "Start Time";
+        private const string END_TIME = "End Time";
+        private const string PRESENTER = "Presenter";
+        private const string FOLDER = "Folder";
 
         private IEnumerable<Services.SchedulingResult> results = null;
         private Dictionary<Services.SessionManagement.Session, SessionUsage> sessions = null;
@@ -83,13 +90,13 @@ namespace PanoptoScheduleUploader.UI
             int lineNumber = 0;
             try
             {
-                table.Columns.Add("Number");
-                table.Columns.Add("Title");
-                table.Columns.Add("Recording Date");
-                table.Columns.Add("Start Time");
-                table.Columns.Add("End Time");
-                table.Columns.Add("Presenter");
-                table.Columns.Add("Folder");
+                table.Columns.Add(NUMBER);
+                table.Columns.Add(TITLE);
+                table.Columns.Add(RECORDING_DATE);
+                table.Columns.Add(START_TIME);
+                table.Columns.Add(END_TIME);
+                table.Columns.Add(PRESENTER);
+                table.Columns.Add(FOLDER);
 
                 IEnumerable<Recording> recordings = null;
                 if (System.IO.Path.GetExtension(fileName) == ".xml")
@@ -108,13 +115,13 @@ namespace PanoptoScheduleUploader.UI
                 foreach (var recording in recordings)
                 {
                     var row = table.NewRow();
-                    rowCount++; row["Number"] = rowCount;
-                    row["Title"] = recording.Title;
-                    row["Start Time"] = recording.StartTime.ToShortTimeString();
-                    row["End Time"] = recording.EndTime.ToShortTimeString();
-                    row["Presenter"] = recording.Presenter;
-                    row["Folder"] = recording.CourseTitle;
-                    row["Recording Date"] = recording.RecordingDate;
+                    rowCount++; row[NUMBER] = rowCount;
+                    row[TITLE] = recording.Title;
+                    row[START_TIME] = recording.StartTime.ToShortTimeString();
+                    row[END_TIME] = recording.EndTime.ToShortTimeString();
+                    row[PRESENTER] = recording.Presenter;
+                    row[FOLDER] = recording.CourseTitle;
+                    row[RECORDING_DATE] = recording.RecordingDate;
                     table.Rows.Add(row);
                 }
             }
@@ -186,11 +193,13 @@ namespace PanoptoScheduleUploader.UI
                             var targetServername = ConfigurationManager.AppSettings["TargetServerName"];
                             if (targetServername != null)
                             {
-                                string scheduleListUrlTest = string.Format("{0}/{1}", targetServername, ScheduleListPath);
-                                Run scheduleListUrl = new Run(scheduleListUrlTest);
+                                Uri targetServerUri = new Uri(targetServername);
+                                Uri scheduleListUri = new Uri(targetServerUri, SCHEDULE_LIST_PATH);
+
+                                Run scheduleListUrl = new Run("Scheduled Recording List");
                                 Hyperlink scheduleHyperlink = new Hyperlink(scheduleListUrl)
                                 {
-                                    NavigateUri = new Uri(scheduleListUrlTest)
+                                    NavigateUri = scheduleListUri
                                 };
                                 scheduleHyperlink.RequestNavigate += new System.Windows.Navigation.RequestNavigateEventHandler(Hyperlink_RequestNavigate);
                                 resultsTextBlock.Inlines.Add(scheduleHyperlink);
@@ -356,7 +365,7 @@ namespace PanoptoScheduleUploader.UI
                                 panel.Children.Add(check);
 
                                 TextBlock text = new TextBlock();
-                                text.Width = 290;
+                                text.Width = 260;
                                 text.TextWrapping = TextWrapping.NoWrap;
                                 text.Text = session.Key.Name;
                                 panel.Children.Add(text);
@@ -437,10 +446,21 @@ namespace PanoptoScheduleUploader.UI
             var password = passwordInput.Password;
             using (var remoteRecorderService = new RemoteRecorderManagementWrapper(username, password))
             {
-                if (remoteRecorderService.getListRecordersForLoginVerification())
-                    MessageBox.Show("Credentials are valid.");
-                else{
-                    MessageBox.Show("Credentials are invalid.");
+                switch (remoteRecorderService.getListRecordersForLoginVerification())
+                {
+                    case LoginResults.Failed:
+                        MessageBox.Show("Sign-in failed");
+                        break;
+                    case LoginResults.NoAccess:
+                        MessageBox.Show("User has no Remote Recorder Access");
+                        break;
+                    case LoginResults.Succeeded:
+                        MessageBox.Show("Sign-in succeeded");
+                        break;
+                    case LoginResults.Unknown:
+                    default:
+                        MessageBox.Show("An error occured while authenticating");
+                        break;
                 }
             }
         }

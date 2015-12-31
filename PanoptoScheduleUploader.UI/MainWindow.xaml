@@ -21,10 +21,10 @@
                 <PasswordBox Height="23" HorizontalAlignment="Left"  Name="passwordInput" VerticalAlignment="Top" Width="120" Password=""/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                <Button Content="Veryify Login" Height="23" Name="VerifyLogin_Button" Margin="5,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="verifyLogin_Click"/>
+                <Button Content="Verify Login" Height="23" Name="VerifyLogin_Button" Margin="5,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="verifyLogin_Click"/>
             </StackPanel>
             <StackPanel>
-                <TabControl Margin="-5,0,4.6,0" Height="429">
+                <TabControl Margin="-5,0,4,0" Height="430">
                     <TabItem Header="Batch Scheduler">
                         <StackPanel Orientation="Vertical" Height="450">
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
@@ -48,23 +48,23 @@
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="From:" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <Label Content="From:" Width="175" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
                                     <DatePicker Name="FromDate" HorizontalAlignment="Left"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="To:" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <Label Content="To:" Width="175" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
                                     <DatePicker Name="ToDate" HorizontalAlignment="Left"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="Number of Views &gt;" ToolTip="Inclusive" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <Label Content="Number of Views Greater Than" ToolTip="Inclusive" Width="175" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
                                     <c:IntegerUpDown Text="1" Name="Views" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="Minutes Viewed &gt;" ToolTip="Inclusive" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <Label Content="Minutes Viewed Greater Than" ToolTip="Inclusive" Width="175" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
                                     <c:IntegerUpDown Text="1" Name="MinsViewed" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                    <Label Content="Unique Visitors &gt;" ToolTip="Inclusive" Width="125" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    <Label Content="Unique Visitors Greater Than" ToolTip="Inclusive" Width="175" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
                                     <c:IntegerUpDown Text="1" Name="Visitors" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
@@ -80,7 +80,7 @@
                             <StackPanel Orientation="Vertical" Margin="20,0,0,0" Height="420">
                                 <Grid Height="28">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="290"/>
+                                        <ColumnDefinition Width="260"/>
                                         <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="80"/>
