@@ -73,14 +73,15 @@ namespace PanoptoScheduleUploader.Core
                     var endTime = DateTime.Parse(string.Format("{0} {1}", elements[dateIndex], elements[endTimeIndex]));
                     recorderSchedules.Add(new Recording
                     {
-                        Title = string.Format("{0} {1}", elements[titleIndex], elements[dateIndex]),
+                        Title = elements[titleIndex],
                         IsBroadCast = false,
                         FolderId = 0,
                         RecorderName = elements[recorderIndex],
                         StartTime = startTime,
                         EndTime = endTime,
                         Presenter = elements[presenterIndex],
-                        CourseTitle = elements[folderIndex]
+                        CourseTitle = elements[folderIndex],
+                        RecordingDate = elements[dateIndex]
                     });
                 }
             }
