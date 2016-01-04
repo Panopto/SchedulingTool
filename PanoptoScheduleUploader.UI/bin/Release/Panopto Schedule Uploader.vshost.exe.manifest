@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Panopto Schedule Uploader.exe" size="160256">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Panopto Schedule Uploader.exe" size="163328">
       <assemblyIdentity name="Panopto Schedule Uploader" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>I2LYop+qwEmSMLXWLq063IR8tXU=</dsig:DigestValue>
+        <dsig:DigestValue>BJcijws/U4EiByZxAEoP+z7trfY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,19 +74,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>+2suQ34e3upHOasMCCsa/WrtVAM=</dsig:DigestValue>
+        <dsig:DigestValue>qXRGQi/1R2lPe5dWWjn1rPnlKhw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PanoptoScheduleUploader.Services.dll" size="79872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PanoptoScheduleUploader.Services.dll" size="86016">
       <assemblyIdentity name="PanoptoScheduleUploader.Services" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/OpWyZSJRmkog3Q4JlZoa3OsHwI=</dsig:DigestValue>
+        <dsig:DigestValue>5QN3gSMfThfEO6DReh67wt987MQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -291,13 +291,13 @@
       <dsig:DigestValue>uo/JZYju+k/QoV78odOvDTkjxCs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Panopto Schedule Uploader.exe.config" size="6516">
+  <file name="Panopto Schedule Uploader.exe.config" size="6674">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>WtxlNIkkDrlcLUtpeJVqUkyfjZ0=</dsig:DigestValue>
+      <dsig:DigestValue>AANaoQhACL+U0Iiq9Hw3AqtfVHM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

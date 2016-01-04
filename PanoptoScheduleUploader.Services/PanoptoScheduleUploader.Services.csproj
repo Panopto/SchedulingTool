@@ -52,6 +52,7 @@
     <Compile Include="FolderChooser.Designer.cs">
       <DependentUpon>FolderChooser.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginResults.cs" />
     <Compile Include="SchedulingResult.cs" />
     <Compile Include="Service References\UsageManagement\Reference.cs">
       <AutoGen>True</AutoGen>

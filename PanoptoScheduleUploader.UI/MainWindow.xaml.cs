@@ -17,6 +17,7 @@ using System.Threading;
 using System.Data;
 using System.ComponentModel;
 using PanoptoScheduleUploader.Services;
+using System.Diagnostics;
 
 namespace PanoptoScheduleUploader.UI
 {
@@ -26,6 +27,14 @@ namespace PanoptoScheduleUploader.UI
     public partial class MainWindow : Window
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private const string SCHEDULE_LIST_PATH = @"/Panopto/Pages/Sessions/List.aspx#status=%5B1%5D";
+        private const string NUMBER = "Number";
+        private const string TITLE = "Title";
+        private const string RECORDING_DATE = "Recording Date";
+        private const string START_TIME = "Start Time";
+        private const string END_TIME = "End Time";
+        private const string PRESENTER = "Presenter";
+        private const string FOLDER = "Folder";
 
         private IEnumerable<Services.SchedulingResult> results = null;
         private Dictionary<Services.SessionManagement.Session, SessionUsage> sessions = null;
@@ -62,7 +71,9 @@ namespace PanoptoScheduleUploader.UI
                 {
                     log.Warn("An error occurred.", ex);
                     MessageBox.Show("An error occurred. Details: " + ex.Message);
+                    fileInput.Text = "";
                 }
+                
                 //Set the column widths to make it look prettier 
                 previewGrid.Columns[0].Width = 100;
                 previewGrid.Columns[1].Width = 200;
@@ -79,12 +90,13 @@ namespace PanoptoScheduleUploader.UI
             int lineNumber = 0;
             try
             {
-                table.Columns.Add("N");
-                table.Columns.Add("Title");
-                table.Columns.Add("Start Time");
-                table.Columns.Add("End Time");
-                table.Columns.Add("Presenter");
-                table.Columns.Add("Course Title");
+                table.Columns.Add(NUMBER);
+                table.Columns.Add(TITLE);
+                table.Columns.Add(RECORDING_DATE);
+                table.Columns.Add(START_TIME);
+                table.Columns.Add(END_TIME);
+                table.Columns.Add(PRESENTER);
+                table.Columns.Add(FOLDER);
 
                 IEnumerable<Recording> recordings = null;
                 if (System.IO.Path.GetExtension(fileName) == ".xml")
@@ -103,12 +115,13 @@ namespace PanoptoScheduleUploader.UI
                 foreach (var recording in recordings)
                 {
                     var row = table.NewRow();
-                    rowCount++; row["N"] = rowCount;
-                    row["Title"] = recording.Title;
-                    row["Start Time"] = recording.StartTime.ToShortTimeString();
-                    row["End Time"] = recording.EndTime.ToShortTimeString();
-                    row["Presenter"] = recording.Presenter;
-                    row["Course Title"] = recording.CourseTitle;
+                    rowCount++; row[NUMBER] = rowCount;
+                    row[TITLE] = recording.Title;
+                    row[START_TIME] = recording.StartTime.ToShortTimeString();
+                    row[END_TIME] = recording.EndTime.ToShortTimeString();
+                    row[PRESENTER] = recording.Presenter;
+                    row[FOLDER] = recording.CourseTitle;
+                    row[RECORDING_DATE] = recording.RecordingDate;
                     table.Rows.Add(row);
                 }
             }
@@ -147,7 +160,7 @@ namespace PanoptoScheduleUploader.UI
                 {
                     App.Current.Dispatcher.Invoke((Action)delegate
                     {
-                        resultsTextBlock.Text = "Loading...";
+                        resultsTextBlock.Text = "Batch creating your sessions. This may take a few minutes, please be patient.";
                     });
 
                     try
@@ -175,6 +188,23 @@ namespace PanoptoScheduleUploader.UI
                                 resultsTextBlock.Text += "\r\n\r\n";
                             }
                             resultsTextBlock.Text += string.Format("{0} out of {1} recordings were scheduled.", results.Count(r => r.Success), results.Count());
+                            resultsTextBlock.Text += "\r\n\r\n";
+
+                            var targetServername = ConfigurationManager.AppSettings["TargetServerName"];
+                            if (targetServername != null)
+                            {
+                                Uri targetServerUri = new Uri(targetServername);
+                                Uri scheduleListUri = new Uri(targetServerUri, SCHEDULE_LIST_PATH);
+
+                                Run scheduleListUrl = new Run("Scheduled Recording List");
+                                Hyperlink scheduleHyperlink = new Hyperlink(scheduleListUrl)
+                                {
+                                    NavigateUri = scheduleListUri
+                                };
+                                scheduleHyperlink.RequestNavigate += new System.Windows.Navigation.RequestNavigateEventHandler(Hyperlink_RequestNavigate);
+                                resultsTextBlock.Inlines.Add(scheduleHyperlink);
+                            }
+
                         }
                         else
                         {
@@ -194,6 +224,12 @@ namespace PanoptoScheduleUploader.UI
                 MessageBox.Show(string.Format("An error has occurred. Details: {0}", ex.Message));
                 submitButton.IsEnabled = true;
             }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
@@ -281,7 +317,7 @@ namespace PanoptoScheduleUploader.UI
             }
 
             deleteView.Items.Clear();
-            deleteView.Items.Add(new ListBoxItem() { Content = new TextBlock() { Text = "Loading..." } });
+            deleteView.Items.Add(new ListBoxItem() { Content = new TextBlock() { Text = "Batch loading your sessions. This may take a few minutes, please be patient." } });
 
             try
             {
@@ -329,10 +365,22 @@ namespace PanoptoScheduleUploader.UI
                                 panel.Children.Add(check);
 
                                 TextBlock text = new TextBlock();
-                                text.Width = 300;
+                                text.Width = 260;
                                 text.TextWrapping = TextWrapping.NoWrap;
                                 text.Text = session.Key.Name;
                                 panel.Children.Add(text);
+
+                                TextBlock textFolder = new TextBlock();
+                                textFolder.Width = 200;
+                                textFolder.TextWrapping = TextWrapping.NoWrap;
+                                textFolder.Text = session.Key.FolderName;
+                                panel.Children.Add(textFolder);
+
+                                TextBlock textDate = new TextBlock();
+                                textDate.Width = 140;
+                                textDate.TextWrapping = TextWrapping.NoWrap;
+                                textDate.Text = session.Key.StartTime.ToString();
+                                panel.Children.Add(textDate);
 
                                 TextBlock noViewsText = new TextBlock();
                                 noViewsText.Margin = new Thickness(20, 0, 0, 0);
@@ -388,6 +436,31 @@ namespace PanoptoScheduleUploader.UI
                         CheckBox check = (CheckBox)sp.Children[0];
                         check.IsChecked = isChecked;
                     }
+                }
+            }
+        }
+
+        private void verifyLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var username = usernameInput.Text;
+            var password = passwordInput.Password;
+            using (var remoteRecorderService = new RemoteRecorderManagementWrapper(username, password))
+            {
+                switch (remoteRecorderService.getListRecordersForLoginVerification())
+                {
+                    case LoginResults.Failed:
+                        MessageBox.Show("Sign-in failed");
+                        break;
+                    case LoginResults.NoAccess:
+                        MessageBox.Show("User has no Remote Recorder Access");
+                        break;
+                    case LoginResults.Succeeded:
+                        MessageBox.Show("Sign-in succeeded");
+                        break;
+                    case LoginResults.Unknown:
+                    default:
+                        MessageBox.Show("An error occured while authenticating");
+                        break;
                 }
             }
         }
