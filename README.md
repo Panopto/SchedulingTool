@@ -20,7 +20,7 @@ Scheduler:
         Open: opens file selection interface
         Overwrite Existing Recordings: removes all existing recordings in conflict with recordings to be scheduled
         Submit: schedule recordings using given XML file
-
+		*NOTE: When using special characters in XML such as '&' or '>', please encode the XML with its respective numeric character reference. For example, '&' translates to "&#38" and '>' translates to "&#62"*
 Bulk Delete:
 
         From: lower bound of the range of dates to search recordings in
