@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>fEowjG9frIfFU9OVqrH7RqGRztE=</dsig:DigestValue>
+        <dsig:DigestValue>Sj+P72l78K0B/Gg5GkfE4Daxx7c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,19 +74,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>g6SHEYqtrsCEtDTAXpSRhkEnMa0=</dsig:DigestValue>
+        <dsig:DigestValue>hznAOjjsmd3i9iVQQ0N1rjZW2Gk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PanoptoScheduleUploader.Services.dll" size="84992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PanoptoScheduleUploader.Services.dll" size="86016">
       <assemblyIdentity name="PanoptoScheduleUploader.Services" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>AmDtM3J9jmAx9DHyEE9q5f+jxmk=</dsig:DigestValue>
+        <dsig:DigestValue>f/XIKFiRU7a+xeRITmX6QTtbrmk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

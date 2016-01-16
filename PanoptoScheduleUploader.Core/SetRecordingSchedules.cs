@@ -93,7 +93,12 @@ namespace PanoptoScheduleUploader.Core
 
             if (!string.IsNullOrEmpty(folderName))
             {
-                var folder = sessionManager.GetFolderByName(folderName);
+                var folder = sessionManager.TryGetFolderById(folderName);
+                
+                if (folder == null)
+                {
+                    folder = sessionManager.GetFolderByName(folderName);
+                }
 
                 if (folder != null)
                 {
