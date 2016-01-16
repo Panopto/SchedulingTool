@@ -52,16 +52,7 @@
             this.topLabel.Size = new System.Drawing.Size(500, 17);
             this.topLabel.TabIndex = 1;
             this.topLabel.Text = "There are multiple folders of this name. Please choose which one to record to:";
-            // 
-            // bottomLabel
-            // 
-            this.bottomLabel.AutoSize = true;
-            this.bottomLabel.Location = new System.Drawing.Point(95, 240);
-            this.bottomLabel.Name = "bottomLabel";
-            this.bottomLabel.Size = new System.Drawing.Size(406, 13);
-            this.bottomLabel.TabIndex = 2;
-            this.bottomLabel.Text = "To avoid this message in the future, consider using the folder ID instead of the " +
-    "name.";
+
             // 
             // FolderChooser
             // 
