@@ -57,6 +57,13 @@ namespace PanoptoScheduleUploader.Core
                                     overwritten = sessionManager.RemoveConflictingSessions(remoteRecorderService.GetSessionsByRecorderName(recording.RecorderName), recording.StartTime, recording.EndTime);
                                 }
                                 var folderId = GetFolderId(recording.CourseTitle, sessionManager, Guid.Empty);
+
+                                // If recording specifies a folder and cannot be found prompt user if they want to use default folder
+                                if (recording.CourseTitle != null && folderId == Guid.Empty)
+                                {
+                                    throw new Exception(string.Format("The folder named '{0}' does not exist for recording '{1}'. ", recording.CourseTitle, recording.Title));
+                                }
+
                                 if (folderId == Guid.Empty)
                                 {
                                     var defaultFolderName = ConfigurationManager.AppSettings["defaultFolderName"];

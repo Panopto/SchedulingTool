@@ -13,7 +13,7 @@ namespace PanoptoScheduleUploader.Services
     {
         public SessionManagementClient sessionManager;
         AuthenticationInfo authentication;
-
+        private bool surpassThreshhold;
         private Dictionary<string, Folder> savedFolders;
         
         // Conflicting Folder names
@@ -49,16 +49,14 @@ namespace PanoptoScheduleUploader.Services
 
             if (savedFolders != null)
             {
-                if (this.savedFolders.ContainsKey(folderName))
+                result = searchLocalFolderList(folderName);
+                // Result is greater than the set Threshhold therefore  Server never got entire Folder list
+                // Search folder by name and save them
+                if (result == null && this.surpassThreshhold)
                 {
-                    result = this.savedFolders[folderName];
-                }
-                else if(this.savedDupFolders.ContainsKey(folderName))
-                {
-                    StringBuilder folderHolder = new StringBuilder();
-                    FolderChooser chooser = new FolderChooser(GetFullFolderStrings(this.savedDupFolders[folderName]), folderHolder, folderName);
-                    chooser.ShowDialog();
-                    result = this.savedDupFolders[folderName][Int32.Parse("" + folderHolder[0])];
+                    GetAllMatchingFolders(folderName, folderName);
+
+                    result = searchLocalFolderList(folderName);
                 }
             }
 
@@ -66,35 +64,94 @@ namespace PanoptoScheduleUploader.Services
 
         }
 
-        private void GetAndSetFolderByList()
+        private Folder searchLocalFolderList(string folderName)
         {
-            ListFoldersResponse response = null;
+            Folder result = null;
+
+            if (this.savedFolders.ContainsKey(folderName))
+            {
+                result = this.savedFolders[folderName];
+            }
+            else if (this.savedDupFolders.ContainsKey(folderName))
+            {
+                StringBuilder folderHolder = new StringBuilder();
+                FolderChooser chooser = new FolderChooser(GetFullFolderStrings(this.savedDupFolders[folderName]), folderHolder, folderName);
+                chooser.ShowDialog();
+                result = this.savedDupFolders[folderName][Int32.Parse("" + folderHolder[0])];
+            }
+            return result;
+        }
+
+        private void GetAllMatchingFolders(String folderName, String query)
+        {
+            int totalNumberResults = 0;
             int resultPerPage = 250; // Max is 10,000
             int pageNumber = 0;
-            Pagination pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
+            var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
+            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
 
-            response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
             if (response != null)
             {
-                savedFolders = new Dictionary<string, Folder>();
-                savedDupFolders = new Dictionary<string,List<Folder>>();
                 SaveFolders(response.Results);
             }
 
-            int totalNumberResults = response.TotalNumberResults;
             if (response.TotalNumberResults > resultPerPage)
             {
                 pageNumber++;
                 while (totalNumberResults >= ((pageNumber) * resultPerPage))
                 {
                     pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
-                    response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
-                 
+                    response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: query);
+
                     if (response != null)
                     {
                         SaveFolders(response.Results);
                     }
                     pageNumber++;
+                }
+            }
+        }
+
+        private void GetAndSetFolderByList()
+        {
+            ListFoldersResponse response = null;
+            int threshhold = 2500;
+            int resultPerPage = 250; // Max is 10,000
+            int pageNumber = 0;
+            int totalNumberResults = 0;
+            Pagination pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
+
+            response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
+            if (response != null)
+            {
+                this.savedFolders = new Dictionary<string, Folder>();
+                this.savedDupFolders = new Dictionary<string,List<Folder>>();
+                SaveFolders(response.Results);
+                totalNumberResults = response.TotalNumberResults;
+            }
+
+            // Setting a threshold
+            if (totalNumberResults > threshhold)
+            {
+                this.surpassThreshhold = true;
+                return;
+            }
+            else
+            {
+                if (response.TotalNumberResults > resultPerPage)
+                {
+                    pageNumber++;
+                    while (totalNumberResults >= ((pageNumber) * resultPerPage))
+                    {
+                        pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
+                        response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
+
+                        if (response != null)
+                        {
+                            SaveFolders(response.Results);
+                        }
+                        pageNumber++;
+                    }
                 }
             }
         }
