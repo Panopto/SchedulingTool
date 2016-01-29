@@ -11,6 +11,8 @@ namespace PanoptoScheduleUploader.Services
 {
     public class SessionManagementWrapper : IDisposable
     {
+        private const int THRESHHOLD = 2500;
+        private const int RESULTS_PER_PAGE = 250; // Max is 10,000
         public SessionManagementClient sessionManager;
         AuthenticationInfo authentication;
         private bool surpassThreshhold;
@@ -85,22 +87,21 @@ namespace PanoptoScheduleUploader.Services
         private void GetAllMatchingFolders(String folderName, String query)
         {
             int totalNumberResults = 0;
-            int resultPerPage = 250; // Max is 10,000
             int pageNumber = 0;
-            var pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
-            var response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
+            Pagination pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = pageNumber };
+            ListFoldersResponse response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
 
             if (response != null)
             {
                 SaveFolders(response.Results);
             }
 
-            if (response.TotalNumberResults > resultPerPage)
+            if (response.TotalNumberResults > RESULTS_PER_PAGE)
             {
                 pageNumber++;
-                while (totalNumberResults >= ((pageNumber) * resultPerPage))
+                while (totalNumberResults >= ((pageNumber) * RESULTS_PER_PAGE))
                 {
-                    pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
+                    pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = pageNumber };
                     response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: query);
 
                     if (response != null)
@@ -115,43 +116,38 @@ namespace PanoptoScheduleUploader.Services
         private void GetAndSetFolderByList()
         {
             ListFoldersResponse response = null;
-            int threshhold = 2500;
-            int resultPerPage = 250; // Max is 10,000
             int pageNumber = 0;
             int totalNumberResults = 0;
-            Pagination pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
+            // Set the Max Number results to 1 since we only care about the 'TotalNumberResults' from the first API call
+            Pagination pagination = new Pagination { MaxNumberResults = 1, PageNumber = pageNumber };
 
             response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
+            
+            // Don't save any entries in case totalNumberResults exceeds Threshhold and chances of duplicate Folders never get saved
             if (response != null)
             {
                 this.savedFolders = new Dictionary<string, Folder>();
-                this.savedDupFolders = new Dictionary<string,List<Folder>>();
-                SaveFolders(response.Results);
+                this.savedDupFolders = new Dictionary<string, List<Folder>>();
                 totalNumberResults = response.TotalNumberResults;
             }
 
             // Setting a threshold
-            if (totalNumberResults > threshhold)
+            if (totalNumberResults > THRESHHOLD)
             {
                 this.surpassThreshhold = true;
-                return;
             }
-            else
+            else if (response.TotalNumberResults > RESULTS_PER_PAGE)
             {
-                if (response.TotalNumberResults > resultPerPage)
+                while (totalNumberResults >= ((pageNumber) * RESULTS_PER_PAGE))
                 {
-                    pageNumber++;
-                    while (totalNumberResults >= ((pageNumber) * resultPerPage))
-                    {
-                        pagination = new Pagination { MaxNumberResults = resultPerPage, PageNumber = pageNumber };
-                        response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
+                    pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = pageNumber };
+                    response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
 
-                        if (response != null)
-                        {
-                            SaveFolders(response.Results);
-                        }
-                        pageNumber++;
+                    if (response != null)
+                    {
+                        SaveFolders(response.Results);
                     }
+                    pageNumber++;
                 }
             }
         }
@@ -220,7 +216,7 @@ namespace PanoptoScheduleUploader.Services
             do
             {
                 Pagination pagination = new Pagination() { MaxNumberResults = itemPerPage, PageNumber = pageNum };
-                var response = sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest() { Pagination = pagination, StartDate = start, EndDate = end }, null);
+                ListSessionsResponse response = sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest() { Pagination = pagination, StartDate = start, EndDate = end }, null);
                 if (response == null)
                 {
                     throw new Exception(string.Format("Unable to fetch sessions between dates {0} and {1}", start.ToString(), end.ToString()));
@@ -257,10 +253,10 @@ namespace PanoptoScheduleUploader.Services
         public bool TryGetSessionId(string sessionName, out Guid sessionId)
         {
             sessionId = Guid.NewGuid();
-            var pagination = new Pagination { MaxNumberResults = 25, PageNumber = 0 };
-            var sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest {  Pagination = pagination }, null);
+            Pagination pagination = new Pagination { MaxNumberResults = 25, PageNumber = 0 };
+            ListSessionsResponse sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest {  Pagination = pagination }, null);
 
-            var session = sessions.Results.SingleOrDefault(s => s.Name == sessionName);
+            Session session = sessions.Results.SingleOrDefault(s => s.Name == sessionName);
 
             if (session != null)
             {
@@ -281,7 +277,7 @@ namespace PanoptoScheduleUploader.Services
         public bool RemoveConflictingSessions(Guid[] sessions, DateTime startTime, DateTime endTime)
         {
             List<Guid> sessionsToDelete = new List<Guid>();
-            foreach (var session in sessionManager.GetSessionsById(this.authentication, sessions))
+            foreach (Session session in sessionManager.GetSessionsById(this.authentication, sessions))
             {
                 DateTime localTime = session.StartTime.Value.ToLocalTime();
                 if (IsOverlap(localTime, localTime.AddSeconds((Double)session.Duration), startTime, endTime))
