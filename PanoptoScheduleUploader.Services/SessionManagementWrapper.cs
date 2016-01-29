@@ -11,7 +11,7 @@ namespace PanoptoScheduleUploader.Services
 {
     public class SessionManagementWrapper : IDisposable
     {
-        private const int THRESHHOLD = 2500;
+        private const int FALLBACK_THRESHHOLD_LIMIT = 2500;
         private const int RESULTS_PER_PAGE = 250; // Max is 10,000
         public SessionManagementClient sessionManager;
         AuthenticationInfo authentication;
@@ -132,7 +132,7 @@ namespace PanoptoScheduleUploader.Services
             }
 
             // Setting a threshold
-            if (totalNumberResults > THRESHHOLD)
+            if (totalNumberResults > FALLBACK_THRESHHOLD_LIMIT)
             {
                 this.surpassThreshhold = true;
             }
