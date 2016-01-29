@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.VisualBasic.FileIO;
 
 namespace PanoptoScheduleUploader.Core
 {
     public class RecorderScheduleCSVParser
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private string[] document;
+        private List<string[]> document;
         private Dictionary<int, string> invalidRecordings = new Dictionary<int, string>();
 
         private int titleIndex = 0;
@@ -27,9 +28,23 @@ namespace PanoptoScheduleUploader.Core
         {
             if (log.IsDebugEnabled) log.DebugFormat("Loading CSV document from {0}", filepath);
 
+            this.document = new List<string[]>();
+            string[] fields;
+
             try
             {
-                this.document = System.IO.File.ReadAllLines(filepath);
+                using (TextFieldParser parser = new TextFieldParser(filepath))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    parser.HasFieldsEnclosedInQuotes = true;
+
+                    while (!parser.EndOfData)
+                    {
+                        fields = parser.ReadFields();
+                        this.document.Add(fields);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -49,28 +64,10 @@ namespace PanoptoScheduleUploader.Core
             var recorderSchedules = new List<Recording>();
             try
             {
-                for (int i = 0; i < document.Length; i++)
-                {
-                    string[] elements = new string[7];
-                    int idx = 0;
-                    foreach (string elem in document[i].Split(','))
-                    {
-                        if (idx == 7)
-                        {
-                            break;
-                        }
-
-                        elements[idx] = elem;
-                        idx++;
-                    }
-                    while (idx < 7)
-                    {
-                        elements[idx] = null;
-                        idx++;
-                    }
-
+                foreach(string[] elements in document){
                     var startTime = DateTime.Parse(string.Format("{0} {1}", elements[dateIndex], elements[startTimeIndex]));
                     var endTime = DateTime.Parse(string.Format("{0} {1}", elements[dateIndex], elements[endTimeIndex]));
+
                     recorderSchedules.Add(new Recording
                     {
                         Title = elements[titleIndex],
