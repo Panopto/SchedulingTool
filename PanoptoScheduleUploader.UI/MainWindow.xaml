@@ -38,7 +38,7 @@
                             </StackPanel>
                             <Grid Margin="0,20,0,0">
                                 <DataGrid x:Name="previewGrid" HorizontalAlignment="Center" VerticalAlignment="Top" Height="280" Width="800" ItemsSource="{Binding}" ColumnWidth="Auto" />
-                                <ScrollViewer Height="280" HorizontalAlignment="Left" VerticalAlignment="Top" Width="830" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer x:Name="resultsContainer" Visibility="Hidden" Height="280" HorizontalAlignment="Left" VerticalAlignment="Top" Width="830" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <TextBlock Name="resultsTextBlock" Text="" TextWrapping="Wrap" Width="800" />
                                 </ScrollViewer>
                             </Grid>
