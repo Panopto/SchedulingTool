@@ -11,15 +11,12 @@ namespace PanoptoScheduleUploader.Services
 {
     public class SessionManagementWrapper : IDisposable
     {
-        private const int FALLBACK_THRESHHOLD_LIMIT = 2500;
         private const int RESULTS_PER_PAGE = 250; // Max is 10,000
         public SessionManagementClient sessionManager;
         AuthenticationInfo authentication;
-        private bool surpassThreshhold;
-        private Dictionary<string, Folder> savedFolders;
-        
-        // Conflicting Folder names
-        private Dictionary<string, List<Folder>> savedDupFolders;
+
+        private Dictionary<string, Folder> folderByNameCache;
+        private Dictionary<Guid, Folder> folderByIdCache;
 
         public SessionManagementWrapper(string username, string password)
         {
@@ -33,155 +30,94 @@ namespace PanoptoScheduleUploader.Services
                 UserKey = username,
                 Password = password
             };
+
+            // Initialize caches
+            this.folderByNameCache = new Dictionary<string, Folder>();
+            this.folderByIdCache = new Dictionary<Guid, Folder>();
         }
 
         public Folder GetFolderByName(string folderName)
         {
-            if (folderName != null)
+            string caseInvariantFolderKey = folderName.ToLower();
+            if (!this.folderByNameCache.ContainsKey(caseInvariantFolderKey))
             {
-                folderName = folderName.ToLower();
-            }
-
-            Folder result = null;
-
-            if (this.savedFolders == null)
-            {
-                GetAndSetFolderByList();
-            }
-
-            if (savedFolders != null)
-            {
-                result = searchLocalFolderList(folderName);
-                // Result is greater than the set Threshhold therefore  Server never got entire Folder list
-                // Search folder by name and save them
-                if (result == null && this.surpassThreshhold)
+                Folder result = GetChosenFolder(folderName);
+                this.folderByNameCache[caseInvariantFolderKey] = result;
+                // If the result was not null, save in the id cache too as an optimization
+                if (result != null)
                 {
-                    GetAllMatchingFolders(folderName, folderName);
-
-                    result = searchLocalFolderList(folderName);
+                    this.folderByIdCache[result.Id] = result;
                 }
             }
 
-            return result;
-
+            return this.folderByNameCache[caseInvariantFolderKey];
         }
 
-        private Folder searchLocalFolderList(string folderName)
+        private Folder GetChosenFolder(string folderName)
         {
             Folder result = null;
 
-            if (this.savedFolders.ContainsKey(folderName))
+            if (this.folderByNameCache.ContainsKey(folderName))
             {
-                result = this.savedFolders[folderName];
+                result = this.folderByNameCache[folderName];
             }
-            else if (this.savedDupFolders.ContainsKey(folderName))
+            else
             {
-                StringBuilder folderHolder = new StringBuilder();
-                FolderChooser chooser = new FolderChooser(GetFullFolderStrings(this.savedDupFolders[folderName]), folderHolder, folderName);
-                chooser.ShowDialog();
-                result = this.savedDupFolders[folderName][Int32.Parse("" + folderHolder[0])];
-            }
-            return result;
-        }
-
-        private void GetAllMatchingFolders(String folderName, String query)
-        {
-            int totalNumberResults = 0;
-            int pageNumber = 0;
-            Pagination pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = pageNumber };
-            ListFoldersResponse response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, query);
-
-            if (response != null)
-            {
-                SaveFolders(response.Results);
-            }
-
-            if (response.TotalNumberResults > RESULTS_PER_PAGE)
-            {
-                pageNumber++;
-                while (totalNumberResults >= ((pageNumber) * RESULTS_PER_PAGE))
+                // Gather all folders with a matching name, and show them to the user with the full folder paths
+                // So that the user may select which one they intend
+                List<Folder> matchingFolders = GetAllMatchingFolders(folderName);
+                if (matchingFolders.Count > 1)
                 {
-                    pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = pageNumber };
-                    response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: query);
-
-                    if (response != null)
-                    {
-                        SaveFolders(response.Results);
-                    }
-                    pageNumber++;
+                    StringBuilder chosenFolder = new StringBuilder();
+                    FolderChooser chooser = new FolderChooser(GetFullFolderStrings(matchingFolders), chosenFolder, folderName);
+                    chooser.ShowDialog();
+                    result = matchingFolders[Int32.Parse(chosenFolder.ToString())];
                 }
-            }
-        }
-
-        private void GetAndSetFolderByList()
-        {
-            ListFoldersResponse response = null;
-            int pageNumber = 0;
-            int totalNumberResults = 0;
-            // Set the Max Number results to 1 since we only care about the 'TotalNumberResults' from the first API call
-            Pagination pagination = new Pagination { MaxNumberResults = 1, PageNumber = pageNumber };
-
-            response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
-            
-            // Don't save any entries in case totalNumberResults exceeds Threshhold and chances of duplicate Folders never get saved
-            if (response != null)
-            {
-                this.savedFolders = new Dictionary<string, Folder>();
-                this.savedDupFolders = new Dictionary<string, List<Folder>>();
-                totalNumberResults = response.TotalNumberResults;
-            }
-
-            // Setting a threshold
-            if (totalNumberResults > FALLBACK_THRESHHOLD_LIMIT)
-            {
-                this.surpassThreshhold = true;
-            }
-            else if (response.TotalNumberResults > RESULTS_PER_PAGE)
-            {
-                while (totalNumberResults >= ((pageNumber) * RESULTS_PER_PAGE))
-                {
-                    pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = pageNumber };
-                    response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
-
-                    if (response != null)
-                    {
-                        SaveFolders(response.Results);
-                    }
-                    pageNumber++;
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Save Unique Folder Names in this.savedFolders
-        /// Save Duplicate Folder Names in this.savedDupFolder and Remove any existing duplicate folder names from this.savedFolders
-        /// </summary>
-        /// <param name="folders">Array of Folders to save</param>
-        private void SaveFolders(Folder[] folders)
-        {
-            foreach (Folder folder in folders)
-            {
-                // Brand new entry
-                if (!this.savedDupFolders.ContainsKey(folder.Name.ToLower()) && !this.savedFolders.ContainsKey(folder.Name.ToLower()))
-                {
-                    this.savedFolders.Add(folder.Name.ToLower(), folder);
-                }
-                // Exist in Duplicated Folder but not Original saved folder
-                else if (this.savedDupFolders.ContainsKey(folder.Name.ToLower()) && !this.savedFolders.ContainsKey(folder.Name.ToLower()))
-                {
-                    this.savedDupFolders[folder.Name.ToLower()].Add(folder);
-                }
-                // Remove from Original folders and include all duplicates in a special Dictionary
                 else
                 {
-                    List<Folder> tempFolderList = new List<Folder>();
-                    tempFolderList.Add(this.savedFolders[folder.Name.ToLower()]);
-                    tempFolderList.Add(folder);
-                    this.savedDupFolders.Add(folder.Name.ToLower(), tempFolderList);
-
-                    this.savedFolders.Remove(folder.Name.ToLower());
+                    result = matchingFolders.SingleOrDefault();
                 }
             }
+            return result;
+        }
+
+        private List<Folder> GetAllMatchingFolders(String folderName)
+        {
+            List<Folder> result = new List<Folder>();
+
+            // Set a limit which should never be reached of 100 pages of 50
+            for (int page = 0; page < 100; page++)
+            {
+                Pagination pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = page };
+                ListFoldersResponse response = this.sessionManager.GetFoldersList(
+                    this.authentication,
+                    new ListFoldersRequest {
+                        Pagination = pagination,
+                        WildcardSearchNameOnly = true,
+                    },
+                    folderName);
+                result.AddRange(response.Results);
+                if (result.Count >= response.TotalNumberResults)
+                {
+                    break;
+                }
+            }
+
+            // Filter down to case-invariant exact matches
+            result = result.Where(f => String.Equals(f.Name, folderName, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            return result;
+        }
+
+        private Folder GetFolderById(Guid id)
+        {
+            if (!this.folderByIdCache.ContainsKey(id))
+            {
+                this.folderByIdCache[id] = this.sessionManager.GetFoldersById(
+                    this.authentication,
+                    new Guid[] { id }
+                ).Single();
+            }
+            return this.folderByIdCache[id];
         }
 
         private string[] GetFullFolderStrings(List<Folder> matchingFolders)
@@ -189,12 +125,12 @@ namespace PanoptoScheduleUploader.Services
             string[] folderStrings = new string[matchingFolders.Count];
             for (int i = 0; i < matchingFolders.Count; ++i)
             {
-                Folder currentParent = (Folder)matchingFolders[i];
+                Folder currentParent = matchingFolders[i];
+                // Build the string names by walking the parent list
                 string folderPath = currentParent.Name;
-                while (currentParent.ParentFolder != null)
+                while (currentParent.ParentFolder.HasValue)
                 {
-                    Folder[] newParentAsArray = this.sessionManager.GetFoldersById(this.authentication, new Guid[] { (System.Guid)currentParent.ParentFolder });
-                    currentParent = newParentAsArray[0];
+                    currentParent = this.GetFolderById(currentParent.ParentFolder.Value);
                     folderPath = currentParent.Name + "/" + folderPath;
                 }
                 folderStrings[i] = folderPath;

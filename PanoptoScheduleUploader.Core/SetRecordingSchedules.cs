@@ -29,6 +29,10 @@ namespace PanoptoScheduleUploader.Core
                 var parser = new RecorderScheduleCSVParser(fileName);
                 recordings = parser.ExtractRecordings();
             }
+            else
+            {
+                throw new NotImplementedException("Expected an xml or csv file. Got filename: " + fileName);
+            }
 
             using (var sessionManager = new SessionManagementWrapper(username, password))
             {

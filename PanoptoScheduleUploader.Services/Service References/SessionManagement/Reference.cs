@@ -1335,10 +1335,13 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PanoptoScheduleUploader.Services.SessionManagement.FolderSortField SortByField;
-        
+
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool SortIncreasingField;
-        
+
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool WildcardSearchNameOnlyField;
+
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1400,20 +1403,41 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
                 }
             }
         }
-        
+
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool SortIncreasing {
-            get {
+        public bool SortIncreasing
+        {
+            get
+            {
                 return this.SortIncreasingField;
             }
-            set {
-                if ((this.SortIncreasingField.Equals(value) != true)) {
+            set
+            {
+                if ((this.SortIncreasingField.Equals(value) != true))
+                {
                     this.SortIncreasingField = value;
                     this.RaisePropertyChanged("SortIncreasing");
                 }
             }
         }
-        
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool WildcardSearchNameOnly
+        {
+            get
+            {
+                return this.SortIncreasingField;
+            }
+            set
+            {
+                if ((this.SortIncreasingField.Equals(value) != true))
+                {
+                    this.SortIncreasingField = value;
+                    this.RaisePropertyChanged("WildcardSearchNameOnly");
+                }
+            }
+        }
+
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {

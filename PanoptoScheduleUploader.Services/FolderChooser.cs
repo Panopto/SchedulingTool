@@ -39,7 +39,7 @@ namespace PanoptoScheduleUploader.Services
                 Height += 20;
                 this.Controls.Add(options[i]);
             }
-            this.topLabel.Text = "There are multiple files named \"" + collidedName + "\". Please choose one:";
+            this.topLabel.Text = "There are multiple folders named \"" + collidedName + "\". Please choose one:";
             this.topLabel.Location = new System.Drawing.Point(Width / 2 - topLabel.Width / 2, 10);
             this.selectButton.Location = new System.Drawing.Point(Width / 2 - selectButton.Width / 2,Height - 20 - selectButton.Height*2 - bottomLabel.Height);
             this.bottomLabel.Location = new System.Drawing.Point(Width / 2 - bottomLabel.Width / 2, Height - 20 - bottomLabel.Height*2);
