@@ -1320,123 +1320,27 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
     [System.Runtime.Serialization.DataContractAttribute(Name="ListFoldersRequest", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
     [System.SerializableAttribute()]
     public partial class ListFoldersRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PanoptoScheduleUploader.Services.SessionManagement.Pagination PaginationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> ParentFolderIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool PublicOnlyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PanoptoScheduleUploader.Services.SessionManagement.FolderSortField SortByField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool SortIncreasingField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool WildcardSearchNameOnlyField;
 
         [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PanoptoScheduleUploader.Services.SessionManagement.Pagination Pagination {
-            get {
-                return this.PaginationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PaginationField, value) != true)) {
-                    this.PaginationField = value;
-                    this.RaisePropertyChanged("Pagination");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> ParentFolderId {
-            get {
-                return this.ParentFolderIdField;
-            }
-            set {
-                if ((this.ParentFolderIdField.Equals(value) != true)) {
-                    this.ParentFolderIdField = value;
-                    this.RaisePropertyChanged("ParentFolderId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool PublicOnly {
-            get {
-                return this.PublicOnlyField;
-            }
-            set {
-                if ((this.PublicOnlyField.Equals(value) != true)) {
-                    this.PublicOnlyField = value;
-                    this.RaisePropertyChanged("PublicOnly");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PanoptoScheduleUploader.Services.SessionManagement.FolderSortField SortBy {
-            get {
-                return this.SortByField;
-            }
-            set {
-                if ((this.SortByField.Equals(value) != true)) {
-                    this.SortByField = value;
-                    this.RaisePropertyChanged("SortBy");
-                }
-            }
-        }
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData { get; set; }
 
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool SortIncreasing
-        {
-            get
-            {
-                return this.SortIncreasingField;
-            }
-            set
-            {
-                if ((this.SortIncreasingField.Equals(value) != true))
-                {
-                    this.SortIncreasingField = value;
-                    this.RaisePropertyChanged("SortIncreasing");
-                }
-            }
-        }
+        public PanoptoScheduleUploader.Services.SessionManagement.Pagination Pagination { get; set; }
 
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool WildcardSearchNameOnly
-        {
-            get
-            {
-                return this.SortIncreasingField;
-            }
-            set
-            {
-                if ((this.SortIncreasingField.Equals(value) != true))
-                {
-                    this.SortIncreasingField = value;
-                    this.RaisePropertyChanged("WildcardSearchNameOnly");
-                }
-            }
-        }
+        public System.Nullable<System.Guid> ParentFolderId { get; set; }
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool PublicOnly { get; set; }
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.SessionManagement.FolderSortField SortBy { get; set; }
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool SortIncreasing { get; set; }
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool WildcardSearchNameOnly { get; set; }
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
