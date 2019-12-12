@@ -29,13 +29,11 @@ namespace PanoptoScheduleUploader.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
+        [ExpectedException(typeof(Exception))]
         public void AndRequiredAttributesMissing_ThenElementListedAsInvalid()
         {
             var xmlParser = new RecorderScheduleXmlParser(string.Format("{0}\\validXml_MissingAttribute.xml", this.assemblyDirectory));
             var recordings = xmlParser.ExtractRecordings();
-
-            Assert.IsTrue(recordings.All(x => !string.IsNullOrEmpty(x.Title)));
         }
 
         [TestMethod]
@@ -44,8 +42,6 @@ namespace PanoptoScheduleUploader.Test
         {
             var xmlParser = new RecorderScheduleXmlParser(string.Format("{0}\\validXml_EmptyAttribute.xml", this.assemblyDirectory));
             var recordings = xmlParser.ExtractRecordings();
-
-            Assert.IsTrue(recordings.All(x => !string.IsNullOrEmpty(x.Title)));
         }
     }
 }
