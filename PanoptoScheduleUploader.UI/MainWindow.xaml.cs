@@ -167,7 +167,8 @@ namespace PanoptoScheduleUploader.UI
 
                     try
                     {
-                        results = SetRecordingSchedules.Execute(username, password, filePath, string.Empty, overwrite);
+                        //results = SetRecordingSchedules.Execute(username, password, filePath, string.Empty, overwrite);
+                        results = SetRecordingSchedules.FixSchedule(username, password, filePath, string.Empty, overwrite);
                     }
                     catch (Exception ex)
                     {

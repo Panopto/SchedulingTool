@@ -21,6 +21,8 @@ namespace PanoptoScheduleUploader.Services
         // Conflicting Folder names
         private Dictionary<string, List<Folder>> savedDupFolders;
 
+        private Dictionary<Guid, List<Session>> folderToSessions = new Dictionary<Guid, List<Session>>();
+
         public SessionManagementWrapper(string username, string password)
         {
             this.sessionManager = new SessionManagementClient();
@@ -82,6 +84,15 @@ namespace PanoptoScheduleUploader.Services
                 result = this.savedDupFolders[folderName][Int32.Parse("" + folderHolder[0])];
             }
             return result;
+        }
+
+        public List<Folder> GetAllMatchingFolders(string folderName)
+        {
+            int pageNumber = 0;
+            Pagination pagination = new Pagination { MaxNumberResults = RESULTS_PER_PAGE, PageNumber = pageNumber };
+            ListFoldersResponse response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, folderName.ToLower());
+
+            return response.Results.ToList();
         }
 
         private void GetAllMatchingFolders(String folderName, String query)
@@ -250,17 +261,22 @@ namespace PanoptoScheduleUploader.Services
             return this.sessionManager.GetSessionsById(this.authentication, ids.ToArray());
         }
 
-        public bool TryGetSessionId(string sessionName, out Guid sessionId)
+        public bool TryGetSession(string sessionName, Guid folderId, DateTime startTime, int timeZoneDifference, out Session session)
         {
-            sessionId = Guid.NewGuid();
-            Pagination pagination = new Pagination { MaxNumberResults = 25, PageNumber = 0 };
-            ListSessionsResponse sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest {  Pagination = pagination }, null);
+            List<Session> savedSessions;
+            if (!this.folderToSessions.TryGetValue(folderId, out savedSessions))
+            {
+                Pagination pagination = new Pagination { MaxNumberResults = 1000, PageNumber = 0 };
+                ListSessionsResponse sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest { Pagination = pagination, FolderId = folderId, States = new SessionState[] { SessionState.Scheduled } }, null);
 
-            Session session = sessions.Results.SingleOrDefault(s => s.Name == sessionName);
+                savedSessions = sessions.Results.ToList();
+                this.folderToSessions[folderId] = savedSessions;
+            }
+
+            session = savedSessions.SingleOrDefault(s => s.Name == sessionName && ((s.StartTime.Value.ToUniversalTime() - TimeSpan.FromHours(timeZoneDifference)) == startTime.ToUniversalTime()));
 
             if (session != null)
             {
-                sessionId = session.Id;
                 return true;
             }
 

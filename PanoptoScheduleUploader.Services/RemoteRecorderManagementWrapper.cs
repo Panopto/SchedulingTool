@@ -42,6 +42,11 @@ namespace PanoptoScheduleUploader.Services
             this.dateTimeFormat = ConfigurationManager.AppSettings["dateTimeFormat"] ?? "dd-MMM-yyyy hh:mm tt";
         }
 
+        public void UpdateRecordingTime(Guid sessionId, DateTime start, DateTime end)
+        {
+            this.remoteRecorderManager.UpdateRecordingTime(this.authenticationInfo, sessionId, start, end);
+        }
+
         public RecorderSettings GetSettingsByRecorderName(string name)
         {
             try

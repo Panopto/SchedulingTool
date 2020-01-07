@@ -5,6 +5,7 @@ using PanoptoScheduleUploader.Services;
 using PanoptoScheduleUploader.Services.RemoteRecorderManagement;
 using System.Text;
 using System.Windows.Forms;
+using PanoptoScheduleUploader.Services.SessionManagement;
 
 namespace PanoptoScheduleUploader.Core
 {
@@ -14,6 +15,75 @@ namespace PanoptoScheduleUploader.Core
         private const string MSGBOX_FOLDERNAME_NOTFOUND_TITLE = "Folder does not exist";
         private const string MSGBOX_FOLDERNAME_NOTFOUND_PROMPT = "The folder named '{0}' does not exist for recording '{1}'. Would you like to use the default folder instead?";
         private const string FOLDERNAME_NOTFOUND_MSG = "The folder named '{0}' does not exist for recording '{1}'.";
+
+        private static Dictionary<string, List<Guid>> folderNameToId = new Dictionary<string, List<Guid>>();
+        private const int TIME_ZONE_DIFF; // FILL THIS IN WITH THE CORRECT VALUE!!
+
+        public static IEnumerable<SchedulingResult> FixSchedule(string username, string password, string fileName, string folderName, bool overwrite)
+        {
+            var results = new List<SchedulingResult>();
+
+            IEnumerable<Recording> recordings = null;
+            if (System.IO.Path.GetExtension(fileName) == ".xml")
+            {
+                var parser = new RecorderScheduleXmlParser(fileName);
+                recordings = parser.ExtractRecordings();
+            }
+            else if (System.IO.Path.GetExtension(fileName) == ".csv")
+            {
+                var parser = new RecorderScheduleCSVParser(fileName);
+                recordings = parser.ExtractRecordings();
+            }
+
+            using (var sessionManager = new SessionManagementWrapper(username, password))
+            {
+                using (var remoteRecorderService = new RemoteRecorderManagementWrapper(username, password))
+                {
+                    using (var userManager = new UserManagementWrapper(username, password))
+                    {
+                        int sessionsToUpdate = 0;
+                        foreach (Recording recording in recordings)
+                        {
+                            List<Guid> folderIds = GetFolderIds(recording.CourseTitle, sessionManager);
+                            if (folderIds == null || folderIds.Count == 0)
+                            {
+                                throw new Exception(string.Format("Could not find folder '{0}'", recording.CourseTitle));
+                            }
+
+                            // Find the session
+                            Session session = null;
+                            foreach (Guid folderId in folderIds)
+                            {
+                                if (sessionManager.TryGetSession(recording.Title, folderId, recording.StartTime, TIME_ZONE_DIFF, out session))
+                                {
+                                    break;
+                                }
+                            }
+                            if (session == null)
+                            {
+                                throw new Exception(string.Format("Could not find session '{0}' in folder '{1}'", recording.Title, recording.CourseTitle));
+                            }
+
+                            if (session.StartTime != recording.StartTime.ToUniversalTime())
+                            {
+                                sessionsToUpdate++;
+                                remoteRecorderService.UpdateRecordingTime(
+                                    session.Id,
+                                    recording.StartTime.ToUniversalTime(),
+                                    recording.EndTime.ToUniversalTime());
+                            }
+                        }
+
+                        MessageBox.Show(String.Format("Found {0} recordings to update", sessionsToUpdate), MSGBOX_FOLDERNAME_NOTFOUND_TITLE, MessageBoxButtons.OK);
+                    }
+                }
+            }
+
+            
+
+            return results;
+        }
+
         public static IEnumerable<SchedulingResult> Execute(string username, string password, string fileName, string folderName, bool overwrite)
         {
             var results = new List<SchedulingResult>();
@@ -96,7 +166,7 @@ namespace PanoptoScheduleUploader.Core
                 }
             }
 
-            
+
 
             return results;
         }
@@ -116,6 +186,29 @@ namespace PanoptoScheduleUploader.Core
             }
 
             return folderId;
+        }
+
+        private static List<Guid> GetFolderIds(string folderName, SessionManagementWrapper sessionManager)
+        {
+            List<Guid> folderIds = new List<Guid>();
+            if (!string.IsNullOrEmpty(folderName))
+            {
+                if (!folderNameToId.TryGetValue(folderName, out folderIds))
+                {
+                    List<Folder> folders = sessionManager.GetAllMatchingFolders(folderName);
+                    if (folders != null)
+                    {
+                        folderIds = new List<Guid>();
+                        foreach (Folder folder in folders)
+                        {
+                            folderIds.Add(folder.Id);
+                        }
+                        folderNameToId[folderName] = folderIds;
+                    }
+                }
+            }
+
+            return folderIds;
         }
     }
 }
