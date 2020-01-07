@@ -136,7 +136,7 @@ namespace PanoptoScheduleUploader.Services
             {
                 this.surpassThreshhold = true;
             }
-            else if (response.TotalNumberResults > RESULTS_PER_PAGE)
+            else
             {
                 while (totalNumberResults >= ((pageNumber) * RESULTS_PER_PAGE))
                 {

@@ -89,7 +89,34 @@ namespace PanoptoScheduleUploader.Services
         {
             if (!folderId.Equals(Guid.Empty))
             {
-                var result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, false, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
+                ScheduledRecordingResult result = null;
+
+                bool retry = true;
+                int attemptCount = 0;
+                while (retry)
+                {
+                    try
+                    {
+                        result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, false, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
+                        retry = false;
+                    }
+                    catch (FaultException e)
+                    {
+                        // only retry the call if it's possible this was a transient error (ie, a deadlock)
+                        retry &= (e.Message == "An error occurred. See server logs for details") && (attemptCount < 3);
+                        if (retry)
+                        {
+                            // sleep for a bit before retrying
+                            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(3));
+                        }
+                        else
+                        {
+                            // if we're not retrying, re-throw the exception
+                            throw;
+                        }
+                    }
+                    attemptCount++;
+                }
 
                 if (result.ConflictsExist)
                 {
@@ -99,7 +126,7 @@ namespace PanoptoScheduleUploader.Services
                 else
                 {
                     return new SchedulingResult(string.Format("Recording {0} was scheduled between {1} and {2}{3}",
-                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat), overwritten?", overwriting a previously scheduled recording.":"."), result.SessionIDs[0]);
+                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat), overwritten ? ", overwriting a previously scheduled recording." : "."), result.SessionIDs[0]);
                 }
             }
             else
