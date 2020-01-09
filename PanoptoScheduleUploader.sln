@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanoptoScheduleUploader", "PanoptoScheduleUploader\PanoptoScheduleUploader.csproj", "{46144F70-E741-415C-907B-6784626D4735}"
-EndProject
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanoptoScheduleUploader.Core", "PanoptoScheduleUploader.Core\PanoptoScheduleUploader.Core.csproj", "{C15719C1-E5A2-41FC-9566-E15C173ED145}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanoptoScheduleUploader.Test", "PanoptoScheduleUploader.Test\PanoptoScheduleUploader.Test.csproj", "{0BEEFEAB-417A-45E4-8D74-54A8289C2375}"
@@ -19,13 +19,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanoptoScheduleUploader.UI", "PanoptoScheduleUploader.UI\PanoptoScheduleUploader.UI.csproj", "{EC828D3E-5B8F-48F7-BB78-84A25741F9A2}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = PanoptoScheduleUploader.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -35,16 +28,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46144F70-E741-415C-907B-6784626D4735}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Debug|x86.ActiveCfg = Debug|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Debug|x86.Build.0 = Debug|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Release|Any CPU.ActiveCfg = Release|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Release|Mixed Platforms.Build.0 = Release|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Release|x86.ActiveCfg = Release|x86
-		{46144F70-E741-415C-907B-6784626D4735}.Release|x86.Build.0 = Release|x86
 		{C15719C1-E5A2-41FC-9566-E15C173ED145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C15719C1-E5A2-41FC-9566-E15C173ED145}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C15719C1-E5A2-41FC-9566-E15C173ED145}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -88,5 +71,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0218470F-AE94-46E5-A20B-39B99715A39A}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PanoptoScheduleUploader.vsmdi
 	EndGlobalSection
 EndGlobal
