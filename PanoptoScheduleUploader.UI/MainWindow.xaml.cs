@@ -63,6 +63,7 @@ namespace PanoptoScheduleUploader.UI
                 // Open document 
                 fileInput.Text = dlg.FileName;
                 previewGrid.Visibility = System.Windows.Visibility.Visible;
+                resultsContainer.Visibility = Visibility.Hidden;
                 try
                 {
                     previewGrid.DataContext = PreviewTable(fileInput.Text);
@@ -137,6 +138,7 @@ namespace PanoptoScheduleUploader.UI
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
             previewGrid.Visibility = System.Windows.Visibility.Hidden;
+            resultsContainer.Visibility = Visibility.Visible;
             resultsTextBlock.Text = "";
             submitButton.IsEnabled = false;
 
