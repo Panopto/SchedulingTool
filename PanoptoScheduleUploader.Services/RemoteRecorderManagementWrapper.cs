@@ -12,6 +12,8 @@ namespace PanoptoScheduleUploader.Services
 {
     public class RemoteRecorderManagementWrapper : IDisposable
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private RemoteRecorderManagementClient remoteRecorderManager;
         
         private AuthenticationInfo authenticationInfo;
@@ -106,14 +108,25 @@ namespace PanoptoScheduleUploader.Services
                         retry &= (e.Message == "An error occurred. See server logs for details") && (attemptCount < 3);
                         if (retry)
                         {
+                            log.Warn("FaultException while calling ScheduleRecording. Will retry.", e);
+
                             // sleep for a bit before retrying
                             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(3));
                         }
                         else
                         {
+                            log.Error("FaultException while calling ScheduleRecording. No retry", e);
+
                             // if we're not retrying, re-throw the exception
                             throw;
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        log.Error("Exception while calling ScheduleRecording. No retry", e);
+
+                        // re-throw the exception
+                        throw;
                     }
                     attemptCount++;
                 }

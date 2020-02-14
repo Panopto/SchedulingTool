@@ -16,6 +16,8 @@ namespace PanoptoScheduleUploader.Core
         private const string FOLDERNAME_NOTFOUND_MSG = "The folder named '{0}' does not exist for recording '{1}'.";
         public static IEnumerable<SchedulingResult> Execute(string username, string password, string fileName, string folderName, bool overwrite)
         {
+            log.Info("Running the scheduling tool with retry logic");
+
             var results = new List<SchedulingResult>();
 
             IEnumerable<Recording> recordings = null;
