@@ -3,3 +3,16 @@
 ################################################################################
 
 /.vs/PanoptoScheduleUploader/v15
+/.vs/SchedulingTool/v15
+/PanoptoScheduleUploader/obj/x86
+/PanoptoScheduleUploader.Core/bin/Debug
+/PanoptoScheduleUploader.Core/obj/Debug
+/PanoptoScheduleUploader.Core/bin/Release
+/PanoptoScheduleUploader.Core/obj/Release
+/PanoptoScheduleUploader.Services/obj
+/PanoptoScheduleUploader.Test/obj
+/.vs
+/PanoptoScheduleUploader.UI/bin
+/PanoptoScheduleUploader.UI/obj/x86/Debug/TempPE
+/PanoptoScheduleUploader.UI/obj/x86/Debug
+/PanoptoScheduleUploader.UI/obj/x86/Release

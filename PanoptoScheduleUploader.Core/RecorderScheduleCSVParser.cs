@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Configuration;
 using Microsoft.VisualBasic.FileIO;
 
 namespace PanoptoScheduleUploader.Core
@@ -36,7 +37,7 @@ namespace PanoptoScheduleUploader.Core
                 using (TextFieldParser parser = new TextFieldParser(filepath))
                 {
                     parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
+                    parser.SetDelimiters(ConfigurationManager.AppSettings["CSVDelimiter"]);
                     parser.HasFieldsEnclosedInQuotes = true;
 
                     while (!parser.EndOfData)
