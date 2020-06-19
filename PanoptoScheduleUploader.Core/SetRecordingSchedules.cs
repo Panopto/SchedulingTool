@@ -84,7 +84,7 @@ namespace PanoptoScheduleUploader.Core
                                         throw new Exception(string.Format("The folder named '{0}' does not exist. This folder must exist as the default location for recordings.", defaultFolderName));
                                     }
                                 }
-                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, false, recording.StartTime, recording.EndTime, new List<RecorderSettings> { settings }, overwritten);
+                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, recording.IsBroadCast, recording.StartTime, recording.EndTime, new List<RecorderSettings> { settings }, overwritten);
                                 if (result.SessionId != Guid.Empty)
                                 {
                                     sessionManager.UpdateSessionDescription(result.SessionId, "Presented by " + recording.Presenter);
@@ -96,7 +96,7 @@ namespace PanoptoScheduleUploader.Core
                 }
             }
 
-            
+
 
             return results;
         }
@@ -104,17 +104,28 @@ namespace PanoptoScheduleUploader.Core
         private static Guid GetFolderId(string folderName, SessionManagementWrapper sessionManager, Guid defaultFolderId)
         {
             var folderId = defaultFolderId;
-
-            if (!string.IsNullOrEmpty(folderName))
+            bool foldernameisGuid = false;
+            if (Guid.TryParse(folderName, out var newGuid))
             {
-                var folder = sessionManager.GetFolderByName(folderName);
-
-                if (folder != null)
+                var folderid = sessionManager.GetFolderById(newGuid);
+                if (folderid.Id != new Guid("00000000-0000-0000-0000-000000000000"))
                 {
-                    folderId = folder.Id;
+                    folderId = folderid.Id;
+
                 }
             }
+            else
+            {
+                if (!string.IsNullOrEmpty(folderName))
+                {
+                    var folder = sessionManager.GetFolderByName(folderName);
 
+                    if (folder != null)
+                    {
+                        folderId = folder.Id;
+                    }
+                }
+            }
             return folderId;
         }
     }

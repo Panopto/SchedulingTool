@@ -17,7 +17,7 @@ namespace PanoptoScheduleUploader.Services
         AuthenticationInfo authentication;
         private bool surpassThreshhold;
         private Dictionary<string, Folder> savedFolders;
-        
+
         // Conflicting Folder names
         private Dictionary<string, List<Folder>> savedDupFolders;
 
@@ -122,7 +122,7 @@ namespace PanoptoScheduleUploader.Services
             Pagination pagination = new Pagination { MaxNumberResults = 1, PageNumber = pageNumber };
 
             response = this.sessionManager.GetFoldersList(this.authentication, new ListFoldersRequest { Pagination = pagination }, searchQuery: null);
-            
+
             // Don't save any entries in case totalNumberResults exceeds Threshhold and chances of duplicate Folders never get saved
             if (response != null)
             {
@@ -151,7 +151,7 @@ namespace PanoptoScheduleUploader.Services
                 }
             }
         }
-        
+
         /// <summary>
         /// Save Unique Folder Names in this.savedFolders
         /// Save Duplicate Folder Names in this.savedDupFolder and Remove any existing duplicate folder names from this.savedFolders
@@ -250,11 +250,18 @@ namespace PanoptoScheduleUploader.Services
             return this.sessionManager.GetSessionsById(this.authentication, ids.ToArray());
         }
 
+        public Folder GetFolderById(Guid id)
+        {
+            List<Guid> ids = new List<Guid>();
+            ids.Add(id);
+            return this.sessionManager.GetFoldersById(this.authentication, ids.ToArray()).First(); ;
+        }
+
         public bool TryGetSessionId(string sessionName, out Guid sessionId)
         {
             sessionId = Guid.NewGuid();
             Pagination pagination = new Pagination { MaxNumberResults = 25, PageNumber = 0 };
-            ListSessionsResponse sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest {  Pagination = pagination }, null);
+            ListSessionsResponse sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest { Pagination = pagination }, null);
 
             Session session = sessions.Results.SingleOrDefault(s => s.Name == sessionName);
 

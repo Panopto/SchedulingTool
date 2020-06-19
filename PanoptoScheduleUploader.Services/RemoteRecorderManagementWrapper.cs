@@ -13,7 +13,7 @@ namespace PanoptoScheduleUploader.Services
     public class RemoteRecorderManagementWrapper : IDisposable
     {
         private RemoteRecorderManagementClient remoteRecorderManager;
-        
+
         private AuthenticationInfo authenticationInfo;
         private string dateTimeFormat;
 
@@ -25,7 +25,7 @@ namespace PanoptoScheduleUploader.Services
         {
             // Instantiate service clients
             this.remoteRecorderManager = new RemoteRecorderManagementClient();
-            
+
 
             // Ensure server certificate is validated
             CertificateValidation.EnsureCertificateValidation();
@@ -68,14 +68,14 @@ namespace PanoptoScheduleUploader.Services
             var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
             var recorderListResponse = this.remoteRecorderManager.ListRecorders(this.authenticationInfo, pagination, RecorderSortField.Name);
             var recorder = recorderListResponse.PagedResults.FirstOrDefault(a => a.Name == name);
-            
+
             if (recorder == null)
             {
                 return null;
             }
 
             List<Guid> sessions = new List<Guid>();
-            
+
             foreach (var recording in recorder.ScheduledRecordings)
             {
                 sessions.Add(recording);
@@ -97,7 +97,7 @@ namespace PanoptoScheduleUploader.Services
                 {
                     try
                     {
-                        result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, false, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
+                        result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, isBroadcast, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
                         retry = false;
                     }
                     catch (FaultException e)
@@ -131,7 +131,7 @@ namespace PanoptoScheduleUploader.Services
             }
             else
             {
-                return new SchedulingResult(false, string.Format("Recording {0} failed; folder not found.",name), Guid.Empty);
+                return new SchedulingResult(false, string.Format("Recording {0} failed; folder not found.", name), Guid.Empty);
             }
         }
 
@@ -154,7 +154,7 @@ namespace PanoptoScheduleUploader.Services
             {
                 var pagination = new Pagination { MaxNumberResults = 1, PageNumber = 0 };
                 var recorderListResponse = this.remoteRecorderManager.ListRecorders(this.authenticationInfo, pagination, RecorderSortField.Name);
-                
+
                 // User has no Remote Recorder Access
                 if (recorderListResponse.TotalResultCount < 1)
                     return LoginResults.NoAccess;
