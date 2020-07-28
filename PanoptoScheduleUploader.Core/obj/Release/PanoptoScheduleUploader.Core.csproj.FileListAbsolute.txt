@@ -43,3 +43,7 @@ C:\Users\swong\Documents\GitHub\SchedulingTool\SchedulingTool\PanoptoScheduleUpl
 C:\Users\swong\Documents\GitHub\SchedulingTool\SchedulingTool\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.csprojResolveAssemblyReference.cache
 C:\Users\swong\Documents\GitHub\SchedulingTool\SchedulingTool\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.dll
 C:\Users\swong\Documents\GitHub\SchedulingTool\SchedulingTool\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.pdb
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.csprojAssemblyReference.cache
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.csproj.CoreCompileInputs.cache
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.dll
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Release\PanoptoScheduleUploader.Core.pdb

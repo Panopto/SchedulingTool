@@ -25,3 +25,7 @@ C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoSched
 C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csprojResolveAssemblyReference.cache
 C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.dll
 C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.pdb
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csprojAssemblyReference.cache
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csproj.CoreCompileInputs.cache
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.dll
+C:\Users\jchan\Source\Repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.pdb
