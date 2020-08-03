@@ -15,3 +15,12 @@ C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoSched
 C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csprojResolveAssemblyReference.cache
 C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.dll
 C:\Users\jlin\Downloads\SchedulingTool-master\SchedulingTool-master\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.dll.config
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.dll
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\bin\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csprojAssemblyReference.cache
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.FolderChooser.resources
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csproj.GenerateResource.cache
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csproj.CoreCompileInputs.cache
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.dll
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.pdb
