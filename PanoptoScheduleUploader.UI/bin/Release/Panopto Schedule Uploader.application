@@ -4,17 +4,17 @@
   <description asmv2:publisher="Aiimi" asmv2:product="Panopto Schedule Uploader" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.6" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Panopto Schedule Uploader.exe.manifest" size="16998">
+    <dependentAssembly dependencyType="install" codebase="Panopto Schedule Uploader.exe.manifest" size="17394">
       <assemblyIdentity name="Panopto Schedule Uploader.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>jgcdbis35hkI3b8COuYA3azdTEo=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nFuyVMS/wnQS1/PmMQw+pYUhukB+FkKKAH4m6VmM+VM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

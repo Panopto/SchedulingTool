@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecorderScheduleImport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<RecorderSchedules>
+<RecorderSchedule>
+	<Class>MGEC611002_STAFF</Class>
+	<Classroom>JMHH240</Classroom>
+	<RecordingDate>10-apr-2012</RecordingDate>
+	<RecordingStartTime>10:30 AM</RecordingStartTime>
+	<RecordingEndTime></RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>STAT500401_BSTA550401_PSYC611401_ROSENBAUM_P</Class>
+	<Classroom>JMHH240</Classroom>
+	<RecordingDate>10-apr-2012</RecordingDate>
+	<RecordingStartTime>12:00 PM</RecordingStartTime>
+	<RecordingEndTime>1:30 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>MGEC611003_STAFF</Class>
+	<Classroom>JMHH240</Classroom>
+	<RecordingDate>10-apr-2012</RecordingDate>
+	<RecordingStartTime>1:30 PM</RecordingStartTime>
+	<RecordingEndTime>3:00 PM</RecordingEndTime>
+</RecorderSchedule>
+<RecorderSchedule>
+	<Class>Leadership_Prog_Venture_Info_Session</Class>
+	<Classroom>JMHH240</Classroom>
+	<RecordingDate>10-apr-2012</RecordingDate>
+	<RecordingStartTime>3:00 PM</RecordingStartTime>
+	<RecordingEndTime>4:00 PM</RecordingEndTime>
+</RecorderSchedule>
+</RecorderSchedules>
+</RecorderScheduleImport>

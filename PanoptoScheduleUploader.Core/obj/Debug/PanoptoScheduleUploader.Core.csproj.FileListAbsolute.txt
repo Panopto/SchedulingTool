@@ -37,3 +37,15 @@ C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Core\bin\Deb
 C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Services.dll.config
 C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Core\bin\Debug\log4net.xml
 C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csproj.CopyComplete
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Core.dll
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Core.pdb
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\bin\Debug\log4net.dll
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Services.dll
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\bin\Debug\PanoptoScheduleUploader.Services.dll.config
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\bin\Debug\log4net.xml
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csprojAssemblyReference.cache
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csproj.CoreCompileInputs.cache
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.csproj.CopyComplete
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.dll
+C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Core\obj\Debug\PanoptoScheduleUploader.Core.pdb
