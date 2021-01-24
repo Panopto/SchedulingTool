@@ -29,6 +29,10 @@ namespace PanoptoScheduleUploader.Core
                 var parser = new RecorderScheduleCSVParser(fileName);
                 recordings = parser.ExtractRecordings();
             }
+            else
+            {
+                throw new NotImplementedException("Expected an xml or csv file. Got filename: " + fileName);
+            }
 
             using (var sessionManager = new SessionManagementWrapper(username, password))
             {
@@ -104,7 +108,6 @@ namespace PanoptoScheduleUploader.Core
         private static Guid GetFolderId(string folderName, SessionManagementWrapper sessionManager, Guid defaultFolderId)
         {
             var folderId = defaultFolderId;
-            bool foldernameisGuid = false;
             if (Guid.TryParse(folderName, out var newGuid))
             {
                 var folderid = sessionManager.GetFolderById(newGuid);

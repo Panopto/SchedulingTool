@@ -77,7 +77,7 @@ namespace PanoptoScheduleUploader.Core
                     }
                     else if (elements[webcast] == "0")
                     {
-                        b = true;
+                        b = false;
                     }
                     else
                     {
