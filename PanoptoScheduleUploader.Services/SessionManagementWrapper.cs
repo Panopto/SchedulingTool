@@ -16,6 +16,7 @@ namespace PanoptoScheduleUploader.Services
         AuthenticationInfo authentication;
 
         private Dictionary<string, Folder> folderByNameCache;
+        
         private Dictionary<Guid, Folder> folderByIdCache;
 
         public SessionManagementWrapper(string username, string password)
@@ -85,6 +86,7 @@ namespace PanoptoScheduleUploader.Services
         {
             List<Folder> result = new List<Folder>();
 
+            
             // Set a limit which should never be reached of 100 pages of 50
             for (int page = 0; page < 100; page++)
             {
@@ -103,12 +105,13 @@ namespace PanoptoScheduleUploader.Services
                 }
             }
 
+        
             // Filter down to case-invariant exact matches
             result = result.Where(f => String.Equals(f.Name, folderName, StringComparison.InvariantCultureIgnoreCase)).ToList();
             return result;
         }
 
-        private Folder GetFolderById(Guid id)
+        public Folder GetFolderById(Guid id)
         {
             if (!this.folderByIdCache.ContainsKey(id))
             {
@@ -186,11 +189,12 @@ namespace PanoptoScheduleUploader.Services
             return this.sessionManager.GetSessionsById(this.authentication, ids.ToArray());
         }
 
+
         public bool TryGetSessionId(string sessionName, out Guid sessionId)
         {
             sessionId = Guid.NewGuid();
             Pagination pagination = new Pagination { MaxNumberResults = 25, PageNumber = 0 };
-            ListSessionsResponse sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest {  Pagination = pagination }, null);
+            ListSessionsResponse sessions = this.sessionManager.GetSessionsList(this.authentication, new ListSessionsRequest { Pagination = pagination }, null);
 
             Session session = sessions.Results.SingleOrDefault(s => s.Name == sessionName);
 

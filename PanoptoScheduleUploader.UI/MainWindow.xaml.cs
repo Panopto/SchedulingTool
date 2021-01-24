@@ -35,6 +35,7 @@ namespace PanoptoScheduleUploader.UI
         private const string END_TIME = "End Time";
         private const string PRESENTER = "Presenter";
         private const string FOLDER = "Folder";
+        private const string ISWEBCAST = "IsWebcast";
 
         private IEnumerable<Services.SchedulingResult> results = null;
         private Dictionary<Services.SessionManagement.Session, SessionUsage> sessions = null;
@@ -74,7 +75,7 @@ namespace PanoptoScheduleUploader.UI
                     MessageBox.Show("An error occurred. Details: " + ex.Message);
                     fileInput.Text = "";
                 }
-                
+
                 //Set the column widths to make it look prettier 
                 previewGrid.Columns[0].Width = 100;
                 previewGrid.Columns[1].Width = 200;
@@ -82,6 +83,7 @@ namespace PanoptoScheduleUploader.UI
                 previewGrid.Columns[3].Width = 100;
                 previewGrid.Columns[4].Width = 150;
                 previewGrid.Columns[5].Width = 142;
+                previewGrid.Columns[5].Width = 70;
             }
         }
 
@@ -98,6 +100,7 @@ namespace PanoptoScheduleUploader.UI
                 table.Columns.Add(END_TIME);
                 table.Columns.Add(PRESENTER);
                 table.Columns.Add(FOLDER);
+                table.Columns.Add(ISWEBCAST);
 
                 IEnumerable<Recording> recordings = null;
                 if (System.IO.Path.GetExtension(fileName) == ".xml")
@@ -123,6 +126,7 @@ namespace PanoptoScheduleUploader.UI
                     row[PRESENTER] = recording.Presenter;
                     row[FOLDER] = recording.CourseTitle;
                     row[RECORDING_DATE] = recording.RecordingDate;
+                    row[ISWEBCAST] = recording.IsBroadCast.ToString();
                     table.Rows.Add(row);
                 }
             }
@@ -146,7 +150,7 @@ namespace PanoptoScheduleUploader.UI
             var password = passwordInput.Password;
             var filePath = fileInput.Text;
             bool overwrite = chkOverwrite.IsChecked.Value;
-            
+
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(filePath))
             {
@@ -215,7 +219,7 @@ namespace PanoptoScheduleUploader.UI
                         }
 
                         submitButton.IsEnabled = true;
-                    });   
+                    });
                 };
 
                 backgroundWorker.RunWorkerAsync();
