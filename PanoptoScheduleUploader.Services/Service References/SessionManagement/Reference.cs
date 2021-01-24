@@ -92,253 +92,6 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Note", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
-    [System.SerializableAttribute()]
-    public partial class Note : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ChannelField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid CreatorIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid SessionIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TextField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double TimestampField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Channel {
-            get {
-                return this.ChannelField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ChannelField, value) != true)) {
-                    this.ChannelField = value;
-                    this.RaisePropertyChanged("Channel");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid CreatorId {
-            get {
-                return this.CreatorIdField;
-            }
-            set {
-                if ((this.CreatorIdField.Equals(value) != true)) {
-                    this.CreatorIdField = value;
-                    this.RaisePropertyChanged("CreatorId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid SessionID {
-            get {
-                return this.SessionIDField;
-            }
-            set {
-                if ((this.SessionIDField.Equals(value) != true)) {
-                    this.SessionIDField = value;
-                    this.RaisePropertyChanged("SessionID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Text {
-            get {
-                return this.TextField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TextField, value) != true)) {
-                    this.TextField = value;
-                    this.RaisePropertyChanged("Text");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Timestamp {
-            get {
-                return this.TimestampField;
-            }
-            set {
-                if ((this.TimestampField.Equals(value) != true)) {
-                    this.TimestampField = value;
-                    this.RaisePropertyChanged("Timestamp");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Pagination", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
-    [System.SerializableAttribute()]
-    public partial class Pagination : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MaxNumberResultsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageNumberField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MaxNumberResults {
-            get {
-                return this.MaxNumberResultsField;
-            }
-            set {
-                if ((this.MaxNumberResultsField.Equals(value) != true)) {
-                    this.MaxNumberResultsField = value;
-                    this.RaisePropertyChanged("MaxNumberResults");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageNumber {
-            get {
-                return this.PageNumberField;
-            }
-            set {
-                if ((this.PageNumberField.Equals(value) != true)) {
-                    this.PageNumberField = value;
-                    this.RaisePropertyChanged("PageNumber");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ListNotesResponse", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
-    [System.SerializableAttribute()]
-    public partial class ListNotesResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PanoptoScheduleUploader.Services.SessionManagement.Note[] ResultsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalNumberResultsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PanoptoScheduleUploader.Services.SessionManagement.Note[] Results {
-            get {
-                return this.ResultsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResultsField, value) != true)) {
-                    this.ResultsField = value;
-                    this.RaisePropertyChanged("Results");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalNumberResults {
-            get {
-                return this.TotalNumberResultsField;
-            }
-            set {
-                if ((this.TotalNumberResultsField.Equals(value) != true)) {
-                    this.TotalNumberResultsField = value;
-                    this.RaisePropertyChanged("TotalNumberResults");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Folder", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soa" +
         "p")]
     [System.SerializableAttribute()]
@@ -1233,6 +986,67 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Pagination", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class Pagination : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MaxNumberResultsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageNumberField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MaxNumberResults {
+            get {
+                return this.MaxNumberResultsField;
+            }
+            set {
+                if ((this.MaxNumberResultsField.Equals(value) != true)) {
+                    this.MaxNumberResultsField = value;
+                    this.RaisePropertyChanged("MaxNumberResults");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageNumber {
+            get {
+                return this.PageNumberField;
+            }
+            set {
+                if ((this.PageNumberField.Equals(value) != true)) {
+                    this.PageNumberField = value;
+                    this.RaisePropertyChanged("PageNumber");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SessionSortField", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
     public enum SessionSortField : int {
@@ -1251,6 +1065,9 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Relevance = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Order = 5,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1320,28 +1137,116 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
     [System.Runtime.Serialization.DataContractAttribute(Name="ListFoldersRequest", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
     [System.SerializableAttribute()]
     public partial class ListFoldersRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.SessionManagement.Pagination PaginationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ParentFolderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool PublicOnlyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.SessionManagement.FolderSortField SortByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SortIncreasingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool WildcardSearchNameOnlyField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData { get; set; }
-
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public PanoptoScheduleUploader.Services.SessionManagement.Pagination Pagination { get; set; }
-
+        public PanoptoScheduleUploader.Services.SessionManagement.Pagination Pagination {
+            get {
+                return this.PaginationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaginationField, value) != true)) {
+                    this.PaginationField = value;
+                    this.RaisePropertyChanged("Pagination");
+                }
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> ParentFolderId { get; set; }
-
+        public System.Nullable<System.Guid> ParentFolderId {
+            get {
+                return this.ParentFolderIdField;
+            }
+            set {
+                if ((this.ParentFolderIdField.Equals(value) != true)) {
+                    this.ParentFolderIdField = value;
+                    this.RaisePropertyChanged("ParentFolderId");
+                }
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool PublicOnly { get; set; }
-
+        public bool PublicOnly {
+            get {
+                return this.PublicOnlyField;
+            }
+            set {
+                if ((this.PublicOnlyField.Equals(value) != true)) {
+                    this.PublicOnlyField = value;
+                    this.RaisePropertyChanged("PublicOnly");
+                }
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public PanoptoScheduleUploader.Services.SessionManagement.FolderSortField SortBy { get; set; }
-
+        public PanoptoScheduleUploader.Services.SessionManagement.FolderSortField SortBy {
+            get {
+                return this.SortByField;
+            }
+            set {
+                if ((this.SortByField.Equals(value) != true)) {
+                    this.SortByField = value;
+                    this.RaisePropertyChanged("SortBy");
+                }
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool SortIncreasing { get; set; }
-
+        public bool SortIncreasing {
+            get {
+                return this.SortIncreasingField;
+            }
+            set {
+                if ((this.SortIncreasingField.Equals(value) != true)) {
+                    this.SortIncreasingField = value;
+                    this.RaisePropertyChanged("SortIncreasing");
+                }
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool WildcardSearchNameOnly { get; set; }
-
+        public bool WildcardSearchNameOnly {
+            get {
+                return this.WildcardSearchNameOnlyField;
+            }
+            set {
+                if ((this.WildcardSearchNameOnlyField.Equals(value) != true)) {
+                    this.WildcardSearchNameOnlyField = value;
+                    this.RaisePropertyChanged("WildcardSearchNameOnly");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1505,36 +1410,195 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Note", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class Note : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ChannelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid CreatorIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SessionIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double TimestampField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Channel {
+            get {
+                return this.ChannelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ChannelField, value) != true)) {
+                    this.ChannelField = value;
+                    this.RaisePropertyChanged("Channel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid CreatorId {
+            get {
+                return this.CreatorIdField;
+            }
+            set {
+                if ((this.CreatorIdField.Equals(value) != true)) {
+                    this.CreatorIdField = value;
+                    this.RaisePropertyChanged("CreatorId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SessionID {
+            get {
+                return this.SessionIDField;
+            }
+            set {
+                if ((this.SessionIDField.Equals(value) != true)) {
+                    this.SessionIDField = value;
+                    this.RaisePropertyChanged("SessionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Timestamp {
+            get {
+                return this.TimestampField;
+            }
+            set {
+                if ((this.TimestampField.Equals(value) != true)) {
+                    this.TimestampField = value;
+                    this.RaisePropertyChanged("Timestamp");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ListNotesResponse", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class ListNotesResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.SessionManagement.Note[] ResultsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalNumberResultsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.SessionManagement.Note[] Results {
+            get {
+                return this.ResultsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultsField, value) != true)) {
+                    this.ResultsField = value;
+                    this.RaisePropertyChanged("Results");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalNumberResults {
+            get {
+                return this.TotalNumberResultsField;
+            }
+            set {
+                if ((this.TotalNumberResultsField.Equals(value) != true)) {
+                    this.TotalNumberResultsField = value;
+                    this.RaisePropertyChanged("TotalNumberResults");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SessionManagement.ISessionManagement")]
     public interface ISessionManagement {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/DeleteNote", ReplyAction="http://tempuri.org/ISessionManagement/DeleteNoteResponse")]
-        void DeleteNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/GetNote", ReplyAction="http://tempuri.org/ISessionManagement/GetNoteResponse")]
-        PanoptoScheduleUploader.Services.SessionManagement.Note GetNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/ListNotes", ReplyAction="http://tempuri.org/ISessionManagement/ListNotesResponse")]
-        PanoptoScheduleUploader.Services.SessionManagement.ListNotesResponse ListNotes(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.SessionManagement.Pagination pagination, System.Nullable<System.Guid> creatorId, string channel, string searchQuery);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/AreUsersNotesPublic", ReplyAction="http://tempuri.org/ISessionManagement/AreUsersNotesPublicResponse")]
-        bool AreUsersNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid userId, System.Guid sessionId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/SetNotesPublic", ReplyAction="http://tempuri.org/ISessionManagement/SetNotesPublicResponse")]
-        void SetNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, bool areNotesPublic);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/IsDropbox", ReplyAction="http://tempuri.org/ISessionManagement/IsDropboxResponse")]
-        bool IsDropbox(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid folderId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTime", ReplyAction="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTimeResponse")]
-        void CreateCaptionByRelativeTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, double timestamp);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTime", ReplyAction="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTimeResponse")]
-        void CreateCaptionByAbsoluteTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, System.DateTime timestamp);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/UploadTranscript", ReplyAction="http://tempuri.org/ISessionManagement/UploadTranscriptResponse")]
-        void UploadTranscript(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string file);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/AddFolder", ReplyAction="http://tempuri.org/ISessionManagement/AddFolderResponse")]
         PanoptoScheduleUploader.Services.SessionManagement.Folder AddFolder(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, string name, System.Nullable<System.Guid> parentFolder, bool isPublic);
@@ -1547,6 +1611,9 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/GetFoldersByExternalId", ReplyAction="http://tempuri.org/ISessionManagement/GetFoldersByExternalIdResponse")]
         PanoptoScheduleUploader.Services.SessionManagement.Folder[] GetFoldersByExternalId(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, string[] folderExternalIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/GetAllFoldersByExternalId", ReplyAction="http://tempuri.org/ISessionManagement/GetAllFoldersByExternalIdResponse")]
+        PanoptoScheduleUploader.Services.SessionManagement.Folder[] GetAllFoldersByExternalId(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, string[] folderExternalIds, string[] providerNames);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/GetSessionsById", ReplyAction="http://tempuri.org/ISessionManagement/GetSessionsByIdResponse")]
         PanoptoScheduleUploader.Services.SessionManagement.Session[] GetSessionsById(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid[] sessionIds);
@@ -1568,6 +1635,9 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/UpdateSessionIsBroadcast", ReplyAction="http://tempuri.org/ISessionManagement/UpdateSessionIsBroadcastResponse")]
         void UpdateSessionIsBroadcast(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, bool isBroadcast);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/UpdateSessionOwner", ReplyAction="http://tempuri.org/ISessionManagement/UpdateSessionOwnerResponse")]
+        void UpdateSessionOwner(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid[] sessionIds, string newOwnerUserKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/MoveSessions", ReplyAction="http://tempuri.org/ISessionManagement/MoveSessionsResponse")]
         void MoveSessions(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid[] sessionIds, System.Guid folderId);
@@ -1619,6 +1689,33 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/EditNote", ReplyAction="http://tempuri.org/ISessionManagement/EditNoteResponse")]
         void EditNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId, string newText);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/DeleteNote", ReplyAction="http://tempuri.org/ISessionManagement/DeleteNoteResponse")]
+        void DeleteNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/GetNote", ReplyAction="http://tempuri.org/ISessionManagement/GetNoteResponse")]
+        PanoptoScheduleUploader.Services.SessionManagement.Note GetNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/ListNotes", ReplyAction="http://tempuri.org/ISessionManagement/ListNotesResponse")]
+        PanoptoScheduleUploader.Services.SessionManagement.ListNotesResponse ListNotes(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.SessionManagement.Pagination pagination, System.Nullable<System.Guid> creatorId, string channel, string searchQuery);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/AreUsersNotesPublic", ReplyAction="http://tempuri.org/ISessionManagement/AreUsersNotesPublicResponse")]
+        bool AreUsersNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid userId, System.Guid sessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/SetNotesPublic", ReplyAction="http://tempuri.org/ISessionManagement/SetNotesPublicResponse")]
+        void SetNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, bool areNotesPublic);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/IsDropbox", ReplyAction="http://tempuri.org/ISessionManagement/IsDropboxResponse")]
+        bool IsDropbox(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid folderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTime", ReplyAction="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTimeResponse")]
+        void CreateCaptionByRelativeTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, double timestamp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTime", ReplyAction="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTimeResponse")]
+        void CreateCaptionByAbsoluteTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, System.DateTime timestamp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionManagement/UploadTranscript", ReplyAction="http://tempuri.org/ISessionManagement/UploadTranscriptResponse")]
+        void UploadTranscript(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string file);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1648,42 +1745,6 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
                 base(binding, remoteAddress) {
         }
         
-        public void DeleteNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId) {
-            base.Channel.DeleteNote(auth, noteId, sessionId);
-        }
-        
-        public PanoptoScheduleUploader.Services.SessionManagement.Note GetNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId) {
-            return base.Channel.GetNote(auth, noteId, sessionId);
-        }
-        
-        public PanoptoScheduleUploader.Services.SessionManagement.ListNotesResponse ListNotes(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.SessionManagement.Pagination pagination, System.Nullable<System.Guid> creatorId, string channel, string searchQuery) {
-            return base.Channel.ListNotes(auth, sessionId, pagination, creatorId, channel, searchQuery);
-        }
-        
-        public bool AreUsersNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid userId, System.Guid sessionId) {
-            return base.Channel.AreUsersNotesPublic(auth, userId, sessionId);
-        }
-        
-        public void SetNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, bool areNotesPublic) {
-            base.Channel.SetNotesPublic(auth, sessionId, areNotesPublic);
-        }
-        
-        public bool IsDropbox(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid folderId) {
-            return base.Channel.IsDropbox(auth, folderId);
-        }
-        
-        public void CreateCaptionByRelativeTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, double timestamp) {
-            base.Channel.CreateCaptionByRelativeTime(auth, sessionId, text, timestamp);
-        }
-        
-        public void CreateCaptionByAbsoluteTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, System.DateTime timestamp) {
-            base.Channel.CreateCaptionByAbsoluteTime(auth, sessionId, text, timestamp);
-        }
-        
-        public void UploadTranscript(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string file) {
-            base.Channel.UploadTranscript(auth, sessionId, file);
-        }
-        
         public PanoptoScheduleUploader.Services.SessionManagement.Folder AddFolder(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, string name, System.Nullable<System.Guid> parentFolder, bool isPublic) {
             return base.Channel.AddFolder(auth, name, parentFolder, isPublic);
         }
@@ -1698,6 +1759,10 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         public PanoptoScheduleUploader.Services.SessionManagement.Folder[] GetFoldersByExternalId(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, string[] folderExternalIds) {
             return base.Channel.GetFoldersByExternalId(auth, folderExternalIds);
+        }
+        
+        public PanoptoScheduleUploader.Services.SessionManagement.Folder[] GetAllFoldersByExternalId(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, string[] folderExternalIds, string[] providerNames) {
+            return base.Channel.GetAllFoldersByExternalId(auth, folderExternalIds, providerNames);
         }
         
         public PanoptoScheduleUploader.Services.SessionManagement.Session[] GetSessionsById(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid[] sessionIds) {
@@ -1726,6 +1791,10 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         public void UpdateSessionIsBroadcast(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, bool isBroadcast) {
             base.Channel.UpdateSessionIsBroadcast(auth, sessionId, isBroadcast);
+        }
+        
+        public void UpdateSessionOwner(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid[] sessionIds, string newOwnerUserKey) {
+            base.Channel.UpdateSessionOwner(auth, sessionIds, newOwnerUserKey);
         }
         
         public void MoveSessions(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid[] sessionIds, System.Guid folderId) {
@@ -1794,6 +1863,42 @@ namespace PanoptoScheduleUploader.Services.SessionManagement {
         
         public void EditNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId, string newText) {
             base.Channel.EditNote(auth, noteId, sessionId, newText);
+        }
+        
+        public void DeleteNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId) {
+            base.Channel.DeleteNote(auth, noteId, sessionId);
+        }
+        
+        public PanoptoScheduleUploader.Services.SessionManagement.Note GetNote(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid noteId, System.Guid sessionId) {
+            return base.Channel.GetNote(auth, noteId, sessionId);
+        }
+        
+        public PanoptoScheduleUploader.Services.SessionManagement.ListNotesResponse ListNotes(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.SessionManagement.Pagination pagination, System.Nullable<System.Guid> creatorId, string channel, string searchQuery) {
+            return base.Channel.ListNotes(auth, sessionId, pagination, creatorId, channel, searchQuery);
+        }
+        
+        public bool AreUsersNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid userId, System.Guid sessionId) {
+            return base.Channel.AreUsersNotesPublic(auth, userId, sessionId);
+        }
+        
+        public void SetNotesPublic(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, bool areNotesPublic) {
+            base.Channel.SetNotesPublic(auth, sessionId, areNotesPublic);
+        }
+        
+        public bool IsDropbox(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid folderId) {
+            return base.Channel.IsDropbox(auth, folderId);
+        }
+        
+        public void CreateCaptionByRelativeTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, double timestamp) {
+            base.Channel.CreateCaptionByRelativeTime(auth, sessionId, text, timestamp);
+        }
+        
+        public void CreateCaptionByAbsoluteTime(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string text, System.DateTime timestamp) {
+            base.Channel.CreateCaptionByAbsoluteTime(auth, sessionId, text, timestamp);
+        }
+        
+        public void UploadTranscript(PanoptoScheduleUploader.Services.SessionManagement.AuthenticationInfo auth, System.Guid sessionId, string file) {
+            base.Channel.UploadTranscript(auth, sessionId, file);
         }
     }
 }

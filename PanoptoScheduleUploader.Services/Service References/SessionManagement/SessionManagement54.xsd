@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="AuthenticationInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
@@ -9,37 +9,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AuthenticationInfo" nillable="true" type="tns:AuthenticationInfo" />
-  <xs:complexType name="Note">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CreatorId" type="ser:guid" />
-      <xs:element minOccurs="0" name="ID" type="ser:guid" />
-      <xs:element minOccurs="0" name="SessionID" type="ser:guid" />
-      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Timestamp" type="xs:double" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Note" nillable="true" type="tns:Note" />
-  <xs:complexType name="Pagination">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="MaxNumberResults" type="xs:int" />
-      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Pagination" nillable="true" type="tns:Pagination" />
-  <xs:complexType name="ListNotesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfNote" />
-      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ListNotesResponse" nillable="true" type="tns:ListNotesResponse" />
-  <xs:complexType name="ArrayOfNote">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Note" nillable="true" type="tns:Note" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfNote" nillable="true" type="tns:ArrayOfNote" />
   <xs:simpleType name="SessionState">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Created" />
@@ -64,6 +33,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ListSessionsRequest" nillable="true" type="tns:ListSessionsRequest" />
+  <xs:complexType name="Pagination">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxNumberResults" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pagination" nillable="true" type="tns:Pagination" />
   <xs:simpleType name="SessionSortField">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Name" />
@@ -71,6 +47,7 @@
       <xs:enumeration value="Duration" />
       <xs:enumeration value="State" />
       <xs:enumeration value="Relevance" />
+      <xs:enumeration value="Order" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="SessionSortField" nillable="true" type="tns:SessionSortField" />
@@ -87,6 +64,7 @@
       <xs:element minOccurs="0" name="PublicOnly" type="xs:boolean" />
       <xs:element minOccurs="0" name="SortBy" type="tns:FolderSortField" />
       <xs:element minOccurs="0" name="SortIncreasing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="WildcardSearchNameOnly" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ListFoldersRequest" nillable="true" type="tns:ListFoldersRequest" />
@@ -106,4 +84,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RecorderDownloadUrlResponse" nillable="true" type="tns:RecorderDownloadUrlResponse" />
+  <xs:complexType name="Note">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatorId" type="ser:guid" />
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="SessionID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Note" nillable="true" type="tns:Note" />
+  <xs:complexType name="ListNotesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfNote" />
+      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListNotesResponse" nillable="true" type="tns:ListNotesResponse" />
+  <xs:complexType name="ArrayOfNote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Note" nillable="true" type="tns:Note" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNote" nillable="true" type="tns:ArrayOfNote" />
 </xs:schema>

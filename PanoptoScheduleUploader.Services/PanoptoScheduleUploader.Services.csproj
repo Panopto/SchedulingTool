@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PanoptoScheduleUploader.Services</RootNamespace>
     <AssemblyName>PanoptoScheduleUploader.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -141,20 +141,20 @@
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.Session.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement.wsdl" />
-    <None Include="Service References\SessionManagement\SessionManagement.xsd">
+    <None Include="Service References\SessionManagement\SessionManagement1.wsdl" />
+    <None Include="Service References\SessionManagement\SessionManagement5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement1.xsd">
+    <None Include="Service References\SessionManagement\SessionManagement51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement2.xsd">
+    <None Include="Service References\SessionManagement\SessionManagement52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement3.xsd">
+    <None Include="Service References\SessionManagement\SessionManagement53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement4.xsd">
+    <None Include="Service References\SessionManagement\SessionManagement54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse.datasource">
@@ -221,9 +221,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SessionManagement\SessionManagement.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\SessionManagement\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +266,9 @@
     <EmbeddedResource Include="FolderChooser.resx">
       <DependentUpon>FolderChooser.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SessionManagement\SessionManagement1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
