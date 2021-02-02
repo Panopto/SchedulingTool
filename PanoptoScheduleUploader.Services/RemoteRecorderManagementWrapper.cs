@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using PanoptoScheduleUploader.Services.RemoteRecorderManagement;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.ServiceModel;
 using System.Configuration;
+using System.Diagnostics;
+using System.ServiceModel;
+
+using PanoptoScheduleUploader.Services.RemoteRecorderManagement;
 
 namespace PanoptoScheduleUploader.Services
 {
@@ -16,6 +14,8 @@ namespace PanoptoScheduleUploader.Services
 
         private AuthenticationInfo authenticationInfo;
         private string dateTimeFormat;
+        private Dictionary<string, RemoteRecorder> recorders;
+        private object lockRecorders = new object();
 
         // RemoteRecorderManagement.ListRecorders() (Gets the list of all recorders and allows filtering by recorder name.)
         // RemoteRecorderManagement.ScheduleRecording() (Creates a new recording on a particular remote recorder.)
@@ -46,11 +46,8 @@ namespace PanoptoScheduleUploader.Services
         {
             try
             {
-                var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
-                var recorderListResponse = this.remoteRecorderManager.ListRecorders(this.authenticationInfo, pagination, RecorderSortField.Name);
-                var recorder = recorderListResponse.PagedResults.FirstOrDefault(a => a.Name == name);
-
-                if (recorder == null)
+                this.EnsureRecorders();
+                if (!this.recorders.TryGetValue(name, out RemoteRecorder recorder))
                 {
                     return null;
                 }
@@ -65,12 +62,9 @@ namespace PanoptoScheduleUploader.Services
 
         public Guid[] GetSessionsByRecorderName(string name)
         {
-            var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
-            var recorderListResponse = this.remoteRecorderManager.ListRecorders(this.authenticationInfo, pagination, RecorderSortField.Name);
-            var recorder = recorderListResponse.PagedResults.FirstOrDefault(a => a.Name == name);
-
-            if (recorder == null)
-            {
+            this.EnsureRecorders();
+            if (!this.recorders.TryGetValue(name, out RemoteRecorder recorder))
+            { 
                 return null;
             }
 
@@ -84,6 +78,57 @@ namespace PanoptoScheduleUploader.Services
             return sessions.ToArray();
         }
 
+        private void EnsureRecorders()
+        {
+            lock(this.lockRecorders)
+            {
+                if (this.recorders == null)
+                {
+                    this.recorders = new Dictionary<string, RemoteRecorder>();
+
+                    int retryCount = 0;
+                    for (int pageNumber = 0; ; pageNumber++)
+                    {
+                        try
+                        {
+                            var response = this.remoteRecorderManager.ListRecorders(
+                                this.authenticationInfo,
+                                new Pagination
+                                {
+                                    MaxNumberResults = 30,
+                                    PageNumber = pageNumber
+                                },
+                                RecorderSortField.Name
+                            );
+
+                            if (response.PagedResults.Count > 0)
+                            {
+                                foreach (RemoteRecorder recorder in response.PagedResults)
+                                {
+                                    this.recorders[recorder.Name] = recorder;
+                                }
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        catch (ProtocolException e)
+                        {
+                            Trace.WriteLine($"ListRecorders threw: {e}");
+                            retryCount++;
+                            if (retryCount > 10)
+                            {
+                                break;
+                            }
+
+                            Trace.WriteLine($"Retrying {retryCount} times.");
+                            pageNumber--;
+                        }
+                    }
+                }
+            }
+        }
 
         public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings, bool overwritten)
         {
