@@ -24,3 +24,6 @@ C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj
 C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csproj.CoreCompileInputs.cache
 C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.dll
 C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.pdb
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\bin\Debug\log4net.dll
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\bin\Debug\log4net.xml
+C:\Users\jchan\source\repos\SchedulingTool5\PanoptoScheduleUploader.Services\obj\Debug\PanoptoScheduleUploader.Services.csproj.CopyComplete

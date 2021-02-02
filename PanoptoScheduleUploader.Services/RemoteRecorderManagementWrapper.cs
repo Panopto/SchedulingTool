@@ -10,8 +10,10 @@ using System.Configuration;
 
 namespace PanoptoScheduleUploader.Services
 {
+
     public class RemoteRecorderManagementWrapper : IDisposable
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private RemoteRecorderManagementClient remoteRecorderManager;
 
         private AuthenticationInfo authenticationInfo;
@@ -42,20 +44,30 @@ namespace PanoptoScheduleUploader.Services
             this.dateTimeFormat = ConfigurationManager.AppSettings["dateTimeFormat"] ?? "dd-MMM-yyyy hh:mm tt";
         }
 
-        public RecorderSettings GetSettingsByRecorderName(string name)
+        public List<RemoteRecorder> GetSettingsByRecorderName()
         {
             try
             {
+                List<RemoteRecorder> remoteRecorders = new List<RemoteRecorder>();
+                bool lastPage = false;
+                int resultsPerPage = 30;
+                int page = 0;
+                while (!lastPage)
+                { 
                 var pagination = new Pagination { MaxNumberResults = int.MaxValue, PageNumber = 0 };
                 var recorderListResponse = this.remoteRecorderManager.ListRecorders(this.authenticationInfo, pagination, RecorderSortField.Name);
-                var recorder = recorderListResponse.PagedResults.FirstOrDefault(a => a.Name == name);
+                    if (resultsPerPage * (page + 1) >= recorderListResponse.TotalResultCount)
+                    {
+                        lastPage = true;
 
-                if (recorder == null)
-                {
-                    return null;
-                }
+                    }
+                    if (recorderListResponse.PagedResults.Count > 0)
+                    {
+                        remoteRecorders.AddRange(recorderListResponse.PagedResults);
+                    }
 
-                return new RecorderSettings { RecorderId = recorder.Id };
+                    }
+                return remoteRecorders ;
             }
             catch (Exception)
             {
@@ -85,25 +97,43 @@ namespace PanoptoScheduleUploader.Services
         }
 
 
-        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings, bool overwritten)
+        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings, bool overwrite, string username, string password)
         {
+
             if (!folderId.Equals(Guid.Empty))
             {
                 ScheduledRecordingResult result = null;
+                Guid overwrittensessionid = Guid.Empty;
+                bool overwritten = false;
 
                 bool retry = true;
                 int attemptCount = 0;
-                while (retry)
+                while (retry && attemptCount < 10)
                 {
                     try
                     {
+                       
                         result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, isBroadcast, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
+                        if (result.ConflictsExist == true && overwrite == true)
+                        {
+                            using (var sessionManager = new SessionManagementWrapper(username, password))
+                            {
+                                foreach (ScheduledRecordingInfo scheduledRecordingInfo in result.ConflictingSessions)
+                                {
+                                    sessionManager.DeleteSessions(new Guid[] { scheduledRecordingInfo.SessionID });
+                                    result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, isBroadcast, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
+                                    overwrittensessionid = scheduledRecordingInfo.SessionID;
+                                    overwritten = true;
+                                }
+                            }
+                          
+                        }
                         retry = false;
                     }
                     catch (FaultException e)
                     {
                         // only retry the call if it's possible this was a transient error (ie, a deadlock)
-                        retry &= (e.Message == "An error occurred. See server logs for details") && (attemptCount < 3);
+                        retry &= (e.Message == "An error occurred. See server logs for details") && (attemptCount < 10);
                         if (retry)
                         {
                             // sleep for a bit before retrying
@@ -121,12 +151,17 @@ namespace PanoptoScheduleUploader.Services
                 if (result.ConflictsExist)
                 {
                     return new SchedulingResult(false, string.Format("Unable to schedule recording {0} between {1} and {2} due to schedule conflicts.",
-                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat)), Guid.Empty);
+                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat)), Guid.Empty, result.ConflictingSessions[0].SessionID.ToString());
+
                 }
+
+            
                 else
                 {
-                    return new SchedulingResult(string.Format("Recording {0} was scheduled between {1} and {2}{3}",
-                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat), overwritten ? ", overwriting a previously scheduled recording." : "."), result.SessionIDs[0]);
+                    
+
+                    return new SchedulingResult(true, string.Format("Recording {0} was scheduled between {1} and {2}{3}",
+                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat), overwritten ? $", overwriting a previously scheduled recording {overwrittensessionid}." : "."), result.SessionIDs[0],overwrittensessionid.ToString());
                 }
             }
             else
