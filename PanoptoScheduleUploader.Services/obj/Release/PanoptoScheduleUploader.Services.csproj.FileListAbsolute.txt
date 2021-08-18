@@ -14,3 +14,12 @@ C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Services\obj\
 C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.csproj.CoreCompileInputs.cache
 C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.dll
 C:\Users\jchan\Source\Repos\SchedulingTool\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.pdb
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.dll.config
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.dll
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\bin\Release\PanoptoScheduleUploader.Services.pdb
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.csprojAssemblyReference.cache
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.FolderChooser.resources
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.csproj.GenerateResource.cache
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.csproj.CoreCompileInputs.cache
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.dll
+C:\Users\jchan\Source\Repos\SchedulingTool3\PanoptoScheduleUploader.Services\obj\Release\PanoptoScheduleUploader.Services.pdb
