@@ -1,83 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
-  <xs:complexType name="Folder">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AllowPublicNotes" type="xs:boolean" />
-      <xs:element minOccurs="0" name="AllowSessionDownload" type="xs:boolean" />
-      <xs:element minOccurs="0" name="AudioPodcastITunesUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AudioRssUrl" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ChildFolders" nillable="true" type="q1:ArrayOfguid" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EnablePodcast" type="xs:boolean" />
-      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="IsPublic" type="xs:boolean" />
-      <xs:element minOccurs="0" name="ListUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ParentFolder" nillable="true" type="ser:guid" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Presenters" nillable="true" type="q2:ArrayOfstring" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Sessions" nillable="true" type="q3:ArrayOfguid" />
-      <xs:element minOccurs="0" name="SettingsUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="VideoPodcastITunesUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="VideoRssUrl" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Folder" nillable="true" type="tns:Folder" />
-  <xs:complexType name="Session">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CreatorId" type="ser:guid" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="EditorUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FolderId" type="ser:guid" />
-      <xs:element minOccurs="0" name="FolderName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="IosVideoUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsBroadcast" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsDownloadable" type="xs:boolean" />
-      <xs:element minOccurs="0" name="MP3Url" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="MP4Url" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NotesURL" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OutputsPageUrl" nillable="true" type="xs:string" />
-      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RemoteRecorderIds" nillable="true" type="q4:ArrayOfguid" />
-      <xs:element minOccurs="0" name="SharePageUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:dateTime" />
-      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="State" type="q5:SessionState" />
-      <xs:element minOccurs="0" name="StatusMessage" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ThumbUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ViewerUrl" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Session" nillable="true" type="tns:Session" />
-  <xs:complexType name="ArrayOfFolder">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Folder" nillable="true" type="tns:Folder" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFolder" nillable="true" type="tns:ArrayOfFolder" />
-  <xs:complexType name="ArrayOfSession">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Session" nillable="true" type="tns:Session" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfSession" nillable="true" type="tns:ArrayOfSession" />
-  <xs:complexType name="ListSessionsResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfSession" />
-      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ListSessionsResponse" nillable="true" type="tns:ListSessionsResponse" />
-  <xs:complexType name="ListFoldersResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfFolder" />
-      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ListFoldersResponse" nillable="true" type="tns:ListFoldersResponse" />
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="anyType" nillable="true" type="xs:anyType" />
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+  <xs:element name="boolean" nillable="true" type="xs:boolean" />
+  <xs:element name="byte" nillable="true" type="xs:byte" />
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+  <xs:element name="decimal" nillable="true" type="xs:decimal" />
+  <xs:element name="double" nillable="true" type="xs:double" />
+  <xs:element name="float" nillable="true" type="xs:float" />
+  <xs:element name="int" nillable="true" type="xs:int" />
+  <xs:element name="long" nillable="true" type="xs:long" />
+  <xs:element name="QName" nillable="true" type="xs:QName" />
+  <xs:element name="short" nillable="true" type="xs:short" />
+  <xs:element name="string" nillable="true" type="xs:string" />
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+  <xs:element name="char" nillable="true" type="tns:char" />
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration" />
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid" />
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName" />
+  <xs:attribute name="Id" type="xs:ID" />
+  <xs:attribute name="Ref" type="xs:IDREF" />
 </xs:schema>

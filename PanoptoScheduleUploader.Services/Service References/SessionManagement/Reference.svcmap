@@ -18,16 +18,19 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://10.40.18.73/Panopto/publicapi/4.2/SessionManagement.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SessionManagement.xsd" MetadataType="Schema" ID="294de443-463d-42a5-841c-680673d5d210" SourceId="1" SourceUrl="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd0" />
-    <MetadataFile FileName="SessionManagement1.xsd" MetadataType="Schema" ID="f3dd9a09-bc81-49b3-9f5b-0a8a89a57128" SourceId="1" SourceUrl="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd1" />
-    <MetadataFile FileName="SessionManagement2.xsd" MetadataType="Schema" ID="4457262d-8dd7-4d09-a296-675163108c05" SourceId="1" SourceUrl="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd4" />
-    <MetadataFile FileName="SessionManagement3.xsd" MetadataType="Schema" ID="d09e5c3c-3022-43a6-83f5-712d84a1430e" SourceId="1" SourceUrl="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd2" />
-    <MetadataFile FileName="SessionManagement.disco" MetadataType="Disco" ID="af266629-9412-4b7e-9198-d9451c26c515" SourceId="1" SourceUrl="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?disco" />
-    <MetadataFile FileName="SessionManagement.wsdl" MetadataType="Wsdl" ID="8939a970-e5d7-479f-b561-d8754c3312ff" SourceId="1" SourceUrl="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?wsdl" />
-    <MetadataFile FileName="SessionManagement4.xsd" MetadataType="Schema" ID="4ae49040-d8c5-4848-8130-38b65515d1ba" SourceId="1" SourceUrl="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd3" />
+    <MetadataFile FileName="SessionManagement.xsd" MetadataType="Schema" ID="e3306063-0c50-40d5-8190-b83f3ccb4f6a" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd5" />
+    <MetadataFile FileName="SessionManagement1.xsd" MetadataType="Schema" ID="741ebe84-2159-4248-8fa5-bd33e458b9df" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd3" />
+    <MetadataFile FileName="SessionManagement.disco" MetadataType="Disco" ID="1e3fb761-1f39-4a7c-ac1b-9ac75132aeaa" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?disco" />
+    <MetadataFile FileName="SessionManagement2.xsd" MetadataType="Schema" ID="16a17df2-899d-4e13-ba74-97032398cc86" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd4" />
+    <MetadataFile FileName="SessionManagement.wsdl" MetadataType="Wsdl" ID="a6d42912-6125-45ad-b479-49773eda3f89" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?wsdl" />
+    <MetadataFile FileName="SessionManagement3.xsd" MetadataType="Schema" ID="f5a3248c-99f8-4224-ad4f-55fee6d38ae5" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd2" />
+    <MetadataFile FileName="SessionManagement4.xsd" MetadataType="Schema" ID="5fe3a363-fd09-4ad2-a3b8-bb4e79207df6" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd1" />
+    <MetadataFile FileName="SessionManagement5.xsd" MetadataType="Schema" ID="5a1af275-0158-418e-a6c7-54714f3ddaf8" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd0" />
+    <MetadataFile FileName="SessionManagement6.xsd" MetadataType="Schema" ID="f6d36ab7-7259-4085-afd8-7e6fb11ed924" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd7" />
+    <MetadataFile FileName="SessionManagement7.xsd" MetadataType="Schema" ID="cfacb7b8-3ddb-4486-8caf-bab84ba1f632" SourceId="1" SourceUrl="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd6" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -123,10 +123,22 @@
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.Folder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.FoldersWithAvailabilitySettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.FolderWithExternalContext.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListFoldersResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListFoldersResponseWithExternalContext.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListNotesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListSessionRTMPStreamKeysResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListSessionsResponse.datasource">
@@ -139,6 +151,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.Session.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.SessionsWithAvailabilitySettings.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SessionManagement\SessionManagement.wsdl" />
@@ -155,6 +170,15 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SessionManagement\SessionManagement4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement7.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse.datasource">
@@ -221,9 +245,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SessionManagement\SessionManagement.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\SessionManagement\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +290,9 @@
     <EmbeddedResource Include="FolderChooser.resx">
       <DependentUpon>FolderChooser.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SessionManagement\SessionManagement.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

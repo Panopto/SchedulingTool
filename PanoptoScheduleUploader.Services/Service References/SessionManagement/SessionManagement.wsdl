@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SessionManagement" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SessionManagement" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsp:Policy wsu:Id="BasicHttpBinding_ISessionManagement_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -27,67 +27,16 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
-      <xsd:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" />
-      <xsd:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V46.Soap" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Panopto.Data.Server.Services.PublicAPI.V46" />
+      <xsd:import schemaLocation="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ISessionManagement_DeleteNote_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteNote" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_DeleteNote_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteNoteResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_GetNote_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetNote" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_GetNote_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetNoteResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_ListNotes_InputMessage">
-    <wsdl:part name="parameters" element="tns:ListNotes" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_ListNotes_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ListNotesResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_AreUsersNotesPublic_InputMessage">
-    <wsdl:part name="parameters" element="tns:AreUsersNotesPublic" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_AreUsersNotesPublic_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AreUsersNotesPublicResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_SetNotesPublic_InputMessage">
-    <wsdl:part name="parameters" element="tns:SetNotesPublic" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_SetNotesPublic_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SetNotesPublicResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_IsDropbox_InputMessage">
-    <wsdl:part name="parameters" element="tns:IsDropbox" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_IsDropbox_OutputMessage">
-    <wsdl:part name="parameters" element="tns:IsDropboxResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_CreateCaptionByRelativeTime_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateCaptionByRelativeTime" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_CreateCaptionByRelativeTime_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateCaptionByRelativeTimeResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_CreateCaptionByAbsoluteTime_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateCaptionByAbsoluteTime" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_CreateCaptionByAbsoluteTime_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateCaptionByAbsoluteTimeResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_UploadTranscript_InputMessage">
-    <wsdl:part name="parameters" element="tns:UploadTranscript" />
-  </wsdl:message>
-  <wsdl:message name="ISessionManagement_UploadTranscript_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UploadTranscriptResponse" />
-  </wsdl:message>
   <wsdl:message name="ISessionManagement_AddFolder_InputMessage">
     <wsdl:part name="parameters" element="tns:AddFolder" />
   </wsdl:message>
@@ -106,11 +55,35 @@
   <wsdl:message name="ISessionManagement_GetFoldersById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFoldersByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersWithExternalContextById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersWithExternalContextById" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersWithExternalContextById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersWithExternalContextByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="ISessionManagement_GetFoldersByExternalId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFoldersByExternalId" />
   </wsdl:message>
   <wsdl:message name="ISessionManagement_GetFoldersByExternalId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFoldersByExternalIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersWithExternalContextByExternalId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersWithExternalContextByExternalId" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersWithExternalContextByExternalId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersWithExternalContextByExternalIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetAllFoldersByExternalId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFoldersByExternalId" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetAllFoldersByExternalId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFoldersByExternalIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetAllFoldersWithExternalContextByExternalId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFoldersWithExternalContextByExternalId" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetAllFoldersWithExternalContextByExternalId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFoldersWithExternalContextByExternalIdResponse" />
   </wsdl:message>
   <wsdl:message name="ISessionManagement_GetSessionsById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSessionsById" />
@@ -136,6 +109,24 @@
   <wsdl:message name="ISessionManagement_GetFoldersList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFoldersListResponse" />
   </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersWithExternalContextList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersWithExternalContextList" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersWithExternalContextList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersWithExternalContextListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetCreatorFoldersList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCreatorFoldersList" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetCreatorFoldersList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCreatorFoldersListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetCreatorFoldersWithExternalContextList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCreatorFoldersWithExternalContextList" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetCreatorFoldersWithExternalContextList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCreatorFoldersWithExternalContextListResponse" />
+  </wsdl:message>
   <wsdl:message name="ISessionManagement_UpdateSessionName_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateSessionName" />
   </wsdl:message>
@@ -153,6 +144,48 @@
   </wsdl:message>
   <wsdl:message name="ISessionManagement_UpdateSessionIsBroadcast_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateSessionIsBroadcastResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionSetPanoptoBroadcast_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionSetPanoptoBroadcast" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionSetPanoptoBroadcast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionSetPanoptoBroadcastResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionSetRTMPBroadcast_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionSetRTMPBroadcast" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionSetRTMPBroadcast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionSetRTMPBroadcastResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionCreateRTMPStreams_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionCreateRTMPStreams" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionCreateRTMPStreams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionCreateRTMPStreamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionUpdateRTMPStreamTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionUpdateRTMPStreamTypes" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionUpdateRTMPStreamTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionUpdateRTMPStreamTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemandResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ListSessionRTMPStreamKeys_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListSessionRTMPStreamKeys" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ListSessionRTMPStreamKeys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListSessionRTMPStreamKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionOwner_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionOwner" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionOwner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionOwnerResponse" />
   </wsdl:message>
   <wsdl:message name="ISessionManagement_MoveSessions_InputMessage">
     <wsdl:part name="parameters" element="tns:MoveSessions" />
@@ -208,6 +241,12 @@
   <wsdl:message name="ISessionManagement_UpdateFolderExternalId_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateFolderExternalIdResponse" />
   </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateFolderExternalIdWithProvider_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFolderExternalIdWithProvider" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateFolderExternalIdWithProvider_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFolderExternalIdWithProviderResponse" />
+  </wsdl:message>
   <wsdl:message name="ISessionManagement_DeleteSessions_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteSessions" />
   </wsdl:message>
@@ -226,11 +265,41 @@
   <wsdl:message name="ISessionManagement_ProvisionExternalCourse_OutputMessage">
     <wsdl:part name="parameters" element="tns:ProvisionExternalCourseResponse" />
   </wsdl:message>
+  <wsdl:message name="ISessionManagement_EnsureExternalHierarchyBranch_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnsureExternalHierarchyBranch" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_EnsureExternalHierarchyBranch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnsureExternalHierarchyBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ProvisionExternalCourseWithRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProvisionExternalCourseWithRoles" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ProvisionExternalCourseWithRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProvisionExternalCourseWithRolesResponse" />
+  </wsdl:message>
   <wsdl:message name="ISessionManagement_SetExternalCourseAccess_InputMessage">
     <wsdl:part name="parameters" element="tns:SetExternalCourseAccess" />
   </wsdl:message>
   <wsdl:message name="ISessionManagement_SetExternalCourseAccess_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetExternalCourseAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetExternalCourseAccessForRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetExternalCourseAccessForRoles" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetExternalCourseAccessForRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetExternalCourseAccessForRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetCopiedExternalCourseAccess_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetCopiedExternalCourseAccess" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetCopiedExternalCourseAccess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetCopiedExternalCourseAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetCopiedExternalCourseAccessForRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetCopiedExternalCourseAccessForRoles" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetCopiedExternalCourseAccessForRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetCopiedExternalCourseAccessForRolesResponse" />
   </wsdl:message>
   <wsdl:message name="ISessionManagement_GetRecorderDownloadUrls_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRecorderDownloadUrls" />
@@ -256,43 +325,121 @@
   <wsdl:message name="ISessionManagement_EditNote_OutputMessage">
     <wsdl:part name="parameters" element="tns:EditNoteResponse" />
   </wsdl:message>
+  <wsdl:message name="ISessionManagement_DeleteNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNote" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_DeleteNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNote" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ListNotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListNotes" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ListNotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListNotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_AreUsersNotesPublic_InputMessage">
+    <wsdl:part name="parameters" element="tns:AreUsersNotesPublic" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_AreUsersNotesPublic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AreUsersNotesPublicResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetNotesPublic_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetNotesPublic" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_SetNotesPublic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetNotesPublicResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_IsDropbox_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsDropbox" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_IsDropbox_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsDropboxResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_CreateCaptionByRelativeTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCaptionByRelativeTime" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_CreateCaptionByRelativeTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCaptionByRelativeTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_CreateCaptionByAbsoluteTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCaptionByAbsoluteTime" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_CreateCaptionByAbsoluteTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCaptionByAbsoluteTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UploadTranscript_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadTranscript" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UploadTranscript_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadTranscriptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ReplaceMachineCaptionsAndUploadTranscript_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReplaceMachineCaptionsAndUploadTranscript" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_ReplaceMachineCaptionsAndUploadTranscript_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReplaceMachineCaptionsAndUploadTranscriptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersAvailabilitySettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersAvailabilitySettings" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetFoldersAvailabilitySettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldersAvailabilitySettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetSessionsAvailabilitySettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionsAvailabilitySettings" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetSessionsAvailabilitySettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionsAvailabilitySettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateFoldersAvailabilityStartSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFoldersAvailabilityStartSettings" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateFoldersAvailabilityStartSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFoldersAvailabilityStartSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateFoldersAvailabilityEndSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFoldersAvailabilityEndSettings" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateFoldersAvailabilityEndSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFoldersAvailabilityEndSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionsAvailabilityStartSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionsAvailabilityStartSettings" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionsAvailabilityStartSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionsAvailabilityStartSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionsAvailabilityEndSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionsAvailabilityEndSettings" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UpdateSessionsAvailabilityEndSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionsAvailabilityEndSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetPersonalFolderForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonalFolderForUser" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetPersonalFolderForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonalFolderForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetVideoDownloadURL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVideoDownloadURL" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_GetVideoDownloadURL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVideoDownloadURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UnprovisionExternalCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnprovisionExternalCourse" />
+  </wsdl:message>
+  <wsdl:message name="ISessionManagement_UnprovisionExternalCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnprovisionExternalCourseResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISessionManagement">
-    <wsdl:operation name="DeleteNote">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/DeleteNote" message="tns:ISessionManagement_DeleteNote_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/DeleteNoteResponse" message="tns:ISessionManagement_DeleteNote_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetNote">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetNote" message="tns:ISessionManagement_GetNote_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetNoteResponse" message="tns:ISessionManagement_GetNote_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ListNotes">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/ListNotes" message="tns:ISessionManagement_ListNotes_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/ListNotesResponse" message="tns:ISessionManagement_ListNotes_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AreUsersNotesPublic">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/AreUsersNotesPublic" message="tns:ISessionManagement_AreUsersNotesPublic_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/AreUsersNotesPublicResponse" message="tns:ISessionManagement_AreUsersNotesPublic_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SetNotesPublic">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/SetNotesPublic" message="tns:ISessionManagement_SetNotesPublic_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/SetNotesPublicResponse" message="tns:ISessionManagement_SetNotesPublic_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="IsDropbox">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/IsDropbox" message="tns:ISessionManagement_IsDropbox_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/IsDropboxResponse" message="tns:ISessionManagement_IsDropbox_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateCaptionByRelativeTime">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTime" message="tns:ISessionManagement_CreateCaptionByRelativeTime_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTimeResponse" message="tns:ISessionManagement_CreateCaptionByRelativeTime_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateCaptionByAbsoluteTime">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTime" message="tns:ISessionManagement_CreateCaptionByAbsoluteTime_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTimeResponse" message="tns:ISessionManagement_CreateCaptionByAbsoluteTime_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UploadTranscript">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UploadTranscript" message="tns:ISessionManagement_UploadTranscript_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UploadTranscriptResponse" message="tns:ISessionManagement_UploadTranscript_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="AddFolder">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/AddFolder" message="tns:ISessionManagement_AddFolder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/AddFolderResponse" message="tns:ISessionManagement_AddFolder_OutputMessage" />
@@ -305,9 +452,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersById" message="tns:ISessionManagement_GetFoldersById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersByIdResponse" message="tns:ISessionManagement_GetFoldersById_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextById" message="tns:ISessionManagement_GetFoldersWithExternalContextById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextByIdResponse" message="tns:ISessionManagement_GetFoldersWithExternalContextById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetFoldersByExternalId">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersByExternalId" message="tns:ISessionManagement_GetFoldersByExternalId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersByExternalIdResponse" message="tns:ISessionManagement_GetFoldersByExternalId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextByExternalId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextByExternalId" message="tns:ISessionManagement_GetFoldersWithExternalContextByExternalId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextByExternalIdResponse" message="tns:ISessionManagement_GetFoldersWithExternalContextByExternalId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFoldersByExternalId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetAllFoldersByExternalId" message="tns:ISessionManagement_GetAllFoldersByExternalId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetAllFoldersByExternalIdResponse" message="tns:ISessionManagement_GetAllFoldersByExternalId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFoldersWithExternalContextByExternalId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetAllFoldersWithExternalContextByExternalId" message="tns:ISessionManagement_GetAllFoldersWithExternalContextByExternalId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetAllFoldersWithExternalContextByExternalIdResponse" message="tns:ISessionManagement_GetAllFoldersWithExternalContextByExternalId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSessionsById">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetSessionsById" message="tns:ISessionManagement_GetSessionsById_InputMessage" />
@@ -325,6 +488,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersList" message="tns:ISessionManagement_GetFoldersList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersListResponse" message="tns:ISessionManagement_GetFoldersList_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextList" message="tns:ISessionManagement_GetFoldersWithExternalContextList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextListResponse" message="tns:ISessionManagement_GetFoldersWithExternalContextList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreatorFoldersList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetCreatorFoldersList" message="tns:ISessionManagement_GetCreatorFoldersList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetCreatorFoldersListResponse" message="tns:ISessionManagement_GetCreatorFoldersList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreatorFoldersWithExternalContextList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetCreatorFoldersWithExternalContextList" message="tns:ISessionManagement_GetCreatorFoldersWithExternalContextList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetCreatorFoldersWithExternalContextListResponse" message="tns:ISessionManagement_GetCreatorFoldersWithExternalContextList_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateSessionName">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionName" message="tns:ISessionManagement_UpdateSessionName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionNameResponse" message="tns:ISessionManagement_UpdateSessionName_OutputMessage" />
@@ -336,6 +511,34 @@
     <wsdl:operation name="UpdateSessionIsBroadcast">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionIsBroadcast" message="tns:ISessionManagement_UpdateSessionIsBroadcast_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionIsBroadcastResponse" message="tns:ISessionManagement_UpdateSessionIsBroadcast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionSetPanoptoBroadcast">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionSetPanoptoBroadcast" message="tns:ISessionManagement_UpdateSessionSetPanoptoBroadcast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionSetPanoptoBroadcastResponse" message="tns:ISessionManagement_UpdateSessionSetPanoptoBroadcast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionSetRTMPBroadcast">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionSetRTMPBroadcast" message="tns:ISessionManagement_UpdateSessionSetRTMPBroadcast_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionSetRTMPBroadcastResponse" message="tns:ISessionManagement_UpdateSessionSetRTMPBroadcast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionCreateRTMPStreams">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionCreateRTMPStreams" message="tns:ISessionManagement_UpdateSessionCreateRTMPStreams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionCreateRTMPStreamsResponse" message="tns:ISessionManagement_UpdateSessionCreateRTMPStreams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionUpdateRTMPStreamTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamTypes" message="tns:ISessionManagement_UpdateSessionUpdateRTMPStreamTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamTypesResponse" message="tns:ISessionManagement_UpdateSessionUpdateRTMPStreamTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand" message="tns:ISessionManagement_UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemandResponse" message="tns:ISessionManagement_UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListSessionRTMPStreamKeys">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/ListSessionRTMPStreamKeys" message="tns:ISessionManagement_ListSessionRTMPStreamKeys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/ListSessionRTMPStreamKeysResponse" message="tns:ISessionManagement_ListSessionRTMPStreamKeys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionOwner">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionOwner" message="tns:ISessionManagement_UpdateSessionOwner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionOwnerResponse" message="tns:ISessionManagement_UpdateSessionOwner_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="MoveSessions">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/MoveSessions" message="tns:ISessionManagement_MoveSessions_InputMessage" />
@@ -373,6 +576,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFolderExternalId" message="tns:ISessionManagement_UpdateFolderExternalId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFolderExternalIdResponse" message="tns:ISessionManagement_UpdateFolderExternalId_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateFolderExternalIdWithProvider">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFolderExternalIdWithProvider" message="tns:ISessionManagement_UpdateFolderExternalIdWithProvider_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFolderExternalIdWithProviderResponse" message="tns:ISessionManagement_UpdateFolderExternalIdWithProvider_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteSessions">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/DeleteSessions" message="tns:ISessionManagement_DeleteSessions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/DeleteSessionsResponse" message="tns:ISessionManagement_DeleteSessions_OutputMessage" />
@@ -385,9 +592,29 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/ProvisionExternalCourse" message="tns:ISessionManagement_ProvisionExternalCourse_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/ProvisionExternalCourseResponse" message="tns:ISessionManagement_ProvisionExternalCourse_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EnsureExternalHierarchyBranch">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/EnsureExternalHierarchyBranch" message="tns:ISessionManagement_EnsureExternalHierarchyBranch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/EnsureExternalHierarchyBranchResponse" message="tns:ISessionManagement_EnsureExternalHierarchyBranch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionExternalCourseWithRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/ProvisionExternalCourseWithRoles" message="tns:ISessionManagement_ProvisionExternalCourseWithRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/ProvisionExternalCourseWithRolesResponse" message="tns:ISessionManagement_ProvisionExternalCourseWithRoles_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SetExternalCourseAccess">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/SetExternalCourseAccess" message="tns:ISessionManagement_SetExternalCourseAccess_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/SetExternalCourseAccessResponse" message="tns:ISessionManagement_SetExternalCourseAccess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetExternalCourseAccessForRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/SetExternalCourseAccessForRoles" message="tns:ISessionManagement_SetExternalCourseAccessForRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/SetExternalCourseAccessForRolesResponse" message="tns:ISessionManagement_SetExternalCourseAccessForRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCopiedExternalCourseAccess">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccess" message="tns:ISessionManagement_SetCopiedExternalCourseAccess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccessResponse" message="tns:ISessionManagement_SetCopiedExternalCourseAccess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCopiedExternalCourseAccessForRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccessForRoles" message="tns:ISessionManagement_SetCopiedExternalCourseAccessForRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccessForRolesResponse" message="tns:ISessionManagement_SetCopiedExternalCourseAccessForRoles_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetRecorderDownloadUrls">
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetRecorderDownloadUrls" message="tns:ISessionManagement_GetRecorderDownloadUrls_InputMessage" />
@@ -405,91 +632,86 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/EditNote" message="tns:ISessionManagement_EditNote_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/EditNoteResponse" message="tns:ISessionManagement_EditNote_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/DeleteNote" message="tns:ISessionManagement_DeleteNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/DeleteNoteResponse" message="tns:ISessionManagement_DeleteNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetNote" message="tns:ISessionManagement_GetNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetNoteResponse" message="tns:ISessionManagement_GetNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListNotes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/ListNotes" message="tns:ISessionManagement_ListNotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/ListNotesResponse" message="tns:ISessionManagement_ListNotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AreUsersNotesPublic">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/AreUsersNotesPublic" message="tns:ISessionManagement_AreUsersNotesPublic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/AreUsersNotesPublicResponse" message="tns:ISessionManagement_AreUsersNotesPublic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNotesPublic">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/SetNotesPublic" message="tns:ISessionManagement_SetNotesPublic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/SetNotesPublicResponse" message="tns:ISessionManagement_SetNotesPublic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsDropbox">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/IsDropbox" message="tns:ISessionManagement_IsDropbox_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/IsDropboxResponse" message="tns:ISessionManagement_IsDropbox_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCaptionByRelativeTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTime" message="tns:ISessionManagement_CreateCaptionByRelativeTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTimeResponse" message="tns:ISessionManagement_CreateCaptionByRelativeTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCaptionByAbsoluteTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTime" message="tns:ISessionManagement_CreateCaptionByAbsoluteTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTimeResponse" message="tns:ISessionManagement_CreateCaptionByAbsoluteTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadTranscript">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UploadTranscript" message="tns:ISessionManagement_UploadTranscript_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UploadTranscriptResponse" message="tns:ISessionManagement_UploadTranscript_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReplaceMachineCaptionsAndUploadTranscript">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/ReplaceMachineCaptionsAndUploadTranscript" message="tns:ISessionManagement_ReplaceMachineCaptionsAndUploadTranscript_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/ReplaceMachineCaptionsAndUploadTranscriptResponse" message="tns:ISessionManagement_ReplaceMachineCaptionsAndUploadTranscript_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersAvailabilitySettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersAvailabilitySettings" message="tns:ISessionManagement_GetFoldersAvailabilitySettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetFoldersAvailabilitySettingsResponse" message="tns:ISessionManagement_GetFoldersAvailabilitySettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsAvailabilitySettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetSessionsAvailabilitySettings" message="tns:ISessionManagement_GetSessionsAvailabilitySettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetSessionsAvailabilitySettingsResponse" message="tns:ISessionManagement_GetSessionsAvailabilitySettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldersAvailabilityStartSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityStartSettings" message="tns:ISessionManagement_UpdateFoldersAvailabilityStartSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityStartSettingsResponse" message="tns:ISessionManagement_UpdateFoldersAvailabilityStartSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldersAvailabilityEndSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityEndSettings" message="tns:ISessionManagement_UpdateFoldersAvailabilityEndSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityEndSettingsResponse" message="tns:ISessionManagement_UpdateFoldersAvailabilityEndSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionsAvailabilityStartSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityStartSettings" message="tns:ISessionManagement_UpdateSessionsAvailabilityStartSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityStartSettingsResponse" message="tns:ISessionManagement_UpdateSessionsAvailabilityStartSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionsAvailabilityEndSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityEndSettings" message="tns:ISessionManagement_UpdateSessionsAvailabilityEndSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityEndSettingsResponse" message="tns:ISessionManagement_UpdateSessionsAvailabilityEndSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalFolderForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetPersonalFolderForUser" message="tns:ISessionManagement_GetPersonalFolderForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetPersonalFolderForUserResponse" message="tns:ISessionManagement_GetPersonalFolderForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDownloadURL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/GetVideoDownloadURL" message="tns:ISessionManagement_GetVideoDownloadURL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/GetVideoDownloadURLResponse" message="tns:ISessionManagement_GetVideoDownloadURL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnprovisionExternalCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISessionManagement/UnprovisionExternalCourse" message="tns:ISessionManagement_UnprovisionExternalCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISessionManagement/UnprovisionExternalCourseResponse" message="tns:ISessionManagement_UnprovisionExternalCourse_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISessionManagement" type="tns:ISessionManagement">
     <wsp:PolicyReference URI="#BasicHttpBinding_ISessionManagement_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DeleteNote">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/DeleteNote" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetNote">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetNote" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ListNotes">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ListNotes" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AreUsersNotesPublic">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/AreUsersNotesPublic" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetNotesPublic">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetNotesPublic" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsDropbox">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/IsDropbox" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCaptionByRelativeTime">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTime" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCaptionByAbsoluteTime">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTime" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UploadTranscript">
-      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UploadTranscript" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddFolder">
       <soap:operation soapAction="http://tempuri.org/ISessionManagement/AddFolder" style="document" />
       <wsdl:input>
@@ -517,8 +739,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextById">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFoldersByExternalId">
       <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFoldersByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetAllFoldersByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFoldersWithExternalContextByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetAllFoldersWithExternalContextByExternalId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -562,6 +820,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreatorFoldersList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetCreatorFoldersList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreatorFoldersWithExternalContextList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetCreatorFoldersWithExternalContextList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateSessionName">
       <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionName" style="document" />
       <wsdl:input>
@@ -582,6 +867,69 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateSessionIsBroadcast">
       <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionIsBroadcast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionSetPanoptoBroadcast">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionSetPanoptoBroadcast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionSetRTMPBroadcast">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionSetRTMPBroadcast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionCreateRTMPStreams">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionCreateRTMPStreams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionUpdateRTMPStreamTypes">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSessionRTMPStreamKeys">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ListSessionRTMPStreamKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionOwner">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionOwner" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -670,6 +1018,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateFolderExternalIdWithProvider">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderExternalIdWithProvider" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteSessions">
       <soap:operation soapAction="http://tempuri.org/ISessionManagement/DeleteSessions" style="document" />
       <wsdl:input>
@@ -697,8 +1054,53 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EnsureExternalHierarchyBranch">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/EnsureExternalHierarchyBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionExternalCourseWithRoles">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ProvisionExternalCourseWithRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SetExternalCourseAccess">
       <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetExternalCourseAccess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetExternalCourseAccessForRoles">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetExternalCourseAccessForRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCopiedExternalCourseAccess">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCopiedExternalCourseAccessForRoles">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccessForRoles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -742,10 +1144,790 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeleteNote">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/DeleteNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNote">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListNotes">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ListNotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreUsersNotesPublic">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/AreUsersNotesPublic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNotesPublic">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetNotesPublic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsDropbox">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/IsDropbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCaptionByRelativeTime">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCaptionByAbsoluteTime">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTranscript">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UploadTranscript" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReplaceMachineCaptionsAndUploadTranscript">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ReplaceMachineCaptionsAndUploadTranscript" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersAvailabilitySettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersAvailabilitySettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsAvailabilitySettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetSessionsAvailabilitySettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldersAvailabilityStartSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityStartSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldersAvailabilityEndSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityEndSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionsAvailabilityStartSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityStartSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionsAvailabilityEndSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityEndSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalFolderForUser">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetPersonalFolderForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDownloadURL">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetVideoDownloadURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnprovisionExternalCourse">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UnprovisionExternalCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ISessionManagement1" type="tns:ISessionManagement">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFolder">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/AddFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSession">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/AddSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersById">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextById">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFoldersByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetAllFoldersByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFoldersWithExternalContextByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetAllFoldersWithExternalContextByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsById">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetSessionsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsByExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetSessionsByExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetSessionsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersWithExternalContextList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersWithExternalContextList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreatorFoldersList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetCreatorFoldersList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreatorFoldersWithExternalContextList">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetCreatorFoldersWithExternalContextList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionName">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionDescription">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionIsBroadcast">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionIsBroadcast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionSetPanoptoBroadcast">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionSetPanoptoBroadcast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionSetRTMPBroadcast">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionSetRTMPBroadcast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionCreateRTMPStreams">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionCreateRTMPStreams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionUpdateRTMPStreamTypes">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionUpdateRTMPStreamSetShouldConvertToOnDemand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSessionRTMPStreamKeys">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ListSessionRTMPStreamKeys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionOwner">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveSessions">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/MoveSessions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderName">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderDescription">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderEnablePodcast">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderEnablePodcast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderAllowPublicNotes">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderAllowPublicNotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderAllowSessionDownload">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderAllowSessionDownload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderParent">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderExternalId">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderExternalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFolderExternalIdWithProvider">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFolderExternalIdWithProvider" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSessions">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/DeleteSessions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFolders">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/DeleteFolders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionExternalCourse">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ProvisionExternalCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnsureExternalHierarchyBranch">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/EnsureExternalHierarchyBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionExternalCourseWithRoles">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ProvisionExternalCourseWithRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetExternalCourseAccess">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetExternalCourseAccess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetExternalCourseAccessForRoles">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetExternalCourseAccessForRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCopiedExternalCourseAccess">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCopiedExternalCourseAccessForRoles">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetCopiedExternalCourseAccessForRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecorderDownloadUrls">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetRecorderDownloadUrls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNoteByRelativeTime">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateNoteByRelativeTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNoteByAbsoluteTime">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateNoteByAbsoluteTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditNote">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/EditNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNote">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/DeleteNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNote">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListNotes">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ListNotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreUsersNotesPublic">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/AreUsersNotesPublic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNotesPublic">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/SetNotesPublic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsDropbox">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/IsDropbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCaptionByRelativeTime">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateCaptionByRelativeTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCaptionByAbsoluteTime">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/CreateCaptionByAbsoluteTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTranscript">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UploadTranscript" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReplaceMachineCaptionsAndUploadTranscript">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/ReplaceMachineCaptionsAndUploadTranscript" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldersAvailabilitySettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetFoldersAvailabilitySettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsAvailabilitySettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetSessionsAvailabilitySettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldersAvailabilityStartSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityStartSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldersAvailabilityEndSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateFoldersAvailabilityEndSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionsAvailabilityStartSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityStartSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionsAvailabilityEndSettings">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UpdateSessionsAvailabilityEndSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalFolderForUser">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetPersonalFolderForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDownloadURL">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/GetVideoDownloadURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnprovisionExternalCourse">
+      <soap:operation soapAction="http://tempuri.org/ISessionManagement/UnprovisionExternalCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="SessionManagement">
     <wsdl:port name="BasicHttpBinding_ISessionManagement" binding="tns:BasicHttpBinding_ISessionManagement">
-      <soap:address location="https://10.40.18.73/Panopto/PublicAPISSL/4.2/SessionManagement.svc" />
+      <soap:address location="https://localhost/Panopto/publicapi/4.6/SessionManagement.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ISessionManagement1" binding="tns:BasicHttpBinding_ISessionManagement1">
+      <soap:address location="http://localhost/Panopto/publicapi/4.6/SessionManagement.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
