@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
+using System.ServiceModel;
+using System.Windows.Forms;
 using PanoptoScheduleUploader.Services;
 using PanoptoScheduleUploader.Services.RemoteRecorderManagement;
-using System.Text;
-using System.Windows.Forms;
 
 namespace PanoptoScheduleUploader.Core
 {
@@ -29,6 +30,10 @@ namespace PanoptoScheduleUploader.Core
                 var parser = new RecorderScheduleCSVParser(fileName);
                 recordings = parser.ExtractRecordings();
             }
+            else
+            {
+                throw new NotImplementedException("Expected an xml or csv file. Got filename: " + fileName);
+            }
 
             using (var sessionManager = new SessionManagementWrapper(username, password))
             {
@@ -36,8 +41,12 @@ namespace PanoptoScheduleUploader.Core
                 {
                     using (var userManager = new UserManagementWrapper(username, password))
                     {
+                        int count = 0;
                         foreach (var recording in recordings)
                         {
+                            count++;
+                            Trace.WriteLine($"{count}: {recording.Title}");
+
                             RecorderSettings settings;
                             try
                             {
@@ -57,7 +66,16 @@ namespace PanoptoScheduleUploader.Core
                                 bool overwritten = false;
                                 if (overwrite)
                                 {
-                                    overwritten = sessionManager.RemoveConflictingSessions(remoteRecorderService.GetSessionsByRecorderName(recording.RecorderName), recording.StartTime, recording.EndTime);
+                                    try
+                                    {
+                                        overwritten = sessionManager.RemoveConflictingSessions(remoteRecorderService.GetSessionsByRecorderName(recording.RecorderName), recording.StartTime, recording.EndTime);
+                                        break;
+                                    }
+                                    catch (ProtocolException e)
+                                    {
+                                        Trace.WriteLine($"RemoveConflictingSession threw: {e}");
+                                        overwritten = false;
+                                    }
                                 }
                                 var folderId = GetFolderId(recording.CourseTitle, sessionManager, Guid.Empty);
 
@@ -96,15 +114,12 @@ namespace PanoptoScheduleUploader.Core
                 }
             }
 
-
-
             return results;
         }
 
         private static Guid GetFolderId(string folderName, SessionManagementWrapper sessionManager, Guid defaultFolderId)
         {
             var folderId = defaultFolderId;
-            bool foldernameisGuid = false;
             if (Guid.TryParse(folderName, out var newGuid))
             {
                 var folderid = sessionManager.GetFolderById(newGuid);
