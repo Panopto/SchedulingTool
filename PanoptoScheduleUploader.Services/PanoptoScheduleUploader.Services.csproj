@@ -101,32 +101,44 @@
     <None Include="Service References\RemoteRecorderManagement\PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement.wsdl" />
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement.xsd">
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement1.wsdl" />
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement1.xsd">
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement2.xsd">
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement3.xsd">
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement4.xsd">
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement5.xsd">
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.Folder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.FoldersWithAvailabilitySettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.FolderWithExternalContext.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListFoldersResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListFoldersResponseWithExternalContext.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListNotesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListSessionRTMPStreamKeysResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.ListSessionsResponse.datasource">
@@ -141,36 +153,63 @@
     <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.Session.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement1.wsdl" />
+    <None Include="Service References\SessionManagement\PanoptoScheduleUploader.Services.SessionManagement.SessionsWithAvailabilitySettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement.wsdl" />
+    <None Include="Service References\SessionManagement\SessionManagement.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SessionManagement\SessionManagement4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SessionManagement\SessionManagement5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement51.xsd">
+    <None Include="Service References\SessionManagement\SessionManagement6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SessionManagement\SessionManagement52.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SessionManagement\SessionManagement53.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SessionManagement\SessionManagement54.xsd">
+    <None Include="Service References\SessionManagement\SessionManagement7.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.RecurringStatsReportDefinition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.StatsReportStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.StatsReportType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\UsageManagement\PanoptoScheduleUploader.Services.UsageManagement.SummaryUsageResponseItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\UsageManagement\UsageReporting.wsdl" />
-    <None Include="Service References\UsageManagement\UsageReporting.xsd">
+    <None Include="Service References\UsageManagement\UsageReporting1.wsdl" />
+    <None Include="Service References\UsageManagement\UsageReporting3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UsageManagement\UsageReporting1.xsd">
+    <None Include="Service References\UsageManagement\UsageReporting31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UsageManagement\UsageReporting2.xsd">
+    <None Include="Service References\UsageManagement\UsageReporting32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UsageManagement\UsageReporting33.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserManagement\PanoptoScheduleUploader.Services.UserManagement.Group.datasource">
@@ -185,17 +224,17 @@
     <None Include="Service References\UserManagement\PanoptoScheduleUploader.Services.UserManagement.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\UserManagement\UserManagement.wsdl" />
-    <None Include="Service References\UserManagement\UserManagement.xsd">
+    <None Include="Service References\UserManagement\UserManagement1.wsdl" />
+    <None Include="Service References\UserManagement\UserManagement4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserManagement\UserManagement1.xsd">
+    <None Include="Service References\UserManagement\UserManagement41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserManagement\UserManagement2.xsd">
+    <None Include="Service References\UserManagement\UserManagement42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserManagement\UserManagement3.xsd">
+    <None Include="Service References\UserManagement\UserManagement43.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -204,9 +243,6 @@
     <WCFMetadataStorage Include="Service References\SessionManagement\" />
     <WCFMetadataStorage Include="Service References\UsageManagement\" />
     <WCFMetadataStorage Include="Service References\UserManagement\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\RemoteRecorderManagement\configuration91.svcinfo" />
@@ -233,9 +269,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\UserManagement\UserManagement.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\UserManagement\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -246,9 +279,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\UsageManagement\UsageReporting.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UsageManagement\configuration91.svcinfo" />
@@ -268,7 +298,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SessionManagement\SessionManagement1.disco" />
+    <None Include="Service References\SessionManagement\SessionManagement.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RemoteRecorderManagement\RemoteRecorderManagement1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UsageManagement\UsageReporting1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserManagement\UserManagement1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

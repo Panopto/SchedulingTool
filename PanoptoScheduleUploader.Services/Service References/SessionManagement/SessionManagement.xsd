@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V46.Soap" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V46.Soap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Panopto.Data.Server.Services.PublicAPI.V46" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="Folder">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FolderBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Folder" nillable="true" type="tns:Folder" />
+  <xs:complexType name="FolderBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllowPublicNotes" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AllowSessionDownload" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AudioPodcastITunesUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AudioRssUrl" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ChildFolders" nillable="true" type="q1:ArrayOfguid" />
+      <xs:element minOccurs="0" name="DeliveriesHaveSpecifiedOrder" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmbedUploaderUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmbedUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EnablePodcast" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsPublic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ListUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentFolder" nillable="true" type="ser:guid" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Presenters" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Sessions" nillable="true" type="q3:ArrayOfguid" />
+      <xs:element minOccurs="0" name="SettingsUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VideoPodcastITunesUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VideoRssUrl" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FolderBase" nillable="true" type="tns:FolderBase" />
+  <xs:complexType name="ArrayOfFolder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Folder" nillable="true" type="tns:Folder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFolder" nillable="true" type="tns:ArrayOfFolder" />
+  <xs:complexType name="ListSessionsResponse">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" minOccurs="0" name="Results" nillable="true" type="q4:ArrayOfSession" />
+      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListSessionsResponse" nillable="true" type="tns:ListSessionsResponse" />
+  <xs:complexType name="ListFoldersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfFolder" />
+      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListFoldersResponse" nillable="true" type="tns:ListFoldersResponse" />
+  <xs:complexType name="ListFoldersResponseWithExternalContext">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Panopto.Data.Server.Services.PublicAPI.V46" minOccurs="0" name="Results" nillable="true" type="q5:ArrayOfFolderWithExternalContext" />
+      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListFoldersResponseWithExternalContext" nillable="true" type="tns:ListFoldersResponseWithExternalContext" />
+  <xs:complexType name="ArrayOfListSessionRTMPStreamKeysResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListSessionRTMPStreamKeysResponse" nillable="true" type="tns:ListSessionRTMPStreamKeysResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListSessionRTMPStreamKeysResponse" nillable="true" type="tns:ArrayOfListSessionRTMPStreamKeysResponse" />
+  <xs:complexType name="ListSessionRTMPStreamKeysResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConversionToOnDemandEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPrimaryStreamKey" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RTMPStreamKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" type="tns:RTMPStreamKeyState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListSessionRTMPStreamKeysResponse" nillable="true" type="tns:ListSessionRTMPStreamKeysResponse" />
+  <xs:simpleType name="RTMPStreamKeyState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotStarted" />
+      <xs:enumeration value="InProgress" />
+      <xs:enumeration value="Closed" />
+      <xs:enumeration value="Finalized" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RTMPStreamKeyState" nillable="true" type="tns:RTMPStreamKeyState" />
+  <xs:complexType name="ArrayOfExternalHierarchyInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExternalHierarchyInfo" nillable="true" type="tns:ExternalHierarchyInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExternalHierarchyInfo" nillable="true" type="tns:ArrayOfExternalHierarchyInfo" />
+  <xs:complexType name="ExternalHierarchyInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCourse" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalHierarchyInfo" nillable="true" type="tns:ExternalHierarchyInfo" />
+  <xs:complexType name="FoldersWithAvailabilitySettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfFolderAvailabilitySettings" />
+      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FoldersWithAvailabilitySettings" nillable="true" type="tns:FoldersWithAvailabilitySettings" />
+  <xs:complexType name="ArrayOfFolderAvailabilitySettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FolderAvailabilitySettings" nillable="true" type="tns:FolderAvailabilitySettings" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFolderAvailabilitySettings" nillable="true" type="tns:ArrayOfFolderAvailabilitySettings" />
+  <xs:complexType name="FolderAvailabilitySettings">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="EndSettingDate" nillable="true" type="q6:DateTimeOffset" />
+      <xs:element minOccurs="0" name="EndSettingType" type="tns:FolderEndSettingType" />
+      <xs:element minOccurs="0" name="FolderId" type="ser:guid" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="StartSettingDate" nillable="true" type="q7:DateTimeOffset" />
+      <xs:element minOccurs="0" name="StartSettingType" type="tns:FolderStartSettingType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FolderAvailabilitySettings" nillable="true" type="tns:FolderAvailabilitySettings" />
+  <xs:simpleType name="FolderEndSettingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Forever" />
+      <xs:enumeration value="SpecificDate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FolderEndSettingType" nillable="true" type="tns:FolderEndSettingType" />
+  <xs:simpleType name="FolderStartSettingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Immediately" />
+      <xs:enumeration value="WhenPublisherApproved" />
+      <xs:enumeration value="NeverUnlessSessionSet" />
+      <xs:enumeration value="SpecificDate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FolderStartSettingType" nillable="true" type="tns:FolderStartSettingType" />
+  <xs:complexType name="SessionsWithAvailabilitySettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfSessionAvailabilitySettings" />
+      <xs:element minOccurs="0" name="TotalNumberResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SessionsWithAvailabilitySettings" nillable="true" type="tns:SessionsWithAvailabilitySettings" />
+  <xs:complexType name="ArrayOfSessionAvailabilitySettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SessionAvailabilitySettings" nillable="true" type="tns:SessionAvailabilitySettings" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSessionAvailabilitySettings" nillable="true" type="tns:ArrayOfSessionAvailabilitySettings" />
+  <xs:complexType name="SessionAvailabilitySettings">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="EndSettingDate" nillable="true" type="q8:DateTimeOffset" />
+      <xs:element minOccurs="0" name="EndSettingType" type="tns:SessionEndSettingType" />
+      <xs:element minOccurs="0" name="SessionId" type="ser:guid" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="StartSettingDate" nillable="true" type="q9:DateTimeOffset" />
+      <xs:element minOccurs="0" name="StartSettingType" type="tns:SessionStartSettingType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SessionAvailabilitySettings" nillable="true" type="tns:SessionAvailabilitySettings" />
+  <xs:simpleType name="SessionEndSettingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Forever" />
+      <xs:enumeration value="WithItsFolder" />
+      <xs:enumeration value="SpecificDate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SessionEndSettingType" nillable="true" type="tns:SessionEndSettingType" />
+  <xs:simpleType name="SessionStartSettingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Immediately" />
+      <xs:enumeration value="WithItsFolder" />
+      <xs:enumeration value="SpecificDate" />
+      <xs:enumeration value="Never" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SessionStartSettingType" nillable="true" type="tns:SessionStartSettingType" />
+</xs:schema>

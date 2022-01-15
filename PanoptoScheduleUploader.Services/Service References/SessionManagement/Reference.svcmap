@@ -18,16 +18,19 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://demo.hosted.panopto.com/Panopto/publicapi/4.2/SessionManagement.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://demo.hosted.panopto.com/Panopto/publicapi/4.6/SessionManagement.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SessionManagement5.xsd" MetadataType="Schema" ID="aaf1d2a5-1f84-408d-89ea-778d5d7b48f6" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?xsd=xsd3" />
-    <MetadataFile FileName="SessionManagement51.xsd" MetadataType="Schema" ID="36a9984e-088e-4018-8010-2705076650b8" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?xsd=xsd0" />
-    <MetadataFile FileName="SessionManagement52.xsd" MetadataType="Schema" ID="fbfb633e-6eaa-4d39-8551-767f60000c79" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?xsd=xsd1" />
-    <MetadataFile FileName="SessionManagement1.disco" MetadataType="Disco" ID="9b18a77a-4fa8-4103-bd6a-fc15c7f301c0" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?disco" />
-    <MetadataFile FileName="SessionManagement53.xsd" MetadataType="Schema" ID="0d4d6f85-6a16-41e6-8c60-84e1fc84d618" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?xsd=xsd4" />
-    <MetadataFile FileName="SessionManagement54.xsd" MetadataType="Schema" ID="79914828-4708-4d5b-b25f-2be1037430ac" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?xsd=xsd2" />
-    <MetadataFile FileName="SessionManagement1.wsdl" MetadataType="Wsdl" ID="2d7eafc1-0bbc-452e-a78a-5da4918e6884" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?wsdl" />
+    <MetadataFile FileName="SessionManagement.wsdl" MetadataType="Wsdl" ID="b8c6e653-ca13-4bc1-97b5-79f4d4852bb0" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?wsdl" />
+    <MetadataFile FileName="SessionManagement.xsd" MetadataType="Schema" ID="8b8e90a6-0357-4877-a6fc-1ba045fec69b" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd3" />
+    <MetadataFile FileName="SessionManagement1.xsd" MetadataType="Schema" ID="503fbb41-12dd-43a8-8995-91cea405fad5" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd7" />
+    <MetadataFile FileName="SessionManagement2.xsd" MetadataType="Schema" ID="614ef07f-a228-48eb-a4e9-dac6316fea76" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd6" />
+    <MetadataFile FileName="SessionManagement3.xsd" MetadataType="Schema" ID="07942d5f-7b14-4036-ac26-d6ee8f9ecf49" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd2" />
+    <MetadataFile FileName="SessionManagement4.xsd" MetadataType="Schema" ID="1a360fb1-d39b-4ede-9989-f313f67fee02" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd0" />
+    <MetadataFile FileName="SessionManagement5.xsd" MetadataType="Schema" ID="fe0c3bf2-08f3-4b37-8dd2-65e371c0f141" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd1" />
+    <MetadataFile FileName="SessionManagement6.xsd" MetadataType="Schema" ID="e88ff382-de65-4c1e-9c74-b6b42673f684" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd4" />
+    <MetadataFile FileName="SessionManagement.disco" MetadataType="Disco" ID="659024dd-d96f-4b08-8e8e-42ac57f70863" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?disco" />
+    <MetadataFile FileName="SessionManagement7.xsd" MetadataType="Schema" ID="e6b6f9b0-9f29-4663-9d54-d434cb2e7dae" SourceId="1" SourceUrl="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

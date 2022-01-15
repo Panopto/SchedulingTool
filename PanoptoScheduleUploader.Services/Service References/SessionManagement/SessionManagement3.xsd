@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.6/SessionManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="AuthenticationInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
@@ -76,6 +76,21 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="FolderSortField" nillable="true" type="tns:FolderSortField" />
+  <xs:complexType name="ArrayOfAccessRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccessRole" type="tns:AccessRole" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccessRole" nillable="true" type="tns:ArrayOfAccessRole" />
+  <xs:simpleType name="AccessRole">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Creator" />
+      <xs:enumeration value="Viewer" />
+      <xs:enumeration value="ViewerWithLink" />
+      <xs:enumeration value="Publisher" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AccessRole" nillable="true" type="tns:AccessRole" />
   <xs:complexType name="RecorderDownloadUrlResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="MacRecorderDownloadUrl" nillable="true" type="xs:string" />
