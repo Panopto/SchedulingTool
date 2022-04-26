@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
-  <xs:import schemaLocation="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="CreateUser">
     <xs:complexType>
       <xs:sequence>
@@ -269,15 +269,45 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SyncExternalUser">
+  <xs:element name="AddMembersToExternalGroup">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q46:AuthenticationInfo" />
+        <xs:element minOccurs="0" name="externalProviderName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="externalGroupId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q47="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="memberIds" nillable="true" type="q47:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMembersToExternalGroupResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveMembersFromExternalGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q48:AuthenticationInfo" />
+        <xs:element minOccurs="0" name="externalProviderName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="externalGroupId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="memberIds" nillable="true" type="q49:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveMembersFromExternalGroupResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncExternalUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q50:AuthenticationInfo" />
         <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="EmailSessionNotifications" type="xs:boolean" />
-        <xs:element xmlns:q47="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="externalGroupIds" nillable="true" type="q47:ArrayOfstring" />
+        <xs:element xmlns:q51="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="externalGroupIds" nillable="true" type="q51:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -289,8 +319,8 @@
   <xs:element name="DeleteGroup">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q48:AuthenticationInfo" />
-        <xs:element xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="groupId" type="q49:guid" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q52:AuthenticationInfo" />
+        <xs:element xmlns:q53="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="groupId" type="q53:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -302,31 +332,103 @@
   <xs:element name="GetGroup">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q50:AuthenticationInfo" />
-        <xs:element xmlns:q51="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="groupId" type="q51:guid" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q54:AuthenticationInfo" />
+        <xs:element xmlns:q55="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="groupId" type="q55:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetGroupResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetGroupResult" nillable="true" type="q52:Group" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetGroupResult" nillable="true" type="q56:Group" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListGroups">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q53:AuthenticationInfo" />
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q54:Pagination" />
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q57:AuthenticationInfo" />
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q58:Pagination" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListGroupsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="ListGroupsResult" nillable="true" type="q55:ListGroupsResponse" />
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="ListGroupsResult" nillable="true" type="q59:ListGroupsResponse" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGroupsByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q60:AuthenticationInfo" />
+        <xs:element minOccurs="0" name="groupName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGroupsByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetGroupsByNameResult" nillable="true" type="q61:ArrayOfGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersInGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q62:AuthenticationInfo" />
+        <xs:element xmlns:q63="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="groupId" type="q63:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersInGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetUsersInGroupResult" nillable="true" type="q64:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserHasLoggedIn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q65:AuthenticationInfo" />
+        <xs:element xmlns:q66="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q66:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserHasLoggedInResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserMeetingsRecordingFolderIdForUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q67:AuthenticationInfo" />
+        <xs:element minOccurs="0" name="userKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserMeetingsRecordingFolderIdForUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetUserMeetingsRecordingFolderIdForUserResult" nillable="true" type="q68:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserMeetingsRecordingFolderIdForUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q69:AuthenticationInfo" />
+        <xs:element minOccurs="0" name="userKey" nillable="true" type="xs:string" />
+        <xs:element xmlns:q70="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="meetingsFolderId" type="q70:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetUserMeetingsRecordingFolderIdForUserResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

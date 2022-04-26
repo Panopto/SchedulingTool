@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="AuthenticationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthenticationInfo" nillable="true" type="tns:AuthenticationInfo" />
+  <xs:simpleType name="UsageGranularity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Hourly" />
+      <xs:enumeration value="Daily" />
+      <xs:enumeration value="Weekly" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UsageGranularity" nillable="true" type="tns:UsageGranularity" />
+  <xs:complexType name="ArrayOfSummaryUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SummaryUsageResponseItem" nillable="true" type="tns:SummaryUsageResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSummaryUsageResponseItem" nillable="true" type="tns:ArrayOfSummaryUsageResponseItem" />
+  <xs:complexType name="SummaryUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MinutesViewed" type="xs:double" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UniqueUsers" type="xs:int" />
+      <xs:element minOccurs="0" name="Views" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SummaryUsageResponseItem" nillable="true" type="tns:SummaryUsageResponseItem" />
+  <xs:complexType name="Pagination">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxNumberResults" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pagination" nillable="true" type="tns:Pagination" />
+  <xs:complexType name="DetailedUsageResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PagedResponses" nillable="true" type="tns:ArrayOfDetailedUsageResponseItem" />
+      <xs:element minOccurs="0" name="TotalNumberResponses" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetailedUsageResponse" nillable="true" type="tns:DetailedUsageResponse" />
+  <xs:complexType name="ArrayOfDetailedUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetailedUsageResponseItem" nillable="true" type="tns:DetailedUsageResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetailedUsageResponseItem" nillable="true" type="tns:ArrayOfDetailedUsageResponseItem" />
+  <xs:complexType name="DetailedUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecondsViewed" type="xs:double" />
+      <xs:element minOccurs="0" name="SessionId" type="ser:guid" />
+      <xs:element minOccurs="0" name="StartPosition" type="xs:double" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetailedUsageResponseItem" nillable="true" type="tns:DetailedUsageResponseItem" />
+  <xs:complexType name="ExtendedDetailedUsageResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PagedResponses" nillable="true" type="tns:ArrayOfExtendedDetailedUsageResponseItem" />
+      <xs:element minOccurs="0" name="TotalNumberResponses" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExtendedDetailedUsageResponse" nillable="true" type="tns:ExtendedDetailedUsageResponse" />
+  <xs:complexType name="ArrayOfExtendedDetailedUsageResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExtendedDetailedUsageResponseItem" nillable="true" type="tns:ExtendedDetailedUsageResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExtendedDetailedUsageResponseItem" nillable="true" type="tns:ArrayOfExtendedDetailedUsageResponseItem" />
+  <xs:complexType name="ExtendedDetailedUsageResponseItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DetailedUsageResponseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PlaybackSpeed" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="StartReason" type="tns:ExtendedDetailedUsageResponseItem.StartReasons" />
+          <xs:element minOccurs="0" name="StopReason" type="tns:ExtendedDetailedUsageResponseItem.StopReasons" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExtendedDetailedUsageResponseItem" nillable="true" type="tns:ExtendedDetailedUsageResponseItem" />
+  <xs:simpleType name="ExtendedDetailedUsageResponseItem.StartReasons">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Start" />
+      <xs:enumeration value="Seek" />
+      <xs:enumeration value="Resume" />
+      <xs:enumeration value="NewSpeed" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Unexpected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ExtendedDetailedUsageResponseItem.StartReasons" nillable="true" type="tns:ExtendedDetailedUsageResponseItem.StartReasons" />
+  <xs:simpleType name="ExtendedDetailedUsageResponseItem.StopReasons">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="End" />
+      <xs:enumeration value="Seek" />
+      <xs:enumeration value="Pause" />
+      <xs:enumeration value="SpeedChange" />
+      <xs:enumeration value="PlayerClose" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Unexpected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ExtendedDetailedUsageResponseItem.StopReasons" nillable="true" type="tns:ExtendedDetailedUsageResponseItem.StopReasons" />
+  <xs:complexType name="ArrayOfStatsReportType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StatsReportType" type="tns:StatsReportType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStatsReportType" nillable="true" type="tns:ArrayOfStatsReportType" />
+  <xs:simpleType name="StatsReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FolderUsage" />
+      <xs:enumeration value="SessionUsage" />
+      <xs:enumeration value="UserViewingUsage" />
+      <xs:enumeration value="UserCreationUsage" />
+      <xs:enumeration value="LastLoginTime" />
+      <xs:enumeration value="SessionsViewsByUsers" />
+      <xs:enumeration value="SessionsViewsByViewingType" />
+      <xs:enumeration value="SessionsCreatedOrEdited" />
+      <xs:enumeration value="RemoteRecorderUsage" />
+      <xs:enumeration value="SystemViews" />
+      <xs:enumeration value="SystemFolderStorage" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatsReportType" nillable="true" type="tns:StatsReportType" />
+  <xs:complexType name="ArrayOfStatsReportStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StatsReportStatus" nillable="true" type="tns:StatsReportStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStatsReportStatus" nillable="true" type="tns:ArrayOfStatsReportStatus" />
+  <xs:complexType name="StatsReportStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ReportId" type="ser:guid" />
+      <xs:element minOccurs="0" name="ReportTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportType" type="tns:StatsReportType" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StatsReportStatus" nillable="true" type="tns:StatsReportStatus" />
+  <xs:simpleType name="RecurringReportCadence">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Daily">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Weekly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Monthly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RecurringReportCadence" nillable="true" type="tns:RecurringReportCadence" />
+  <xs:complexType name="ArrayOfRecurringStatsReportDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RecurringStatsReportDefinition" nillable="true" type="tns:RecurringStatsReportDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRecurringStatsReportDefinition" nillable="true" type="tns:ArrayOfRecurringStatsReportDefinition" />
+  <xs:complexType name="RecurringStatsReportDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cadence" type="tns:RecurringReportCadence" />
+      <xs:element minOccurs="0" name="DefinitionId" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Offset" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportType" type="tns:StatsReportType" />
+      <xs:element minOccurs="0" name="Reports" nillable="true" type="tns:ArrayOfStatsReportStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecurringStatsReportDefinition" nillable="true" type="tns:RecurringStatsReportDefinition" />
+  <xs:simpleType name="QuizResultReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UserResultsSummary" />
+      <xs:enumeration value="DetailedResultsBySection" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QuizResultReportType" nillable="true" type="tns:QuizResultReportType" />
+</xs:schema>

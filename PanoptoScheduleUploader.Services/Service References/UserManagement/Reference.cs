@@ -773,6 +773,12 @@ namespace PanoptoScheduleUploader.Services.UserManagement {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/RemoveMembersFromInternalGroup", ReplyAction="http://tempuri.org/IUserManagement/RemoveMembersFromInternalGroupResponse")]
         void RemoveMembersFromInternalGroup(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, System.Guid groupId, System.Guid[] memberIds);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddMembersToExternalGroup", ReplyAction="http://tempuri.org/IUserManagement/AddMembersToExternalGroupResponse")]
+        void AddMembersToExternalGroup(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string externalProviderName, string externalGroupId, System.Guid[] memberIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/RemoveMembersFromExternalGroup", ReplyAction="http://tempuri.org/IUserManagement/RemoveMembersFromExternalGroupResponse")]
+        void RemoveMembersFromExternalGroup(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string externalProviderName, string externalGroupId, System.Guid[] memberIds);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/SyncExternalUser", ReplyAction="http://tempuri.org/IUserManagement/SyncExternalUserResponse")]
         void SyncExternalUser(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string firstName, string lastName, string email, bool EmailSessionNotifications, string[] externalGroupIds);
         
@@ -784,6 +790,23 @@ namespace PanoptoScheduleUploader.Services.UserManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ListGroups", ReplyAction="http://tempuri.org/IUserManagement/ListGroupsResponse")]
         PanoptoScheduleUploader.Services.UserManagement.ListGroupsResponse ListGroups(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UserManagement.Pagination pagination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetGroupsByName", ReplyAction="http://tempuri.org/IUserManagement/GetGroupsByNameResponse")]
+        PanoptoScheduleUploader.Services.UserManagement.Group[] GetGroupsByName(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string groupName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUsersInGroup", ReplyAction="http://tempuri.org/IUserManagement/GetUsersInGroupResponse")]
+        System.Guid[] GetUsersInGroup(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, System.Guid groupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/SetUserHasLoggedIn", ReplyAction="http://tempuri.org/IUserManagement/SetUserHasLoggedInResponse")]
+        void SetUserHasLoggedIn(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUserMeetingsRecordingFolderIdForUser", ReplyAction="http://tempuri.org/IUserManagement/GetUserMeetingsRecordingFolderIdForUserRespons" +
+            "e")]
+        System.Nullable<System.Guid> GetUserMeetingsRecordingFolderIdForUser(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string userKey);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/SetUserMeetingsRecordingFolderIdForUser", ReplyAction="http://tempuri.org/IUserManagement/SetUserMeetingsRecordingFolderIdForUserRespons" +
+            "e")]
+        void SetUserMeetingsRecordingFolderIdForUser(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string userKey, System.Guid meetingsFolderId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -885,6 +908,14 @@ namespace PanoptoScheduleUploader.Services.UserManagement {
             base.Channel.RemoveMembersFromInternalGroup(auth, groupId, memberIds);
         }
         
+        public void AddMembersToExternalGroup(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string externalProviderName, string externalGroupId, System.Guid[] memberIds) {
+            base.Channel.AddMembersToExternalGroup(auth, externalProviderName, externalGroupId, memberIds);
+        }
+        
+        public void RemoveMembersFromExternalGroup(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string externalProviderName, string externalGroupId, System.Guid[] memberIds) {
+            base.Channel.RemoveMembersFromExternalGroup(auth, externalProviderName, externalGroupId, memberIds);
+        }
+        
         public void SyncExternalUser(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string firstName, string lastName, string email, bool EmailSessionNotifications, string[] externalGroupIds) {
             base.Channel.SyncExternalUser(auth, firstName, lastName, email, EmailSessionNotifications, externalGroupIds);
         }
@@ -899,6 +930,26 @@ namespace PanoptoScheduleUploader.Services.UserManagement {
         
         public PanoptoScheduleUploader.Services.UserManagement.ListGroupsResponse ListGroups(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UserManagement.Pagination pagination) {
             return base.Channel.ListGroups(auth, pagination);
+        }
+        
+        public PanoptoScheduleUploader.Services.UserManagement.Group[] GetGroupsByName(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string groupName) {
+            return base.Channel.GetGroupsByName(auth, groupName);
+        }
+        
+        public System.Guid[] GetUsersInGroup(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, System.Guid groupId) {
+            return base.Channel.GetUsersInGroup(auth, groupId);
+        }
+        
+        public void SetUserHasLoggedIn(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, System.Guid userId) {
+            base.Channel.SetUserHasLoggedIn(auth, userId);
+        }
+        
+        public System.Nullable<System.Guid> GetUserMeetingsRecordingFolderIdForUser(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string userKey) {
+            return base.Channel.GetUserMeetingsRecordingFolderIdForUser(auth, userKey);
+        }
+        
+        public void SetUserMeetingsRecordingFolderIdForUser(PanoptoScheduleUploader.Services.UserManagement.AuthenticationInfo auth, string userKey, System.Guid meetingsFolderId) {
+            base.Channel.SetUserMeetingsRecordingFolderIdForUser(auth, userKey, meetingsFolderId);
         }
     }
 }

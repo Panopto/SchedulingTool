@@ -323,6 +323,7 @@ namespace PanoptoScheduleUploader.Services.UsageManagement {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DetailedUsageResponseItem", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponseItem))]
     public partial class DetailedUsageResponseItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -428,6 +429,484 @@ namespace PanoptoScheduleUploader.Services.UsageManagement {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ExtendedDetailedUsageResponseItem", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class ExtendedDetailedUsageResponseItem : PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponseItem {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> PlaybackSpeedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponseItem.StartReasons StartReasonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponseItem.StopReasons StopReasonField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> PlaybackSpeed {
+            get {
+                return this.PlaybackSpeedField;
+            }
+            set {
+                if ((this.PlaybackSpeedField.Equals(value) != true)) {
+                    this.PlaybackSpeedField = value;
+                    this.RaisePropertyChanged("PlaybackSpeed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponseItem.StartReasons StartReason {
+            get {
+                return this.StartReasonField;
+            }
+            set {
+                if ((this.StartReasonField.Equals(value) != true)) {
+                    this.StartReasonField = value;
+                    this.RaisePropertyChanged("StartReason");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponseItem.StopReasons StopReason {
+            get {
+                return this.StopReasonField;
+            }
+            set {
+                if ((this.StopReasonField.Equals(value) != true)) {
+                    this.StopReasonField = value;
+                    this.RaisePropertyChanged("StopReason");
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="ExtendedDetailedUsageResponseItem.StartReasons", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+        public enum StartReasons : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Start = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Seek = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Resume = 2,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            NewSpeed = 3,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Unknown = 4,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Unexpected = 5,
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="ExtendedDetailedUsageResponseItem.StopReasons", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+        public enum StopReasons : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            End = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Seek = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Pause = 2,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            SpeedChange = 3,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            PlayerClose = 4,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Unknown = 5,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Unexpected = 6,
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ExtendedDetailedUsageResponse", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class ExtendedDetailedUsageResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponseItem[] PagedResponsesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalNumberResponsesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponseItem[] PagedResponses {
+            get {
+                return this.PagedResponsesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PagedResponsesField, value) != true)) {
+                    this.PagedResponsesField = value;
+                    this.RaisePropertyChanged("PagedResponses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalNumberResponses {
+            get {
+                return this.TotalNumberResponsesField;
+            }
+            set {
+                if ((this.TotalNumberResponsesField.Equals(value) != true)) {
+                    this.TotalNumberResponsesField = value;
+                    this.RaisePropertyChanged("TotalNumberResponses");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StatsReportType", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    public enum StatsReportType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FolderUsage = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SessionUsage = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UserViewingUsage = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UserCreationUsage = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LastLoginTime = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SessionsViewsByUsers = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SessionsViewsByViewingType = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SessionsCreatedOrEdited = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RemoteRecorderUsage = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SystemViews = 9,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SystemFolderStorage = 10,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StatsReportStatus", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class StatsReportStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAvailableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ReportIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> ReportTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.UsageManagement.StatsReportType ReportTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndTime {
+            get {
+                return this.EndTimeField;
+            }
+            set {
+                if ((this.EndTimeField.Equals(value) != true)) {
+                    this.EndTimeField = value;
+                    this.RaisePropertyChanged("EndTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAvailable {
+            get {
+                return this.IsAvailableField;
+            }
+            set {
+                if ((this.IsAvailableField.Equals(value) != true)) {
+                    this.IsAvailableField = value;
+                    this.RaisePropertyChanged("IsAvailable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ReportId {
+            get {
+                return this.ReportIdField;
+            }
+            set {
+                if ((this.ReportIdField.Equals(value) != true)) {
+                    this.ReportIdField = value;
+                    this.RaisePropertyChanged("ReportId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> ReportTime {
+            get {
+                return this.ReportTimeField;
+            }
+            set {
+                if ((this.ReportTimeField.Equals(value) != true)) {
+                    this.ReportTimeField = value;
+                    this.RaisePropertyChanged("ReportTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.UsageManagement.StatsReportType ReportType {
+            get {
+                return this.ReportTypeField;
+            }
+            set {
+                if ((this.ReportTypeField.Equals(value) != true)) {
+                    this.ReportTypeField = value;
+                    this.RaisePropertyChanged("ReportType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartTime {
+            get {
+                return this.StartTimeField;
+            }
+            set {
+                if ((this.StartTimeField.Equals(value) != true)) {
+                    this.StartTimeField = value;
+                    this.RaisePropertyChanged("StartTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RecurringReportCadence", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    public enum RecurringReportCadence : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Daily = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Weekly = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Monthly = 30,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RecurringStatsReportDefinition", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class RecurringStatsReportDefinition : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.UsageManagement.RecurringReportCadence CadenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid DefinitionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsEnabledField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OffsetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.UsageManagement.StatsReportType ReportTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.UsageManagement.StatsReportStatus[] ReportsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.UsageManagement.RecurringReportCadence Cadence {
+            get {
+                return this.CadenceField;
+            }
+            set {
+                if ((this.CadenceField.Equals(value) != true)) {
+                    this.CadenceField = value;
+                    this.RaisePropertyChanged("Cadence");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid DefinitionId {
+            get {
+                return this.DefinitionIdField;
+            }
+            set {
+                if ((this.DefinitionIdField.Equals(value) != true)) {
+                    this.DefinitionIdField = value;
+                    this.RaisePropertyChanged("DefinitionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsEnabled {
+            get {
+                return this.IsEnabledField;
+            }
+            set {
+                if ((this.IsEnabledField.Equals(value) != true)) {
+                    this.IsEnabledField = value;
+                    this.RaisePropertyChanged("IsEnabled");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Offset {
+            get {
+                return this.OffsetField;
+            }
+            set {
+                if ((this.OffsetField.Equals(value) != true)) {
+                    this.OffsetField = value;
+                    this.RaisePropertyChanged("Offset");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.UsageManagement.StatsReportType ReportType {
+            get {
+                return this.ReportTypeField;
+            }
+            set {
+                if ((this.ReportTypeField.Equals(value) != true)) {
+                    this.ReportTypeField = value;
+                    this.RaisePropertyChanged("ReportType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.UsageManagement.StatsReportStatus[] Reports {
+            get {
+                return this.ReportsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportsField, value) != true)) {
+                    this.ReportsField = value;
+                    this.RaisePropertyChanged("Reports");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QuizResultReportType", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    public enum QuizResultReportType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UserResultsSummary = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        DetailedResultsBySection = 1,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UsageManagement.IUsageReporting")]
     public interface IUsageReporting {
@@ -444,11 +923,50 @@ namespace PanoptoScheduleUploader.Services.UsageManagement {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetSessionDetailedUsage", ReplyAction="http://tempuri.org/IUsageReporting/GetSessionDetailedUsageResponse")]
         PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse GetSessionDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination, System.DateTime beginRange, System.DateTime endRange);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetSessionExtendedDetailedUsage", ReplyAction="http://tempuri.org/IUsageReporting/GetSessionExtendedDetailedUsageResponse")]
+        PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponse GetSessionExtendedDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination, System.DateTime beginRange, System.DateTime endRange);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetUserDetailedUsage", ReplyAction="http://tempuri.org/IUsageReporting/GetUserDetailedUsageResponse")]
         PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse GetUserDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetUserExtendedDetailedUsage", ReplyAction="http://tempuri.org/IUsageReporting/GetUserExtendedDetailedUsageResponse")]
+        PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponse GetUserExtendedDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination, System.DateTime beginRange, System.DateTime endRange);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetSessionUserDetailedUsage", ReplyAction="http://tempuri.org/IUsageReporting/GetSessionUserDetailedUsageResponse")]
         PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse GetSessionUserDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetSessionUserExtendedDetailedUsage", ReplyAction="http://tempuri.org/IUsageReporting/GetSessionUserExtendedDetailedUsageResponse")]
+        PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponse GetSessionUserExtendedDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/DescribeReportTypes", ReplyAction="http://tempuri.org/IUsageReporting/DescribeReportTypesResponse")]
+        PanoptoScheduleUploader.Services.UsageManagement.StatsReportType[] DescribeReportTypes(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/DescribeReportType", ReplyAction="http://tempuri.org/IUsageReporting/DescribeReportTypeResponse")]
+        string[] DescribeReportType(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UsageManagement.StatsReportType reportType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetRecentReports", ReplyAction="http://tempuri.org/IUsageReporting/GetRecentReportsResponse")]
+        PanoptoScheduleUploader.Services.UsageManagement.StatsReportStatus[] GetRecentReports(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Nullable<PanoptoScheduleUploader.Services.UsageManagement.StatsReportType> reportType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/QueueReport", ReplyAction="http://tempuri.org/IUsageReporting/QueueReportResponse")]
+        System.Guid QueueReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UsageManagement.StatsReportType reportType, System.DateTime startTime, System.DateTime endTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetReport", ReplyAction="http://tempuri.org/IUsageReporting/GetReportResponse")]
+        void GetReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/CancelReport", ReplyAction="http://tempuri.org/IUsageReporting/CancelReportResponse")]
+        void CancelReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/CreateRecurringReport", ReplyAction="http://tempuri.org/IUsageReporting/CreateRecurringReportResponse")]
+        System.Guid CreateRecurringReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UsageManagement.RecurringReportCadence cadenceType, int cadenceOffset, PanoptoScheduleUploader.Services.UsageManagement.StatsReportType reportType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/DeleteRecurringReport", ReplyAction="http://tempuri.org/IUsageReporting/DeleteRecurringReportResponse")]
+        void DeleteRecurringReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetRecurringReports", ReplyAction="http://tempuri.org/IUsageReporting/GetRecurringReportsResponse")]
+        PanoptoScheduleUploader.Services.UsageManagement.RecurringStatsReportDefinition[] GetRecurringReports(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Nullable<PanoptoScheduleUploader.Services.UsageManagement.StatsReportType> reportType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsageReporting/GetQuizResultDownloadUrl", ReplyAction="http://tempuri.org/IUsageReporting/GetQuizResultDownloadUrlResponse")]
+        string GetQuizResultDownloadUrl(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.UsageManagement.QuizResultReportType quizResultReportType);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -494,12 +1012,64 @@ namespace PanoptoScheduleUploader.Services.UsageManagement {
             return base.Channel.GetSessionDetailedUsage(auth, sessionId, pagination, beginRange, endRange);
         }
         
+        public PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponse GetSessionExtendedDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination, System.DateTime beginRange, System.DateTime endRange) {
+            return base.Channel.GetSessionExtendedDetailedUsage(auth, sessionId, pagination, beginRange, endRange);
+        }
+        
         public PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse GetUserDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination) {
             return base.Channel.GetUserDetailedUsage(auth, userId, pagination);
         }
         
+        public PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponse GetUserExtendedDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination, System.DateTime beginRange, System.DateTime endRange) {
+            return base.Channel.GetUserExtendedDetailedUsage(auth, userId, pagination, beginRange, endRange);
+        }
+        
         public PanoptoScheduleUploader.Services.UsageManagement.DetailedUsageResponse GetSessionUserDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination) {
             return base.Channel.GetSessionUserDetailedUsage(auth, sessionId, userId, pagination);
+        }
+        
+        public PanoptoScheduleUploader.Services.UsageManagement.ExtendedDetailedUsageResponse GetSessionUserExtendedDetailedUsage(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, System.Guid userId, PanoptoScheduleUploader.Services.UsageManagement.Pagination pagination) {
+            return base.Channel.GetSessionUserExtendedDetailedUsage(auth, sessionId, userId, pagination);
+        }
+        
+        public PanoptoScheduleUploader.Services.UsageManagement.StatsReportType[] DescribeReportTypes(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth) {
+            return base.Channel.DescribeReportTypes(auth);
+        }
+        
+        public string[] DescribeReportType(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UsageManagement.StatsReportType reportType) {
+            return base.Channel.DescribeReportType(auth, reportType);
+        }
+        
+        public PanoptoScheduleUploader.Services.UsageManagement.StatsReportStatus[] GetRecentReports(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Nullable<PanoptoScheduleUploader.Services.UsageManagement.StatsReportType> reportType) {
+            return base.Channel.GetRecentReports(auth, reportType);
+        }
+        
+        public System.Guid QueueReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UsageManagement.StatsReportType reportType, System.DateTime startTime, System.DateTime endTime) {
+            return base.Channel.QueueReport(auth, reportType, startTime, endTime);
+        }
+        
+        public void GetReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid reportId) {
+            base.Channel.GetReport(auth, reportId);
+        }
+        
+        public void CancelReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid reportId) {
+            base.Channel.CancelReport(auth, reportId);
+        }
+        
+        public System.Guid CreateRecurringReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, PanoptoScheduleUploader.Services.UsageManagement.RecurringReportCadence cadenceType, int cadenceOffset, PanoptoScheduleUploader.Services.UsageManagement.StatsReportType reportType) {
+            return base.Channel.CreateRecurringReport(auth, cadenceType, cadenceOffset, reportType);
+        }
+        
+        public void DeleteRecurringReport(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid reportId) {
+            base.Channel.DeleteRecurringReport(auth, reportId);
+        }
+        
+        public PanoptoScheduleUploader.Services.UsageManagement.RecurringStatsReportDefinition[] GetRecurringReports(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Nullable<PanoptoScheduleUploader.Services.UsageManagement.StatsReportType> reportType) {
+            return base.Channel.GetRecurringReports(auth, reportType);
+        }
+        
+        public string GetQuizResultDownloadUrl(PanoptoScheduleUploader.Services.UsageManagement.AuthenticationInfo auth, System.Guid sessionId, PanoptoScheduleUploader.Services.UsageManagement.QuizResultReportType quizResultReportType) {
+            return base.Channel.GetQuizResultDownloadUrl(auth, sessionId, quizResultReportType);
         }
     }
 }

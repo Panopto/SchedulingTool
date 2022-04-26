@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UserManagement" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UserManagement" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsp:Policy wsu:Id="BasicHttpBinding_IUserManagement_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -27,10 +27,10 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
-      <xsd:import schemaLocation="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManagement_CreateUser_InputMessage">
@@ -141,6 +141,18 @@
   <wsdl:message name="IUserManagement_RemoveMembersFromInternalGroup_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveMembersFromInternalGroupResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagement_AddMembersToExternalGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMembersToExternalGroup" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_AddMembersToExternalGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMembersToExternalGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_RemoveMembersFromExternalGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveMembersFromExternalGroup" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_RemoveMembersFromExternalGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveMembersFromExternalGroupResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserManagement_SyncExternalUser_InputMessage">
     <wsdl:part name="parameters" element="tns:SyncExternalUser" />
   </wsdl:message>
@@ -164,6 +176,36 @@
   </wsdl:message>
   <wsdl:message name="IUserManagement_ListGroups_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetGroupsByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroupsByName" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetGroupsByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroupsByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetUsersInGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInGroup" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetUsersInGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_SetUserHasLoggedIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserHasLoggedIn" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_SetUserHasLoggedIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserHasLoggedInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetUserMeetingsRecordingFolderIdForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserMeetingsRecordingFolderIdForUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetUserMeetingsRecordingFolderIdForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserMeetingsRecordingFolderIdForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_SetUserMeetingsRecordingFolderIdForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserMeetingsRecordingFolderIdForUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_SetUserMeetingsRecordingFolderIdForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserMeetingsRecordingFolderIdForUserResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserManagement">
     <wsdl:operation name="CreateUser">
@@ -238,6 +280,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/RemoveMembersFromInternalGroup" message="tns:IUserManagement_RemoveMembersFromInternalGroup_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/RemoveMembersFromInternalGroupResponse" message="tns:IUserManagement_RemoveMembersFromInternalGroup_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddMembersToExternalGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/AddMembersToExternalGroup" message="tns:IUserManagement_AddMembersToExternalGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/AddMembersToExternalGroupResponse" message="tns:IUserManagement_AddMembersToExternalGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMembersFromExternalGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/RemoveMembersFromExternalGroup" message="tns:IUserManagement_RemoveMembersFromExternalGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/RemoveMembersFromExternalGroupResponse" message="tns:IUserManagement_RemoveMembersFromExternalGroup_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SyncExternalUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/SyncExternalUser" message="tns:IUserManagement_SyncExternalUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/SyncExternalUserResponse" message="tns:IUserManagement_SyncExternalUser_OutputMessage" />
@@ -253,6 +303,26 @@
     <wsdl:operation name="ListGroups">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/ListGroups" message="tns:IUserManagement_ListGroups_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/ListGroupsResponse" message="tns:IUserManagement_ListGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupsByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/GetGroupsByName" message="tns:IUserManagement_GetGroupsByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/GetGroupsByNameResponse" message="tns:IUserManagement_GetGroupsByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/GetUsersInGroup" message="tns:IUserManagement_GetUsersInGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/GetUsersInGroupResponse" message="tns:IUserManagement_GetUsersInGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserHasLoggedIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/SetUserHasLoggedIn" message="tns:IUserManagement_SetUserHasLoggedIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/SetUserHasLoggedInResponse" message="tns:IUserManagement_SetUserHasLoggedIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserMeetingsRecordingFolderIdForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/GetUserMeetingsRecordingFolderIdForUser" message="tns:IUserManagement_GetUserMeetingsRecordingFolderIdForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/GetUserMeetingsRecordingFolderIdForUserResponse" message="tns:IUserManagement_GetUserMeetingsRecordingFolderIdForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserMeetingsRecordingFolderIdForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/SetUserMeetingsRecordingFolderIdForUser" message="tns:IUserManagement_SetUserMeetingsRecordingFolderIdForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/SetUserMeetingsRecordingFolderIdForUserResponse" message="tns:IUserManagement_SetUserMeetingsRecordingFolderIdForUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserManagement" type="tns:IUserManagement">
@@ -420,6 +490,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddMembersToExternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/AddMembersToExternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMembersFromExternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/RemoveMembersFromExternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SyncExternalUser">
       <soap:operation soapAction="http://tempuri.org/IUserManagement/SyncExternalUser" style="document" />
       <wsdl:input>
@@ -456,10 +544,322 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetGroupsByName">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetGroupsByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetUsersInGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserHasLoggedIn">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/SetUserHasLoggedIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserMeetingsRecordingFolderIdForUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetUserMeetingsRecordingFolderIdForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserMeetingsRecordingFolderIdForUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/SetUserMeetingsRecordingFolderIdForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IUserManagement1" type="tns:IUserManagement">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsers">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/CreateUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByKey">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetUserByKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListUsers">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/ListUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateContactInfo">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/UpdateContactInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserBio">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/UpdateUserBio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/UpdatePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockAccount">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/UnlockAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSystemRole">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/SetSystemRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsers">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/DeleteUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateInternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/CreateInternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupIsPublic">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetGroupIsPublic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetGroupIsPublic">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/SetGroupIsPublic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateExternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/CreateExternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMembersToInternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/AddMembersToInternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMembersFromInternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/RemoveMembersFromInternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMembersToExternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/AddMembersToExternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMembersFromExternalGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/RemoveMembersFromExternalGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncExternalUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/SyncExternalUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/DeleteGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListGroups">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/ListGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupsByName">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetGroupsByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetUsersInGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserHasLoggedIn">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/SetUserHasLoggedIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserMeetingsRecordingFolderIdForUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/GetUserMeetingsRecordingFolderIdForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserMeetingsRecordingFolderIdForUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagement/SetUserMeetingsRecordingFolderIdForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UserManagement">
     <wsdl:port name="BasicHttpBinding_IUserManagement" binding="tns:BasicHttpBinding_IUserManagement">
-      <soap:address location="https://192.168.200.124/Panopto/PublicAPISSL/4.2/UserManagement.svc" />
+      <soap:address location="https://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IUserManagement1" binding="tns:BasicHttpBinding_IUserManagement1">
+      <soap:address location="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UserManagement.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

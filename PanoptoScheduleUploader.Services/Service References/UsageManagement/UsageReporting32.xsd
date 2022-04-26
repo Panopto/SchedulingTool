@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetSystemSummaryUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q1:AuthenticationInfo" />
+        <xs:element minOccurs="0" name="beginRange" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endRange" type="xs:dateTime" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="granularity" type="q2:UsageGranularity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSystemSummaryUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetSystemSummaryUsageResult" nillable="true" type="q3:ArrayOfSummaryUsageResponseItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderSummaryUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q4:AuthenticationInfo" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="folderId" type="q5:guid" />
+        <xs:element minOccurs="0" name="beginRange" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endRange" type="xs:dateTime" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="granularity" type="q6:UsageGranularity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderSummaryUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetFolderSummaryUsageResult" nillable="true" type="q7:ArrayOfSummaryUsageResponseItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionSummaryUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q8:AuthenticationInfo" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sessionId" type="q9:guid" />
+        <xs:element minOccurs="0" name="beginRange" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endRange" type="xs:dateTime" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="granularity" type="q10:UsageGranularity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionSummaryUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetSessionSummaryUsageResult" nillable="true" type="q11:ArrayOfSummaryUsageResponseItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionDetailedUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q12:AuthenticationInfo" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sessionId" type="q13:guid" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q14:Pagination" />
+        <xs:element minOccurs="0" name="beginRange" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endRange" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionDetailedUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetSessionDetailedUsageResult" nillable="true" type="q15:DetailedUsageResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionExtendedDetailedUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q16:AuthenticationInfo" />
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sessionId" type="q17:guid" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q18:Pagination" />
+        <xs:element minOccurs="0" name="beginRange" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endRange" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionExtendedDetailedUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetSessionExtendedDetailedUsageResult" nillable="true" type="q19:ExtendedDetailedUsageResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserDetailedUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q20:AuthenticationInfo" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q21:guid" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q22:Pagination" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserDetailedUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetUserDetailedUsageResult" nillable="true" type="q23:DetailedUsageResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserExtendedDetailedUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q24:AuthenticationInfo" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q25:guid" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q26:Pagination" />
+        <xs:element minOccurs="0" name="beginRange" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endRange" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserExtendedDetailedUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetUserExtendedDetailedUsageResult" nillable="true" type="q27:ExtendedDetailedUsageResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionUserDetailedUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q28:AuthenticationInfo" />
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sessionId" type="q29:guid" />
+        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q30:guid" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q31:Pagination" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionUserDetailedUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetSessionUserDetailedUsageResult" nillable="true" type="q32:DetailedUsageResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionUserExtendedDetailedUsage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q33:AuthenticationInfo" />
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sessionId" type="q34:guid" />
+        <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q35:guid" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="pagination" nillable="true" type="q36:Pagination" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionUserExtendedDetailedUsageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetSessionUserExtendedDetailedUsageResult" nillable="true" type="q37:ExtendedDetailedUsageResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescribeReportTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q38:AuthenticationInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescribeReportTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="DescribeReportTypesResult" nillable="true" type="q39:ArrayOfStatsReportType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescribeReportType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q40:AuthenticationInfo" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="reportType" type="q41:StatsReportType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescribeReportTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DescribeReportTypeResult" nillable="true" type="q42:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecentReports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q43:AuthenticationInfo" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="reportType" nillable="true" type="q44:StatsReportType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecentReportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetRecentReportsResult" nillable="true" type="q45:ArrayOfStatsReportStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueueReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q46:AuthenticationInfo" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="reportType" type="q47:StatsReportType" />
+        <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueueReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="QueueReportResult" type="q48:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q49:AuthenticationInfo" />
+        <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="reportId" type="q50:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q51:AuthenticationInfo" />
+        <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="reportId" type="q52:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelReportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateRecurringReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q53:AuthenticationInfo" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="cadenceType" type="q54:RecurringReportCadence" />
+        <xs:element minOccurs="0" name="cadenceOffset" type="xs:int" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="reportType" type="q55:StatsReportType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateRecurringReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="CreateRecurringReportResult" type="q56:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRecurringReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q57:AuthenticationInfo" />
+        <xs:element xmlns:q58="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="reportId" type="q58:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRecurringReportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecurringReports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q59:AuthenticationInfo" />
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="reportType" nillable="true" type="q60:StatsReportType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecurringReportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="GetRecurringReportsResult" nillable="true" type="q61:ArrayOfRecurringStatsReportDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuizResultDownloadUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q62:AuthenticationInfo" />
+        <xs:element xmlns:q63="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sessionId" type="q63:guid" />
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="quizResultReportType" type="q64:QuizResultReportType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuizResultDownloadUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetQuizResultDownloadUrlResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

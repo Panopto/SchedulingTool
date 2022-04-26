@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UsageReporting" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IUsageReporting_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
+      <xsd:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUsageReporting_GetSystemSummaryUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemSummaryUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSystemSummaryUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemSummaryUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetFolderSummaryUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderSummaryUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetFolderSummaryUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderSummaryUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionSummaryUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionSummaryUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionSummaryUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionSummaryUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionDetailedUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionDetailedUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionDetailedUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionDetailedUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionExtendedDetailedUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionExtendedDetailedUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionExtendedDetailedUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionExtendedDetailedUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetUserDetailedUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetailedUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetUserDetailedUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetailedUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetUserExtendedDetailedUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserExtendedDetailedUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetUserExtendedDetailedUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserExtendedDetailedUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionUserDetailedUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionUserDetailedUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionUserDetailedUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionUserDetailedUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionUserExtendedDetailedUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionUserExtendedDetailedUsage" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetSessionUserExtendedDetailedUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionUserExtendedDetailedUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_DescribeReportTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:DescribeReportTypes" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_DescribeReportTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DescribeReportTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_DescribeReportType_InputMessage">
+    <wsdl:part name="parameters" element="tns:DescribeReportType" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_DescribeReportType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DescribeReportTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetRecentReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentReports" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetRecentReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_QueueReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueueReport" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_QueueReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueueReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReport" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_CancelReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelReport" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_CancelReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_CreateRecurringReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRecurringReport" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_CreateRecurringReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRecurringReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_DeleteRecurringReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRecurringReport" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_DeleteRecurringReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRecurringReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetRecurringReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecurringReports" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetRecurringReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecurringReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetQuizResultDownloadUrl_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizResultDownloadUrl" />
+  </wsdl:message>
+  <wsdl:message name="IUsageReporting_GetQuizResultDownloadUrl_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizResultDownloadUrlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUsageReporting">
+    <wsdl:operation name="GetSystemSummaryUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetSystemSummaryUsage" message="tns:IUsageReporting_GetSystemSummaryUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetSystemSummaryUsageResponse" message="tns:IUsageReporting_GetSystemSummaryUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderSummaryUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetFolderSummaryUsage" message="tns:IUsageReporting_GetFolderSummaryUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetFolderSummaryUsageResponse" message="tns:IUsageReporting_GetFolderSummaryUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionSummaryUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionSummaryUsage" message="tns:IUsageReporting_GetSessionSummaryUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionSummaryUsageResponse" message="tns:IUsageReporting_GetSessionSummaryUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionDetailedUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionDetailedUsage" message="tns:IUsageReporting_GetSessionDetailedUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionDetailedUsageResponse" message="tns:IUsageReporting_GetSessionDetailedUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionExtendedDetailedUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionExtendedDetailedUsage" message="tns:IUsageReporting_GetSessionExtendedDetailedUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionExtendedDetailedUsageResponse" message="tns:IUsageReporting_GetSessionExtendedDetailedUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDetailedUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetUserDetailedUsage" message="tns:IUsageReporting_GetUserDetailedUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetUserDetailedUsageResponse" message="tns:IUsageReporting_GetUserDetailedUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserExtendedDetailedUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetUserExtendedDetailedUsage" message="tns:IUsageReporting_GetUserExtendedDetailedUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetUserExtendedDetailedUsageResponse" message="tns:IUsageReporting_GetUserExtendedDetailedUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUserDetailedUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionUserDetailedUsage" message="tns:IUsageReporting_GetSessionUserDetailedUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionUserDetailedUsageResponse" message="tns:IUsageReporting_GetSessionUserDetailedUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUserExtendedDetailedUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionUserExtendedDetailedUsage" message="tns:IUsageReporting_GetSessionUserExtendedDetailedUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetSessionUserExtendedDetailedUsageResponse" message="tns:IUsageReporting_GetSessionUserExtendedDetailedUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DescribeReportTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/DescribeReportTypes" message="tns:IUsageReporting_DescribeReportTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/DescribeReportTypesResponse" message="tns:IUsageReporting_DescribeReportTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DescribeReportType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/DescribeReportType" message="tns:IUsageReporting_DescribeReportType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/DescribeReportTypeResponse" message="tns:IUsageReporting_DescribeReportType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecentReports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetRecentReports" message="tns:IUsageReporting_GetRecentReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetRecentReportsResponse" message="tns:IUsageReporting_GetRecentReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/QueueReport" message="tns:IUsageReporting_QueueReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/QueueReportResponse" message="tns:IUsageReporting_QueueReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetReport" message="tns:IUsageReporting_GetReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetReportResponse" message="tns:IUsageReporting_GetReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/CancelReport" message="tns:IUsageReporting_CancelReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/CancelReportResponse" message="tns:IUsageReporting_CancelReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRecurringReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/CreateRecurringReport" message="tns:IUsageReporting_CreateRecurringReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/CreateRecurringReportResponse" message="tns:IUsageReporting_CreateRecurringReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecurringReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/DeleteRecurringReport" message="tns:IUsageReporting_DeleteRecurringReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/DeleteRecurringReportResponse" message="tns:IUsageReporting_DeleteRecurringReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurringReports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetRecurringReports" message="tns:IUsageReporting_GetRecurringReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetRecurringReportsResponse" message="tns:IUsageReporting_GetRecurringReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizResultDownloadUrl">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsageReporting/GetQuizResultDownloadUrl" message="tns:IUsageReporting_GetQuizResultDownloadUrl_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsageReporting/GetQuizResultDownloadUrlResponse" message="tns:IUsageReporting_GetQuizResultDownloadUrl_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUsageReporting" type="tns:IUsageReporting">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IUsageReporting_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemSummaryUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSystemSummaryUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderSummaryUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetFolderSummaryUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionSummaryUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionSummaryUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionExtendedDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionExtendedDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetUserDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserExtendedDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetUserExtendedDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUserDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionUserDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUserExtendedDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionUserExtendedDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DescribeReportTypes">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/DescribeReportTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DescribeReportType">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/DescribeReportType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecentReports">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetRecentReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/QueueReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/CancelReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRecurringReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/CreateRecurringReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecurringReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/DeleteRecurringReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurringReports">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetRecurringReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizResultDownloadUrl">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetQuizResultDownloadUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IUsageReporting1" type="tns:IUsageReporting">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemSummaryUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSystemSummaryUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderSummaryUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetFolderSummaryUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionSummaryUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionSummaryUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionExtendedDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionExtendedDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetUserDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserExtendedDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetUserExtendedDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUserDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionUserDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUserExtendedDetailedUsage">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetSessionUserExtendedDetailedUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DescribeReportTypes">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/DescribeReportTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DescribeReportType">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/DescribeReportType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecentReports">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetRecentReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/QueueReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/CancelReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRecurringReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/CreateRecurringReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecurringReport">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/DeleteRecurringReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurringReports">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetRecurringReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizResultDownloadUrl">
+      <soap:operation soapAction="http://tempuri.org/IUsageReporting/GetQuizResultDownloadUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UsageReporting">
+    <wsdl:port name="BasicHttpBinding_IUsageReporting" binding="tns:BasicHttpBinding_IUsageReporting">
+      <soap:address location="https://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IUsageReporting1" binding="tns:BasicHttpBinding_IUsageReporting1">
+      <soap:address location="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/UsageReporting.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

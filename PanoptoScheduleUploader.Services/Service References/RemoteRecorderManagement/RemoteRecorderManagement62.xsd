@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" />
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="https://10.40.18.73/Panopto/PublicAPISSL/4.2/RemoteRecorderManagement.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/RemoteRecorderManagement.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/RemoteRecorderManagement.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/RemoteRecorderManagement.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/RemoteRecorderManagement.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://demo.hosted.panopto.com/Panopto/PublicAPI/4.2/RemoteRecorderManagement.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
   <xs:element name="GetRemoteRecordersById">
     <xs:complexType>
       <xs:sequence>
@@ -116,6 +116,52 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" minOccurs="0" name="UpdateRecordingTimeResult" nillable="true" type="q23:ScheduledRecordingResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRecordingSettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q24:AuthenticationInfo" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="sessionId" type="q25:guid" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="recorderSettings" nillable="true" type="q26:ArrayOfRecorderSettings" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRecordingSettingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soap" minOccurs="0" name="UpdateRecordingSettingsResult" nillable="true" type="q27:ScheduledRecordingResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDefaultFolderForRecorder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q28:AuthenticationInfo" />
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="remoteRecorderId" type="q29:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDefaultFolderForRecorderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetDefaultFolderForRecorderResult" type="q30:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMachineSidForRecorder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40" minOccurs="0" name="auth" nillable="true" type="q31:AuthenticationInfo" />
+        <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="remoteRecorderId" type="q32:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMachineSidForRecorderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMachineSidForRecorderResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
