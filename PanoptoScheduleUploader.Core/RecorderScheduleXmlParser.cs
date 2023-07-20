@@ -54,6 +54,10 @@ namespace PanoptoScheduleUploader.Core
 
                     var startTime = DateTime.Parse(string.Format("{0} {1}", recorderScheduleXmlElement.RecordingDate, recorderScheduleXmlElement.RecordingStartTime));
                     var endTime = DateTime.Parse(string.Format("{0} {1}", recorderScheduleXmlElement.RecordingDate, recorderScheduleXmlElement.RecordingEndTime));
+                    var templateId = string.IsNullOrWhiteSpace(recorderScheduleXmlElement.TemplateId)
+                        ? (Guid?)null
+                        : Guid.Parse(recorderScheduleXmlElement.TemplateId);
+
                     recorderSchedules.Add(new Recording
                     {
                         Title = recorderScheduleXmlElement.Class,
@@ -64,7 +68,8 @@ namespace PanoptoScheduleUploader.Core
                         EndTime = endTime,
                         Presenter = recorderScheduleXmlElement.Presenter,
                         CourseTitle = recorderScheduleXmlElement.CourseTitle,
-                        RecordingDate = recorderScheduleXmlElement.RecordingDate
+                        RecordingDate = recorderScheduleXmlElement.RecordingDate,
+                        TemplateId = templateId
                     });
                 }
             }

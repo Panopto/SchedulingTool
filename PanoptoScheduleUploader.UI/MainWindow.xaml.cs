@@ -36,6 +36,7 @@ namespace PanoptoScheduleUploader.UI
         private const string PRESENTER = "Presenter";
         private const string FOLDER = "Folder";
         private const string ISWEBCAST = "IsWebcast";
+        private const string TEMPLATEID = "TemplateId";
 
         private IEnumerable<Services.SchedulingResult> results = null;
         private Dictionary<Services.SessionManagement.Session, SessionUsage> sessions = null;
@@ -83,7 +84,8 @@ namespace PanoptoScheduleUploader.UI
                 previewGrid.Columns[3].Width = 100;
                 previewGrid.Columns[4].Width = 150;
                 previewGrid.Columns[5].Width = 142;
-                previewGrid.Columns[5].Width = 70;
+                previewGrid.Columns[6].Width = 70;
+                previewGrid.Columns[7].Width = 70;
             }
         }
 
@@ -101,6 +103,7 @@ namespace PanoptoScheduleUploader.UI
                 table.Columns.Add(PRESENTER);
                 table.Columns.Add(FOLDER);
                 table.Columns.Add(ISWEBCAST);
+                table.Columns.Add(TEMPLATEID);
 
                 IEnumerable<Recording> recordings = null;
                 if (System.IO.Path.GetExtension(fileName) == ".xml")
@@ -127,6 +130,7 @@ namespace PanoptoScheduleUploader.UI
                     row[FOLDER] = recording.CourseTitle;
                     row[RECORDING_DATE] = recording.RecordingDate;
                     row[ISWEBCAST] = recording.IsBroadCast.ToString();
+                    row[TEMPLATEID] = recording.TemplateId.HasValue ? recording.TemplateId.Value.ToString() : string.Empty;
                     table.Rows.Add(row);
                 }
             }

@@ -29,6 +29,7 @@ namespace PanoptoScheduleUploader.Core
             this.RecordingEndTime = recorderScheduleNode.SelectSingleNode("RecordingEndTime") != null ? recorderScheduleNode.SelectSingleNode("RecordingEndTime").InnerText : "";
             this.Presenter = recorderScheduleNode.SelectSingleNode("Presenter") != null ? recorderScheduleNode.SelectSingleNode("Presenter").InnerText : "";
             this.CourseTitle = recorderScheduleNode.SelectSingleNode("CourseTitle") != null ? recorderScheduleNode.SelectSingleNode("CourseTitle").InnerText : "";
+            this.TemplateId = recorderScheduleNode.SelectSingleNode("TemplateId") != null ? recorderScheduleNode.SelectSingleNode("TemplateId").InnerText : "";
 
             if (!this.HasAllValues)
             {
@@ -43,6 +44,7 @@ namespace PanoptoScheduleUploader.Core
         public string RecordingEndTime { get; set; }
         public string Presenter { get; set; }
         public string CourseTitle { get; set; }
+        public string TemplateId { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether the node contains values for all the expected properties on a RecorderSchedule node.

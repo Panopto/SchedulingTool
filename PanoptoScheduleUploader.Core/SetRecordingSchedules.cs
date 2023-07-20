@@ -47,10 +47,10 @@ namespace PanoptoScheduleUploader.Core
                             count++;
                             Trace.WriteLine($"{count}: {recording.Title}");
 
-                            RecorderSettings settings;
+                            RecorderTemplatesWithSettings settings;
                             try
                             {
-                                settings = remoteRecorderService.GetSettingsByRecorderName(recording.RecorderName);
+                                settings = remoteRecorderService.GetSettingsByRecorderName(recording.RecorderName, recording.TemplateId);
                             }
                             catch (Exception)
                             {
@@ -102,7 +102,7 @@ namespace PanoptoScheduleUploader.Core
                                         throw new Exception(string.Format("The folder named '{0}' does not exist. This folder must exist as the default location for recordings.", defaultFolderName));
                                     }
                                 }
-                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, recording.IsBroadCast, recording.StartTime, recording.EndTime, new List<RecorderSettings> { settings }, overwritten);
+                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, recording.IsBroadCast, recording.StartTime, recording.EndTime, new List<RecorderTemplatesWithSettings> { settings }, overwritten);
                                 if (result.SessionId != Guid.Empty)
                                 {
                                     sessionManager.UpdateSessionDescription(result.SessionId, "Presented by " + recording.Presenter);
