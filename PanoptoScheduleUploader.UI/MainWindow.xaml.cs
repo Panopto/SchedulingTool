@@ -161,17 +161,19 @@ namespace PanoptoScheduleUploader.UI
             try
             {
                 var backgroundWorker = new BackgroundWorker();
+                backgroundWorker.WorkerReportsProgress = true;
 
                 backgroundWorker.DoWork += (s, e1) =>
                 {
                     App.Current.Dispatcher.Invoke((Action)delegate
                     {
                         resultsTextBlock.Text = "Batch creating your sessions. This may take a few minutes, please be patient.";
+                        resultsTextBlock.Text += "\r\n\r\n";
                     });
 
                     try
                     {
-                        results = SetRecordingSchedules.Execute(username, password, filePath, string.Empty, overwrite);
+                        results = SetRecordingSchedules.Execute( backgroundWorker as BackgroundWorker, username, password, filePath, string.Empty, overwrite);
                     }
                     catch (Exception ex)
                     {
@@ -180,19 +182,24 @@ namespace PanoptoScheduleUploader.UI
                     }
                 };
 
+                backgroundWorker.ProgressChanged += (s, e3) =>
+                {
+
+
+                    resultsTextBlock.Text += e3.UserState;
+                    resultsTextBlock.Text += "\r\n\r\n";
+                    
+
+                };
                 backgroundWorker.RunWorkerCompleted += (s, e2) =>
                 {
                     App.Current.Dispatcher.Invoke((Action)delegate
                     {
-                        resultsTextBlock.Text = string.Empty;
+                        
 
                         if (results != null)
                         {
-                            foreach (var result in results)
-                            {
-                                resultsTextBlock.Text += result.Result;
-                                resultsTextBlock.Text += "\r\n\r\n";
-                            }
+                           
                             resultsTextBlock.Text += string.Format("{0} out of {1} recordings were scheduled.", results.Count(r => r.Success), results.Count());
                             resultsTextBlock.Text += "\r\n\r\n";
 
