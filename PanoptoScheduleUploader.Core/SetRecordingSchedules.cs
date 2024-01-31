@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using PanoptoScheduleUploader.Services;
 using PanoptoScheduleUploader.Services.RemoteRecorderManagement;
 
+using System.ComponentModel;
+
 namespace PanoptoScheduleUploader.Core
 {
     public static class SetRecordingSchedules
@@ -15,8 +17,10 @@ namespace PanoptoScheduleUploader.Core
         private const string MSGBOX_FOLDERNAME_NOTFOUND_TITLE = "Folder does not exist";
         private const string MSGBOX_FOLDERNAME_NOTFOUND_PROMPT = "The folder named '{0}' does not exist for recording '{1}'. Would you like to use the default folder instead?";
         private const string FOLDERNAME_NOTFOUND_MSG = "The folder named '{0}' does not exist for recording '{1}'.";
-        public static IEnumerable<SchedulingResult> Execute(string username, string password, string fileName, string folderName, bool overwrite)
+      
+        public static IEnumerable<SchedulingResult> Execute( BackgroundWorker bw, string username, string password, string fileName, string folderName, bool overwrite)
         {
+
             var results = new List<SchedulingResult>();
 
             IEnumerable<Recording> recordings = null;
@@ -59,56 +63,74 @@ namespace PanoptoScheduleUploader.Core
 
                             if (settings == null)
                             {
+                                if (log.IsDebugEnabled) log.DebugFormat($"Cannot find Recorder {recording.RecorderName}:, {recording.Title},{recording.CourseTitle},{recording.StartTime},{recording.RecorderName}");
                                 results.Add(new SchedulingResult(false, string.Format("The recorder {0} could not be found.", recording.RecorderName), Guid.Empty));
+                                bw.ReportProgress(1, $"The recorder {recording.RecorderName} could not be found." );
                             }
                             else
                             {
-                                bool overwritten = false;
-                                if (overwrite)
-                                {
-                                    try
-                                    {
-                                        overwritten = sessionManager.RemoveConflictingSessions(remoteRecorderService.GetSessionsByRecorderName(recording.RecorderName), recording.StartTime, recording.EndTime);
-                                        break;
-                                    }
-                                    catch (ProtocolException e)
-                                    {
-                                        Trace.WriteLine($"RemoveConflictingSession threw: {e}");
-                                        overwritten = false;
-                                    }
-                                }
+                                
                                 var folderId = GetFolderId(recording.CourseTitle, sessionManager, Guid.Empty);
-
-                                // If recording specifies a folder and cannot be found prompt user if they want to use default folder
-                                if (recording.CourseTitle != null && folderId == Guid.Empty)
+                                var defaultFolderName = ConfigurationManager.AppSettings["defaultFolderName"];
+                                // If recording specifies a folder and cannot be found prompt user if they want to use default folder (can be disabled by the config file)
+                                if (recording.CourseTitle != null && folderId == Guid.Empty && ConfigurationManager.AppSettings["DisableNoMatchingFolderPrompt"] == "False")
                                 {
+
                                     DialogResult dialogResult = MessageBox.Show(String.Format(MSGBOX_FOLDERNAME_NOTFOUND_PROMPT, recording.CourseTitle, recording.Title), MSGBOX_FOLDERNAME_NOTFOUND_TITLE, MessageBoxButtons.YesNo);
                                     if (dialogResult == DialogResult.No)
                                     {
-                                        throw new Exception(string.Format(FOLDERNAME_NOTFOUND_MSG, recording.CourseTitle, recording.Title));
+                                        if (log.IsDebugEnabled) log.DebugFormat($"Skipped. Cannot find folder {recording.CourseTitle}. User opted to not record to default folder {defaultFolderName}:, {recording.Title},{recording.CourseTitle},{recording.StartTime},{recording.RecorderName}");
+                                        results.Add(new SchedulingResult(false, string.Format($"Skipped. Cannot find folder {recording.CourseTitle} for {recording.Title} at {recording.StartTime}. User opted to not record to default folder {defaultFolderName}"), Guid.Empty));
+                                        bw.ReportProgress(1, $"Skipped. Cannot find folder {recording.CourseTitle} for {recording.Title} at {recording.StartTime}. User opted to not record to default folder {defaultFolderName}");
+                                        continue;
                                     }
                                 }
 
                                 if (folderId == Guid.Empty)
                                 {
-                                    var defaultFolderName = ConfigurationManager.AppSettings["defaultFolderName"];
+                                  
                                     var folder = sessionManager.GetFolderByName(defaultFolderName);
                                     if (folder != null)
                                     {
                                         folderId = folder.Id;
+                                        if (log.IsDebugEnabled) log.DebugFormat($"Cannot find folder {recording.CourseTitle}. Recording to default folder {defaultFolderName}:, {recording.Title},{recording.CourseTitle},{recording.StartTime},{recording.RecorderName}");
+                                        bw.ReportProgress(1, $"Cannot find folder {recording.CourseTitle}. Recording to default folder {defaultFolderName}");
+
                                     }
                                     else
                                     {
-                                        throw new Exception(string.Format("The folder named '{0}' does not exist. This folder must exist as the default location for recordings.", defaultFolderName));
+                                        if (log.IsDebugEnabled) log.DebugFormat($"Cannot find folder {recording.CourseTitle}. The folder named '{defaultFolderName}' does not exist. This folder must exist as the default location for recordings., {recording.Title},{recording.CourseTitle},{recording.StartTime},{recording.RecorderName}");
+                                        results.Add(new SchedulingResult(false, string.Format($"Cannot find folder {recording.CourseTitle}. The folder named '{defaultFolderName}' does not exist. This folder must exist as the default location for recordings."), Guid.Empty));
+                                        bw.ReportProgress(1, $"Cannot find folder {recording.CourseTitle}. The folder named '{defaultFolderName}' does not exist. This folder must exist as the default location for recordings.");
+                                        continue;
+                                        
+
                                     }
                                 }
-                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, recording.IsBroadCast, recording.StartTime, recording.EndTime, new List<RecorderSettings> { settings }, overwritten);
+                                var result = remoteRecorderService.ScheduleRecording(recording.Title, folderId, recording.IsBroadCast, recording.StartTime, recording.EndTime, new List<RecorderSettings> { settings }, overwrite);
                                 if (result.SessionId != Guid.Empty)
                                 {
-                                    sessionManager.UpdateSessionDescription(result.SessionId, "Presented by " + recording.Presenter);
+                                    if (result.Success == true && result.LogLine != null)
+                                    {
+                                        if (log.IsDebugEnabled) log.DebugFormat($"Scheduled overwritting previous session:, {result.SessionId},{recording.Title},{folderId},{recording.CourseTitle},{recording.StartTime},{recording.RecorderName},{result.LogLine}");
+                                    }
+                                    else
+                                    {
+                                        if (log.IsDebugEnabled) log.DebugFormat($"Scheduled:, {result.SessionId},{recording.Title},{folderId},{recording.CourseTitle},{recording.StartTime},{recording.RecorderName}");
+                                    }
+                                    if (recording.Presenter != "")
+                                    {
+                                        sessionManager.UpdateSessionDescription(result.SessionId, recording.Presenter);
+                                    }
+                                }
+                                if (result.Success == false)
+                                {
+                                    if (log.IsDebugEnabled) log.DebugFormat($"Unable to schedule due to confict:,Conflicting session:{result.LogLine},{recording.Title},{folderId},{recording.CourseTitle},{recording.StartTime},{recording.RecorderName}");
                                 }
                                 results.Add(result);
+                                bw.ReportProgress(1, result.Result);
                             }
+                
                         }
                     }
                 }

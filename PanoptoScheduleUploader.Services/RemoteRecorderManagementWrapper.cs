@@ -16,6 +16,8 @@ namespace PanoptoScheduleUploader.Services
         private string dateTimeFormat;
         private Dictionary<string, RemoteRecorder> recorders;
         private object lockRecorders = new object();
+        private string user;
+        private string password;
 
         // RemoteRecorderManagement.ListRecorders() (Gets the list of all recorders and allows filtering by recorder name.)
         // RemoteRecorderManagement.ScheduleRecording() (Creates a new recording on a particular remote recorder.)
@@ -37,6 +39,9 @@ namespace PanoptoScheduleUploader.Services
                 UserKey = user,
                 Password = password
             };
+
+            this.user = user;
+            this.password = password;
 
             // Set default DateTime format
             this.dateTimeFormat = ConfigurationManager.AppSettings["dateTimeFormat"] ?? "dd-MMM-yyyy hh:mm tt";
@@ -130,12 +135,12 @@ namespace PanoptoScheduleUploader.Services
             }
         }
 
-        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings, bool overwritten)
+        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings, bool overwrite)
         {
             if (!folderId.Equals(Guid.Empty))
             {
                 ScheduledRecordingResult result = null;
-
+                string conflictingSessions = "";
                 bool retry = true;
                 int attemptCount = 0;
                 while (retry)
@@ -144,6 +149,45 @@ namespace PanoptoScheduleUploader.Services
                     {
                         result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, isBroadcast, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
                         retry = false;
+
+                        if (result.ConflictsExist)
+                        {
+
+                            if (overwrite == true)
+                            {
+                                using (var sessionManager = new SessionManagementWrapper(user, password))
+                                {
+                                    foreach (ScheduledRecordingInfo session in result.ConflictingSessions)
+                                    {
+                                        bool sessiondeleted = sessionManager.DeleteSessions(new Guid[] { session.SessionID });
+                                        if (sessiondeleted == false)
+                                        {
+                                            return new SchedulingResult(false, string.Format("Unable to schedule recording {0} between {1} and {2} due to schedule conflicts. Unable to delete session {3}",
+                                            name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat), session.SessionID), Guid.Empty);
+                                        }
+                                        else
+                                        {
+                                            conflictingSessions += string.Format("{0} ", session.SessionID );                                
+                                        }
+                                    }
+                                  
+                                }
+                                result = this.remoteRecorderManager.ScheduleRecording(this.authenticationInfo, name, folderId, isBroadcast, startTime.ToUniversalTime(), endTime.ToUniversalTime(), settings);
+                                retry = false;
+                                return new SchedulingResult(true, string.Format("Recording {0} was scheduled between {1} and {2} overwriting previously scheduled sessions",
+                                name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat)), result.SessionIDs[0], conflictingSessions);
+                                
+
+                            }
+                            else
+                            {
+                                return new SchedulingResult(false, string.Format("Unable to schedule recording {0} between {1} and {2} due to schedule conflicts.",
+                                 name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat)), Guid.Empty, result.ConflictingSessions[0].SessionID.ToString());
+                            }
+
+                        }
+                       
+
                     }
                     catch (FaultException e)
                     {
@@ -161,23 +205,18 @@ namespace PanoptoScheduleUploader.Services
                         }
                     }
                     attemptCount++;
+
                 }
 
-                if (result.ConflictsExist)
-                {
-                    return new SchedulingResult(false, string.Format("Unable to schedule recording {0} between {1} and {2} due to schedule conflicts.",
-                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat)), Guid.Empty);
-                }
-                else
-                {
-                    return new SchedulingResult(string.Format("Recording {0} was scheduled between {1} and {2}{3}",
-                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat), overwritten ? ", overwriting a previously scheduled recording." : "."), result.SessionIDs[0]);
-                }
+                return new SchedulingResult(true,string.Format("Recording {0} was scheduled between {1} and {2}",
+                        name, startTime.ToString(this.dateTimeFormat), endTime.ToString(this.dateTimeFormat)), result.SessionIDs[0]);
+
             }
             else
             {
                 return new SchedulingResult(false, string.Format("Recording {0} failed; folder not found.", name), Guid.Empty);
             }
+
         }
 
         public void Dispose()
