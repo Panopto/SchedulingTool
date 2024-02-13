@@ -20,7 +20,8 @@ namespace PanoptoScheduleUploader.Core
         private int endTimeIndex = 4;
         private int presenterIndex = 5;
         private int folderIndex = 6;
-        private int webcast = 7;
+        private int webcastIndex = 7;
+        private int templateIdIndex = 8;
 
         /// <summary>
         /// Initializes a new instance of the RecorderScheduleCSVParser class.
@@ -71,18 +72,23 @@ namespace PanoptoScheduleUploader.Core
                     var startTime = DateTime.Parse(string.Format("{0} {1}", elements[dateIndex], elements[startTimeIndex]));
                     var endTime = DateTime.Parse(string.Format("{0} {1}", elements[dateIndex], elements[endTimeIndex]));
                     bool b = false;
-                    if (elements[webcast] == "1")
+                    if (elements[webcastIndex] == "1")
                     {
                         b = true;
                     }
-                    else if (elements[webcast] == "0")
+                    else if (elements[webcastIndex] == "0")
                     {
                         b = false;
                     }
                     else
                     {
-                        bool.TryParse(elements[webcast], out b);
+                        bool.TryParse(elements[webcastIndex], out b);
                     }
+
+                    var templateId = elements.Length <= templateIdIndex
+                        ? (Guid?)null
+                        : Guid.Parse(elements[templateIdIndex]);
+
                     recorderSchedules.Add(new Recording
                     {
                         Title = elements[titleIndex],
@@ -93,7 +99,8 @@ namespace PanoptoScheduleUploader.Core
                         EndTime = endTime,
                         Presenter = elements[presenterIndex],
                         CourseTitle = elements[folderIndex],
-                        RecordingDate = elements[dateIndex]
+                        RecordingDate = elements[dateIndex],
+                        TemplateId = templateId
                     });
                 }
             }

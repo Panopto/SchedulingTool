@@ -603,7 +603,67 @@ namespace PanoptoScheduleUploader.Services.RemoteRecorderManagement {
             }
         }
     }
-    
+
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RecorderTemplatesWithSettings", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V40")]
+    [System.SerializableAttribute()]
+    public partial class RecorderTemplatesWithSettings : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<Guid> TemplateIdField;
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<Guid> TemplateId {
+            get {
+                return this.TemplateIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TemplateIdField, value) != true)) {
+                    this.TemplateIdField = value;
+                    this.RaisePropertyChanged("TemplateId");
+                }
+            }
+        }
+
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderSettings RecorderSettingsField;
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderSettings RecorderSettings {
+            get {
+                return this.RecorderSettingsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecorderSettingsField, value) != true)) {
+                    this.RecorderSettingsField = value;
+                    this.RaisePropertyChanged("RecorderSettings");
+                }
+            }
+        }
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ScheduledRecordingResult", Namespace="http://schemas.datacontract.org/2004/07/Panopto.Server.Services.PublicAPI.V42.Soa" +
@@ -797,6 +857,9 @@ namespace PanoptoScheduleUploader.Services.RemoteRecorderManagement {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/ScheduleRecording", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/ScheduleRecordingResponse")]
         PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult ScheduleRecording(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, string name, System.Guid folderId, bool isBroadcast, System.DateTime start, System.DateTime end, System.Collections.Generic.List<PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderSettings> recorderSettings);
         
+
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/ScheduleRecording", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/ScheduleRecordingResponse")]
+        PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult ScheduleRecording(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, string name, System.Guid folderId, bool isBroadcast, System.DateTime start, System.DateTime end, System.Collections.Generic.List<PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderTemplatesWithSettings> recorderTemplatesWithSettings);
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/ScheduleRecurringRecording", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/ScheduleRecurringRecordingResponse")]
         PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult ScheduleRecurringRecording(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid scheduledSessionId, System.Collections.Generic.List<System.DayOfWeek> daysOfWeek, System.DateTime end);
         
@@ -806,11 +869,17 @@ namespace PanoptoScheduleUploader.Services.RemoteRecorderManagement {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/UpdateRecordingSettings", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/UpdateRecordingSettingsResponse")]
         PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult UpdateRecordingSettings(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid sessionId, System.Collections.Generic.List<PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderSettings> recorderSettings);
         
+
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/UpdateRecordingSettings", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/UpdateRecordingSettingsResponse")]
+        PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult UpdateRecordingSettings(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid sessionId, System.Collections.Generic.List<PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderTemplatesWithSettings> recorderTemplatesWithSettings);
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/GetDefaultFolderForRecorder", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/GetDefaultFolderForRecorderResponse")]
         System.Guid GetDefaultFolderForRecorder(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid remoteRecorderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/GetMachineSidForRecorder", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/GetMachineSidForRecorderResponse")]
         string GetMachineSidForRecorder(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid remoteRecorderId);
+
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRemoteRecorderManagement/GetRemoteRecorderTemplateIds", ReplyAction="http://tempuri.org/IRemoteRecorderManagement/GetRemoteRecorderTemplateIds")]
+        string GetRemoteRecorderTemplateIds(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid remoteRecorderId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -860,6 +929,11 @@ namespace PanoptoScheduleUploader.Services.RemoteRecorderManagement {
             return base.Channel.ScheduleRecording(auth, name, folderId, isBroadcast, start, end, recorderSettings);
         }
         
+
+        public PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult ScheduleRecording(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, string name, System.Guid folderId, bool isBroadcast, System.DateTime start, System.DateTime end, System.Collections.Generic.List<PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderTemplatesWithSettings> recorderTemplatesWithSettings) {
+            return base.Channel.ScheduleRecording(auth, name, folderId, isBroadcast, start, end, recorderTemplatesWithSettings);
+        }
+
         public PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult ScheduleRecurringRecording(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid scheduledSessionId, System.Collections.Generic.List<System.DayOfWeek> daysOfWeek, System.DateTime end) {
             return base.Channel.ScheduleRecurringRecording(auth, scheduledSessionId, daysOfWeek, end);
         }
@@ -871,13 +945,21 @@ namespace PanoptoScheduleUploader.Services.RemoteRecorderManagement {
         public PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult UpdateRecordingSettings(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid sessionId, System.Collections.Generic.List<PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderSettings> recorderSettings) {
             return base.Channel.UpdateRecordingSettings(auth, sessionId, recorderSettings);
         }
-        
+
+        public PanoptoScheduleUploader.Services.RemoteRecorderManagement.ScheduledRecordingResult UpdateRecordingSettings(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid sessionId, System.Collections.Generic.List<PanoptoScheduleUploader.Services.RemoteRecorderManagement.RecorderTemplatesWithSettings> recorderTemplatesWithSettings) {
+            return base.Channel.UpdateRecordingSettings(auth, sessionId, recorderTemplatesWithSettings);
+        }
+
         public System.Guid GetDefaultFolderForRecorder(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid remoteRecorderId) {
             return base.Channel.GetDefaultFolderForRecorder(auth, remoteRecorderId);
         }
         
         public string GetMachineSidForRecorder(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid remoteRecorderId) {
             return base.Channel.GetMachineSidForRecorder(auth, remoteRecorderId);
+        }
+
+        public string GetRemoteRecorderTemplateIds(PanoptoScheduleUploader.Services.RemoteRecorderManagement.AuthenticationInfo auth, System.Guid remoteRecorderId) {
+            return base.Channel.GetRemoteRecorderTemplateIds(auth, remoteRecorderId);
         }
     }
 }

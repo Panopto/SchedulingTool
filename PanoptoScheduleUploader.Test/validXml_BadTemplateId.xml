@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecorderScheduleImport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<RecorderSchedules>
+<RecorderSchedule>
+    <Class>Schedule_Using_Template</Class>
+    <Classroom>TestClassroom</Classroom>
+    <RecordingDate>10-apr-2012</RecordingDate>
+    <RecordingStartTime>3:00 PM</RecordingStartTime>
+    <RecordingEndTime>4:00 PM</RecordingEndTime>
+    <TemplateId>175C9F73-E974-4FCA-B8A1-17068104021</TemplateId>
+</RecorderSchedule>
+</RecorderSchedules>
+</RecorderScheduleImport>

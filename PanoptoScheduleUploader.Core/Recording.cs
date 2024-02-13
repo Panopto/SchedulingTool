@@ -16,5 +16,6 @@ namespace PanoptoScheduleUploader.Core
         public string Presenter { get; set; }
         public string CourseTitle { get; set; }
         public string RecordingDate { get; set; }
+        public Guid? TemplateId { get; set; }
     }
 }

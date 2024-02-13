@@ -42,7 +42,7 @@ namespace PanoptoScheduleUploader.Services
             this.dateTimeFormat = ConfigurationManager.AppSettings["dateTimeFormat"] ?? "dd-MMM-yyyy hh:mm tt";
         }
 
-        public RecorderSettings GetSettingsByRecorderName(string name)
+        public RecorderTemplatesWithSettings GetSettingsByRecorderName(string name, Guid? templateId)
         {
             try
             {
@@ -52,7 +52,11 @@ namespace PanoptoScheduleUploader.Services
                     return null;
                 }
 
-                return new RecorderSettings { RecorderId = recorder.Id };
+                return new RecorderTemplatesWithSettings
+                {
+                    TemplateId = templateId,
+                    RecorderSettings = new RecorderSettings { RecorderId = recorder.Id }
+                };
             }
             catch (Exception)
             {
@@ -130,7 +134,7 @@ namespace PanoptoScheduleUploader.Services
             }
         }
 
-        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderSettings> settings, bool overwritten)
+        public SchedulingResult ScheduleRecording(string name, Guid folderId, bool isBroadcast, DateTime startTime, DateTime endTime, List<RecorderTemplatesWithSettings> settings, bool overwritten)
         {
             if (!folderId.Equals(Guid.Empty))
             {

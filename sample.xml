@@ -38,5 +38,13 @@
 			<RecordingStartTime>3:00 PM</RecordingStartTime>
 			<RecordingEndTime>4:00 PM</RecordingEndTime>
 		</RecorderSchedule>
+        <RecorderSchedule>
+            <Class>Leadership_Prog_Venture_Info_Session</Class>
+            <Classroom>JMHH240</Classroom>
+            <RecordingDate>10/04/2012</RecordingDate>
+            <RecordingStartTime>3:00 PM</RecordingStartTime>
+            <RecordingEndTime>4:00 PM</RecordingEndTime>
+            <TemplateId>175C9F73-E974-4FCA-B8A1-170681040219</TemplateId>
+        </RecorderSchedule>
 	</RecorderSchedules>
 </RecorderScheduleImport>
