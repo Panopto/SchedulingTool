@@ -213,30 +213,40 @@ namespace PanoptoScheduleUploader.Services
             ids.Add(id);
             this.sessionManager.UpdateSessionDescription(this.authentication, ids[0], description);
         }
+      
+        //public bool RemoveConflictingSessions(Guid[] sessions, DateTime startTime, DateTime endTime)
+        //{
+        //    List<Guid> sessionsToDelete = new List<Guid>();
+        //    foreach (Session session in sessionManager.GetSessionsById(this.authentication, sessions))
+        //    {
+        //        DateTime localTime = session.StartTime.Value.ToLocalTime();
+        //        if (IsOverlap(localTime, localTime.AddSeconds((Double)session.Duration), startTime, endTime))
+        //        {
+        //            sessionsToDelete.Add(session.Id);
+        //        }
+        //    }
 
-        public bool RemoveConflictingSessions(Guid[] sessions, DateTime startTime, DateTime endTime)
+        //    if (sessionsToDelete.Count > 0)
+        //    {
+        //        sessionManager.DeleteSessions(this.authentication, sessionsToDelete.ToArray());
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
+        public bool DeleteSessions(Guid[] sessionIds)
         {
-            List<Guid> sessionsToDelete = new List<Guid>();
-            foreach (Session session in sessionManager.GetSessionsById(this.authentication, sessions))
+            try
             {
-                DateTime localTime = session.StartTime.Value.ToLocalTime();
-                if (IsOverlap(localTime, localTime.AddSeconds((Double)session.Duration), startTime, endTime))
-                {
-                    sessionsToDelete.Add(session.Id);
-                }
-            }
-
-            if (sessionsToDelete.Count > 0)
-            {
-                sessionManager.DeleteSessions(this.authentication, sessionsToDelete.ToArray());
+                sessionManager.DeleteSessions(this.authentication, sessionIds);
                 return true;
             }
-            return false;
-        }
+            catch
+            {
+                return false;
+            }
+   
 
-        public void DeleteSessions(Guid[] sessionIds)
-        {
-            sessionManager.DeleteSessions(this.authentication, sessionIds);
         }
 
         public bool IsOverlap(DateTime start1, DateTime end1, DateTime start2, DateTime end2)

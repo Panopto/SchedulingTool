@@ -21,8 +21,17 @@ namespace PanoptoScheduleUploader.Services
             this.SessionId = sessionId;
         }
 
+        public SchedulingResult(bool success, string result, Guid sessionId, string logline)
+        {
+            this.Success = success;
+            this.Result = result;
+            this.SessionId = sessionId;
+            this.LogLine = logline;
+        }
+
         public bool Success { get; set; }
         public string Result { get; set; }
         public Guid SessionId { get; set; }
+        public string LogLine { get; set; }
     }
 }
