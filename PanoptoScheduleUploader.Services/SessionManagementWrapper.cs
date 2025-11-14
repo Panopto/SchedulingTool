@@ -97,7 +97,7 @@ namespace PanoptoScheduleUploader.Services
                         Pagination = pagination,
                         WildcardSearchNameOnly = true,
                     },
-                    folderName);
+                    "\""+folderName+"\"");
                 result.AddRange(response.Results);
                 if (result.Count >= response.TotalNumberResults)
                 {
